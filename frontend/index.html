@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>乒器通 | 器材选型与评分社区</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主导航">
+        <div class="brand-block">
+          <div class="brand-mark">乒</div>
+          <div>
+            <div class="brand-name">乒器通</div>
+            <div class="brand-note">器材选型实验室</div>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="selector"><span>⌁</span>选型</button>
+          <button class="nav-item" data-view="test"><span>◇</span>测试</button>
+          <button class="nav-item" data-view="equipment"><span>◎</span>器材</button>
+          <button class="nav-item" data-view="champions"><span>★</span>冠军</button>
+          <button class="nav-item" data-view="community"><span>✎</span>球友圈</button>
+          <button class="nav-item" data-view="profile"><span>◌</span>我的</button>
+          <button class="nav-item" data-view="data"><span>≣</span>数据</button>
+        </nav>
+
+        <div class="side-ad">
+          <span>品牌位</span>
+          <strong>280 × 88</strong>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">网站原型</p>
+            <h1 id="viewTitle">智能选型</h1>
+          </div>
+          <button class="profile-pill" data-view-trigger="profile">
+            <span id="profileInitial">球</span>
+            <span id="profileName">未登录球友</span>
+          </button>
+        </header>
+
+        <section class="view active" id="selector" aria-labelledby="selectorTitle">
+          <div class="two-column">
+            <div class="tool-surface">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">器材匹配</p>
+                  <h2 id="selectorTitle">输入你的打法参数</h2>
+                </div>
+                <div class="stage-badge" id="stageBadge">中级</div>
+              </div>
+
+              <form class="selector-form" id="selectorForm">
+                <label>
+                  <span>总预算</span>
+                  <div class="inline-control">
+                    <input id="budget" name="budget" type="range" min="200" max="3000" step="100" value="1200" />
+                    <output id="budgetOutput">1200 元</output>
+                  </div>
+                  <small class="budget-hint"><span>整拍预算：底板 + 正手胶皮 + 反手胶皮</span><span>3000 元基本覆盖主流顶配上限。</span></small>
+                </label>
+
+                <div class="field-grid">
+                  <label>
+                    <span>水平</span>
+                    <select id="level" name="level">
+                      <option value="beginner">初级</option>
+                      <option value="intermediate" selected>中级</option>
+                      <option value="advanced">高级</option>
+                      <option value="professional">专业</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>年龄</span>
+                    <input id="age" name="age" type="number" min="6" max="80" value="28" />
+                  </label>
+                  <label>
+                    <span>训练频率</span>
+                    <select id="frequency" name="frequency">
+                      <option value="casual">偶尔打</option>
+                      <option value="weekly">每周 1 次</option>
+                      <option value="regular" selected>每周 2-3 次</option>
+                      <option value="intense">每周 4 次以上</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>控重</span>
+                    <select id="weightNeed" name="weightNeed">
+                      <option value="normal" selected>正常</option>
+                      <option value="light">偏轻</option>
+                      <option value="injury">肩肘腕友好</option>
+                    </select>
+                  </label>
+                </div>
+
+                <fieldset>
+                  <legend>打法</legend>
+                  <div class="segmented">
+                    <label><input type="radio" name="style" value="arc" checked />两面弧圈</label>
+                    <label><input type="radio" name="style" value="fast" />近台快攻</label>
+                    <label><input type="radio" name="style" value="control" />控制变化</label>
+                    <label><input type="radio" name="style" value="defense" />削防颗粒</label>
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>当前痛点</legend>
+                  <div class="chip-row">
+                    <label><input type="checkbox" name="pain" value="control" checked />小球冒高</label>
+                    <label><input type="checkbox" name="pain" value="power" />打不穿</label>
+                    <label><input type="checkbox" name="pain" value="spin" />旋转不够</label>
+                    <label><input type="checkbox" name="pain" value="backhand" />反手不稳</label>
+                    <label><input type="checkbox" name="pain" value="weight" />拍子偏重</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="preference-panel">
+                  <legend>心仪器材 / 反向匹配</legend>
+                  <div class="field-grid">
+                    <label>
+                      <span>匹配方式</span>
+                      <select id="matchMode" name="matchMode">
+                        <option value="auto" selected>自动全套推荐</option>
+                        <option value="blade">定好底板，选择两面胶皮</option>
+                        <option value="fh">单独定制正手胶皮</option>
+                        <option value="bh">单独定制反手胶皮</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span id="seedGearLabel">底板选择</span>
+                      <select id="seedGear" name="seedGear"></select>
+                    </label>
+                    <label>
+                      <span>正手胶皮品牌/参数</span>
+                      <select id="hurricaneVariant" name="hurricaneVariant"></select>
+                    </label>
+                    <label>
+                      <span>反手胶皮品牌/硬度</span>
+                      <select id="backhandPreference" name="backhandPreference"></select>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <button class="primary-action" type="submit">生成方案</button>
+              </form>
+            </div>
+
+            <div class="result-panel">
+              <div class="gear-visual" id="gearVisual" aria-label="推荐底板与两面胶皮包装"></div>
+              <div class="recommendation" id="recommendation"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="test" aria-labelledby="testTitle">
+          <div class="split-view">
+            <div class="tool-surface">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">打法画像</p>
+                  <h2 id="testTitle">打法性格测试</h2>
+                </div>
+                <div class="progress-ring"><span id="quizProgress">1/15</span></div>
+              </div>
+              <div id="quizBox"></div>
+            </div>
+            <aside class="insight-panel" id="quizInsight"></aside>
+          </div>
+        </section>
+
+        <section class="view" id="equipment" aria-labelledby="equipmentTitle">
+          <div class="section-head wide">
+            <div>
+              <p class="eyebrow">器材评分</p>
+              <h2 id="equipmentTitle">器材评分库</h2>
+            </div>
+            <label class="search-box">
+              <span>搜索</span>
+              <input id="equipmentSearch" type="search" placeholder="品牌、系列、型号、材质、层数" />
+            </label>
+          </div>
+          <div class="module-tabs" id="equipmentTabs" aria-label="器材分类"></div>
+          <div class="equipment-meta-bar" id="equipmentMeta"></div>
+          <div class="blade-filter-bar" id="bladeFilters"></div>
+          <div class="equipment-layout">
+            <div id="equipmentList" class="equipment-list"></div>
+            <aside class="review-panel" id="reviewPanel"></aside>
+          </div>
+        </section>
+
+        <section class="view" id="champions" aria-labelledby="championsTitle">
+          <div class="section-head wide">
+            <div>
+              <p class="eyebrow">2004 至今</p>
+              <h2 id="championsTitle">世界冠军装备索引</h2>
+            </div>
+            <label class="search-box">
+              <span>搜索</span>
+              <input id="championSearch" type="search" placeholder="球员、国家、冠军、底板、胶皮" />
+            </label>
+          </div>
+          <div class="equipment-meta-bar" id="championMeta"></div>
+          <div class="champion-grid" id="championList"></div>
+        </section>
+
+        <section class="view" id="community" aria-labelledby="communityTitle">
+          <div class="two-column">
+            <div class="tool-surface">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">球友社区</p>
+                  <h2 id="communityTitle">球友文字帖</h2>
+                </div>
+                <button class="ghost-action" id="newPostButton">发布</button>
+              </div>
+              <form class="post-form" id="postForm">
+                <input id="postTitle" maxlength="28" placeholder="标题" />
+                <textarea id="postBody" maxlength="180" placeholder="搭配、打法、购买体验"></textarea>
+                <button class="primary-action" type="submit">提交审核</button>
+              </form>
+              <div id="postList" class="post-list"></div>
+            </div>
+            <aside class="insight-panel">
+              <h3>审核队列</h3>
+              <div class="moderation-line"><span>机审通过</span><strong id="auditPassed">18</strong></div>
+              <div class="moderation-line"><span>人工复核</span><strong id="auditPending">3</strong></div>
+              <div class="moderation-line"><span>营销拦截</span><strong id="auditBlocked">2</strong></div>
+              <div class="reserved-ad">广告位 320 × 64</div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="profile" aria-labelledby="profileTitle">
+          <div class="two-column">
+            <form class="tool-surface profile-form" id="profileForm">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">我的档案</p>
+                  <h2 id="profileTitle">个人资料</h2>
+                </div>
+                <button class="ghost-action" type="submit">保存</button>
+              </div>
+              <div class="field-grid">
+                <label><span>昵称</span><input id="nickname" value="反手还行" /></label>
+                <label><span>地区</span><input id="region" value="上海" /></label>
+                <label><span>开球网积分</span><input id="kaiqiu" type="number" value="1650" /></label>
+                <label><span>常用手</span><select id="hand"><option>右手横板</option><option>左手横板</option><option>直板</option></select></label>
+              </div>
+              <label><span>当前底板</span><input id="currentBlade" value="DHS 301X" /></label>
+              <label><span>正手胶皮</span><input id="currentFh" value="Hurricane 3 Neo" /></label>
+              <label><span>反手胶皮</span><input id="currentBh" value="Fastarc G-1" /></label>
+            </form>
+            <aside class="insight-panel" id="profileSummary"></aside>
+          </div>
+        </section>
+
+        <section class="view" id="data" aria-labelledby="dataTitle">
+          <div class="split-view">
+            <div class="tool-surface">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">证据分级</p>
+                  <h2 id="dataTitle">数据可信度</h2>
+                </div>
+                <div class="stage-badge">A/B/C</div>
+              </div>
+              <div id="evidenceList" class="evidence-list"></div>
+            </div>
+            <aside class="insight-panel">
+              <h3>上线范围</h3>
+              <div class="metric-grid">
+                <div><strong>39</strong><span>官方装备证据</span></div>
+                <div><strong>18</strong><span>品牌种子</span></div>
+                <div><strong>54</strong><span>器材候选</span></div>
+                <div><strong>8</strong><span>常见搭配</span></div>
+              </div>
+              <div class="reserved-market">商城与二手交易入口</div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <nav class="mobile-tabs" aria-label="手机底部导航">
+        <button class="mobile-tab active" data-view="selector">⌁<span>选型</span></button>
+        <button class="mobile-tab" data-view="test">◇<span>测试</span></button>
+        <button class="mobile-tab" data-view="equipment">◎<span>器材</span></button>
+        <button class="mobile-tab" data-view="champions">★<span>冠军</span></button>
+        <button class="mobile-tab" data-view="community">✎<span>球友</span></button>
+        <button class="mobile-tab" data-view="profile">◌<span>我的</span></button>
+      </nav>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
