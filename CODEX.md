@@ -33,7 +33,7 @@ Nginx 将 /api/ 转发到 127.0.0.1:3000/api/。
 
 ## GitHub 与部署规则
 
-1. GitHub 仓库地址是 https://github.com/Yangtian-H/pingqitong.git。
+1. GitHub 仓库地址是 https://github.com/Yangtian-H/pingqitong-web.git。
 2. 默认分支使用 main。
 3. push 前必须先确认不会提交 backend/data、node_modules、.env、日志、备份包和任何密钥。
 4. 如果远程仓库不是空仓库或出现 push 冲突，禁止 force push，先确认差异并选择合并、拉取或人工迁移。
