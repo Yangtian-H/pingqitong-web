@@ -2,7 +2,7 @@ const viewTitles = {
   home: "首页",
   selector: "智能选型",
   test: "打法性格测试",
-  equipment: "器材评分库",
+  equipment: "器材资料库",
   champions: "冠军装备",
   community: "球友文字帖",
   profile: "个人资料",
@@ -188,130 +188,96 @@ const equipment = [
     name: "樊振东 ALC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.4,
     tags: ["外置 ALC", "高上限", "A 级证据"],
     style: "两面弧圈",
     price: "高",
     summary: "速度和支撑明确，适合发力完整的快弧打法。",
     photo: "./assets/product-photos/optimized/butterfly_fzd_alc.jpg",
     photoSource: "Butterfly 官方产品页",
-    comments: [
-      { user: "近台不退", text: "借力很爽，小球要有手上控制。", likes: 18 },
-      { user: "正手还得练", text: "正手国套能压住，反手外套更舒服。", likes: 11 }
-    ]
   },
   {
     id: "d09c",
     name: "蝴蝶 Dignics 09C",
     brand: "蝴蝶 Butterfly",
     type: "胶皮",
-    rating: 9.5,
     tags: ["粘弹", "旋转", "A 级证据"],
     style: "正手弧圈",
     price: "高",
     summary: "摩擦和弧线强，发力门槛高于普通涩套。",
     photo: "./assets/product-photos/optimized/butterfly_d09c.jpg",
     photoSource: "Butterfly 官方产品页",
-    comments: [
-      { user: "拧拉科研员", text: "台内质量很好，退台需要主动发力。", likes: 21 },
-      { user: "省钱失败", text: "贵是真的贵，质量也是真的质量。", likes: 16 }
-    ]
   },
   {
     id: "dhs-301x",
     name: "红双喜 301X",
     brand: "红双喜 DHS",
     type: "底板",
-    rating: 8.8,
     tags: ["进阶", "国套友好", "待补参"],
     style: "弧圈快攻",
     price: "中高",
     summary: "适合从纯木升级到纤维板的进阶球友。",
     photo: "./assets/product-photos/optimized/dhs_301x.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [
-      { user: "每周三练", text: "正手狂飙能吃住，反手别配太硬。", likes: 14 }
-    ]
   },
   {
     id: "h3neo",
     name: "狂飙3 NEO",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 9.0,
     tags: ["粘性", "正手", "待补参"],
     style: "正手弧圈",
     price: "中高",
     summary: "经典正手方案，动作和发力越完整越能打出质量。",
     photo: "./assets/product-photos/optimized/dhs_h3neo.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [
-      { user: "退台半步", text: "不主动发力会觉得闷，练起来很值。", likes: 24 }
-    ]
   },
   {
     id: "fastarc-g1",
     name: "尼塔库 Fastarc G-1",
     brand: "尼塔库 Nittaku",
     type: "胶皮",
-    rating: 8.9,
     tags: ["反手", "旋转", "待补参"],
     style: "均衡弧圈",
     price: "中高",
     summary: "反手稳定、旋转充足，也能放在正手做均衡配置。",
     photo: "./assets/product-photos/optimized/nittaku_fastarc_g1.jpg",
     photoSource: "Nittaku 官方产品页",
-    comments: [
-      { user: "反手先上台", text: "比想象中扎实，不是无脑弹。", likes: 9 }
-    ]
   },
   {
     id: "clipper",
     name: "CL 七夹（Clipper Wood）",
     brand: "斯帝卡 STIGA",
     type: "底板",
-    rating: 8.7,
     tags: ["七夹纯木", "近台", "待补参"],
     style: "近台快攻",
     price: "中高",
     summary: "近台压迫和连续快攻很顺，弧线需要胶皮配合。",
     photo: "./assets/product-photos/optimized/stiga_clipper_wood.jpg",
     photoSource: "STIGA 官方产品页",
-    comments: [
-      { user: "老学校快攻", text: "七夹味道很足，借力很直接。", likes: 12 }
-    ]
   },
   {
     id: "rakza7",
     name: "亚萨卡 Rakza 7",
     brand: "亚萨卡 Yasaka",
     type: "胶皮",
-    rating: 8.5,
     tags: ["均衡", "进阶", "待补参"],
     style: "控制弧圈",
     price: "中",
     summary: "上手友好，适合不想一上来就被高硬度惩罚的球友。",
     photo: "./assets/product-photos/optimized/yasaka_rakza7.jpg",
     photoSource: "Yasaka 官网 CDN",
-    comments: [
-      { user: "别飞就行", text: "反手够稳，正手也不虚。", likes: 8 }
-    ]
   },
   {
     id: "defense-board",
     name: "松下浩二防守板",
     brand: "VICTAS",
     type: "底板",
-    rating: 8.6,
     tags: ["削球", "控制", "待补参"],
     style: "削防",
     price: "中高",
     summary: "削球和防反分支的代表候选，适合特殊打法单独建模。",
     photo: "./assets/product-photos/optimized/victas_koji_matsushita_defensive.jpg",
     photoSource: "VICTAS 官方产品页",
-    comments: [
-      { user: "削一板再说", text: "底劲够，防守区间清楚。", likes: 7 }
-    ]
   }
 ];
 
@@ -415,49 +381,42 @@ equipment.push(
     name: "红双喜 狂飙龙5",
     brand: "红双喜 DHS",
     type: "底板",
-    rating: 9.2,
     tags: ["内置纤维", "正手质量", "待补图"],
     style: "两面弧圈",
     price: "高",
     summary: "正手持球和弧线质量突出，适合主动发力的弧圈打法。",
     photo: "./assets/product-photos/optimized/dhs_long5.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [{ user: "正手发力党", text: "配省狂更有底劲，反手别选太难打的。", likes: 17 }]
   },
   {
     id: "dhs-long5x",
     name: "红双喜 狂飙龙5X",
     brand: "红双喜 DHS",
     type: "底板",
-    rating: 9.0,
     tags: ["龙5分支", "更利落", "待补图"],
     style: "弧圈快攻",
     price: "高",
     summary: "相对龙5更利落，适合想提高速度但仍保留持球的球友。",
     photo: "./assets/product-photos/optimized/dhs_long5x.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [{ user: "中近台拉冲", text: "比龙5出球干脆，正手硬度要拿捏。", likes: 9 }]
   },
   {
     id: "harimoto-inner-alc",
     name: "张本智和 Innerforce ALC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.1,
     tags: ["内置 ALC", "相持", "待补图"],
     style: "控制弧圈",
     price: "高",
     summary: "持球感更深，适合旋转、相持和台内控制优先的配置。",
     photo: "./assets/product-photos/optimized/butterfly_harimoto_inner_alc.jpg",
     photoSource: "Butterfly Global 官方产品页",
-    comments: [{ user: "内置党", text: "没有外置那么弹，连续性很舒服。", likes: 13 }]
   },
   {
     id: "zjk-alc-red",
     name: "张继科 ALC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.0,
     tags: ["外置 ALC", "近台快弧", "别名待核"],
     style: "近台快攻",
     price: "高",
@@ -466,105 +425,90 @@ equipment.push(
     photoSource: "Butterfly 官方产品页",
     aliases: ["张继科 ALC", "蝴蝶张继科", "红张待确认"],
     catalogStatus: "别名需结合球友语境和官方型号继续校准。",
-    comments: [{ user: "贴台抢点", text: "正手用国套能压住速度，反手可以配弹一点。", likes: 15 }]
   },
   {
     id: "viscaria",
     name: "维斯卡利亚 Viscaria",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.3,
     tags: ["外置 ALC", "经典快弧", "待补图"],
     style: "两面弧圈",
     price: "高",
     summary: "经典外置 ALC 模板，速度、支撑和反手借力都很明确。",
     photo: "./assets/product-photos/optimized/butterfly_viscaria.jpg",
     photoSource: "Butterfly 官方产品页",
-    comments: [{ user: "维斯老用户", text: "反手舒服，正手胶皮别太弹就好。", likes: 22 }]
   },
   {
     id: "h3-prov-orange",
     name: "省狂3 NEO 橙海绵",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 9.1,
     tags: ["39/40度", "进阶正手", "待补参"],
     style: "正手弧圈",
     price: "中高",
     summary: "比普狂更扎实，39 度均衡，40 度更吃主动发力。",
     photo: "./assets/product-photos/optimized/dhs_h3neo.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [{ user: "省狂39", text: "进阶够用了，不必一上来国狂。", likes: 19 }]
   },
   {
     id: "h3-prov-blue",
     name: "省狂3 NEO 蓝海绵",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 9.2,
     tags: ["蓝海绵", "底劲", "待补参"],
     style: "正手弧圈",
     price: "高",
     summary: "底劲和支撑更强，适合正手主动发力和更高训练频率。",
     photo: "./assets/product-photos/optimized/dhs_h3neo.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [{ user: "蓝海绵入坑", text: "不发力就一般，发出来质量确实高。", likes: 14 }]
   },
   {
     id: "h3-national-blue",
     name: "国狂3 蓝海绵",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 9.4,
     tags: ["国狂", "专业上限", "真伪门槛"],
     style: "正手弧圈",
     price: "高",
     summary: "价格、真伪和发力门槛都高，更适合作为专业阶段候选。",
     photo: "./assets/product-photos/optimized/dhs_h3neo.jpg",
     photoSource: "DHS Canada 公开产品页",
-    comments: [{ user: "别盲冲国狂", text: "没有稳定训练和发力，收益不一定比省狂高。", likes: 31 }]
   },
   {
     id: "donic-bluegrip-j1",
     name: "多尼克 BlueGrip J1",
     brand: "DONIC",
     type: "胶皮",
-    rating: 8.9,
     tags: ["粘弹", "正手", "官方图"],
     style: "正手弧圈",
     price: "中高",
     summary: "偏粘弹路线，适合作为国套之外的正手旋转方案。",
     photo: "./assets/product-photos/optimized/donic_bluegrip_j1.jpg",
     photoSource: "DONIC 官方产品页",
-    comments: [{ user: "外套正手", text: "比纯粘套省力，旋转和速度更均衡。", likes: 12 }]
   },
   {
     id: "donic-bluestorm-z1-turbo",
     name: "多尼克 Bluestorm Z1 Turbo",
     brand: "DONIC",
     type: "胶皮",
-    rating: 8.8,
     tags: ["速度", "反手", "官方图"],
     style: "近台快攻",
     price: "中高",
     summary: "弹性和出球速度强，适合反手快撕、弹击和近台压迫。",
     photo: "./assets/product-photos/optimized/donic_bluestorm_z1_turbo.jpg",
     photoSource: "DONIC 官方产品页",
-    comments: [{ user: "反手速度党", text: "借力很爽，台内要注意别冒。", likes: 10 }]
   },
   {
     id: "victas-curl-p1v",
     name: "VICTAS Curl P1V",
     brand: "VICTAS",
     type: "胶皮",
-    rating: 8.7,
     tags: ["长胶", "削防", "官方图"],
     style: "削防颗粒",
     price: "中高",
     summary: "长胶削防和节奏变化分支候选，适合特殊打法单独建模。",
     photo: "./assets/product-photos/optimized/victas_curl_p1v.jpg",
     photoSource: "VICTAS 官方产品页",
-    comments: [{ user: "削防分支", text: "颗粒不能按普通反胶逻辑推荐，单独建模是对的。", likes: 8 }]
   }
 );
 
@@ -574,7 +518,6 @@ equipment.push(
     name: "多尼克 张继科 New Era",
     brand: "多尼克 DONIC",
     type: "底板",
-    rating: 8.8,
     tags: ["张继科线", "新底板", "公开零售图"],
     style: "两面快弧",
     price: "高",
@@ -583,14 +526,12 @@ equipment.push(
     photoSource: "TableTennisStore 公开零售图",
     aliases: ["张继科 New Era", "DONIC Zhang Jike New Era", "多尼克张继科", "红张待核"],
     catalogStatus: "已接入公开零售图；红张口径继续和蝴蝶张继科 ALC 分开待核。",
-    comments: [{ user: "别名校准", text: "这条应和蝴蝶张继科 ALC 分开看，红张到底指谁要靠球友语境确认。", likes: 6 }]
   },
   {
     id: "bty-timo-boll-alc",
     name: "蝴蝶 波尔 ALC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.2,
     tags: ["外置 ALC", "经典", "官方图"],
     style: "两面弧圈",
     price: "高",
@@ -599,14 +540,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["Timo Boll ALC", "波尔 ALC", "TBS 后继"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "外置模板", text: "维斯和波尔 ALC 都是快弧常见参照。", likes: 18 }]
   },
   {
     id: "bty-innerforce-layer-alc",
     name: "蝴蝶 Innerforce Layer ALC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.0,
     tags: ["内置 ALC", "持球", "官方图"],
     style: "控制弧圈",
     price: "高",
@@ -615,14 +554,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["Innerforce ALC", "内置 ALC"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "内置相持", text: "不想外置太弹可以先看这类。", likes: 12 }]
   },
   {
     id: "bty-lin-yun-ju-szlc",
     name: "蝴蝶 林昀儒 Super ZLC",
     brand: "蝴蝶 Butterfly",
     type: "底板",
-    rating: 9.1,
     tags: ["Super ZLC", "高上限", "官方图"],
     style: "快弧压迫",
     price: "顶配",
@@ -631,14 +568,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["林昀儒 SZLC", "Lin Yun-Ju Super ZLC"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "别盲冲顶配", text: "很爽也很挑人，推荐逻辑要限制水平门槛。", likes: 10 }]
   },
   {
     id: "dhs-w968",
     name: "红双喜 W968",
     brand: "红双喜 DHS",
     type: "底板",
-    rating: 9.5,
     tags: ["职业线", "龙5上位", "真伪门槛"],
     style: "正手弧圈",
     price: "顶配",
@@ -647,14 +582,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["W968", "968", "国手龙5"],
     catalogStatus: "高风险条目：需授权渠道、版本与真伪校验。",
-    comments: [{ user: "渠道优先", text: "这种不能只看名字，版本和来源很关键。", likes: 28 }]
   },
   {
     id: "dhs-fangbo-b2x",
     name: "红双喜 方博 B2X",
     brand: "红双喜 DHS",
     type: "底板",
-    rating: 8.7,
     tags: ["国产纤维", "国套友好", "官方图"],
     style: "弧圈快攻",
     price: "中高",
@@ -663,14 +596,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["方博 B2X", "Fang Bo B2X"],
     catalogStatus: "已接入公开产品图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "预算进阶", text: "和 301X 一起做国产纤维候选很合适。", likes: 11 }]
   },
   {
     id: "stiga-cybershape-carbon",
     name: "斯帝卡 Cybershape Carbon",
     brand: "斯帝卡 STIGA",
     type: "底板",
-    rating: 8.9,
     tags: ["异形板", "碳素", "官方图"],
     style: "快弧压迫",
     price: "高",
@@ -679,14 +610,12 @@ equipment.push(
     photoSource: "STIGA 官方产品页",
     aliases: ["赛博六边形", "Cybershape"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "新鲜感很强", text: "必须把握持适应写进推荐理由。", likes: 9 }]
   },
   {
     id: "stiga-carbonado-145",
     name: "斯帝卡 Carbonado 145",
     brand: "斯帝卡 STIGA",
     type: "底板",
-    rating: 8.8,
     tags: ["碳素", "力量", "公开零售图"],
     style: "弧圈快攻",
     price: "高",
@@ -695,14 +624,12 @@ equipment.push(
     photoSource: "STIGA Polska 公开零售图",
     aliases: ["碳素145", "Carbonado 145"],
     catalogStatus: "已接入公开零售图，待补全球官网详情页与实时价格。",
-    comments: [{ user: "力量板", text: "要区分 45、145、190 的手感差异。", likes: 8 }]
   },
   {
     id: "nittaku-acoustic",
     name: "尼塔库 Acoustic",
     brand: "尼塔库 Nittaku",
     type: "底板",
-    rating: 8.9,
     tags: ["五夹纯木", "手感", "公开零售图"],
     style: "控制弧圈",
     price: "高",
@@ -711,14 +638,12 @@ equipment.push(
     photoSource: "E&J Table Tennis 公开零售图",
     aliases: ["小提琴系列 Acoustic", "阿库斯蒂克"],
     catalogStatus: "已接入公开零售图，待补 Nittaku 官方详情页与实时价格。",
-    comments: [{ user: "纯木党", text: "不能只推纤维板，纯木也要有路线。", likes: 16 }]
   },
   {
     id: "yasaka-ma-lin-extra-offensive",
     name: "亚萨卡 马林加强木",
     brand: "亚萨卡 Yasaka",
     type: "底板",
-    rating: 8.7,
     tags: ["五夹纯木", "控制", "公开零售图"],
     style: "控制弧圈",
     price: "中",
@@ -727,14 +652,12 @@ equipment.push(
     photoSource: "Rodney's Table Tennis 公开零售图",
     aliases: ["YEO", "Ma Lin Extra Offensive", "马琳加强木"],
     catalogStatus: "已接入公开零售图，待补 Yasaka 官方详情页与实时价格。",
-    comments: [{ user: "经典入门进阶", text: "配 Rakza 7 或普狂都能讲清楚。", likes: 13 }]
   },
   {
     id: "xiom-hugo-hal",
     name: "骄猛 Hugo HAL",
     brand: "骄猛 XIOM",
     type: "底板",
-    rating: 8.8,
     tags: ["内置纤维", "相持", "待补官方图"],
     style: "两面弧圈",
     price: "高",
@@ -743,14 +666,12 @@ equipment.push(
     photoSource: "",
     aliases: ["雨果 HAL", "Hugo HAL"],
     catalogStatus: "已进入市场索引，待接入官方图与实时价格。",
-    comments: [{ user: "骄猛线也要有", text: "不能只做蝴蝶和红双喜。", likes: 10 }]
   },
   {
     id: "victas-zx-gear-out",
     name: "VICTAS ZX-Gear OUT",
     brand: "VICTAS",
     type: "底板",
-    rating: 8.7,
     tags: ["外置纤维", "速度", "公开零售图"],
     style: "快弧压迫",
     price: "高",
@@ -759,14 +680,12 @@ equipment.push(
     photoSource: "TableTennisStore 公开零售图",
     aliases: ["ZX Gear OUT", "ZX-Gear"],
     catalogStatus: "已接入公开零售图，待补 VICTAS 官方详情页与实时价格。",
-    comments: [{ user: "品牌补全", text: "做器材库一定要让冷门一点的也搜得到。", likes: 7 }]
   },
   {
     id: "bty-tenergy-05",
     name: "蝴蝶 Tenergy 05",
     brand: "蝴蝶 Butterfly",
     type: "胶皮",
-    rating: 9.3,
     tags: ["涩套", "经典", "官方图"],
     style: "两面弧圈",
     price: "高",
@@ -775,14 +694,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["T05", "特内吉05", "大巴05"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "老经典", text: "必须收录，很多搭配都绕不开。", likes: 25 }]
   },
   {
     id: "bty-tenergy-19",
     name: "蝴蝶 Tenergy 19",
     brand: "蝴蝶 Butterfly",
     type: "胶皮",
-    rating: 8.9,
     tags: ["涩套", "持球", "官方图"],
     style: "弧圈相持",
     price: "高",
@@ -791,14 +708,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["T19", "特内吉19"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "05 替代线", text: "要按持球和控制去分，不只看品牌。", likes: 8 }]
   },
   {
     id: "bty-glayzer",
     name: "蝴蝶 Glayzer",
     brand: "蝴蝶 Butterfly",
     type: "胶皮",
-    rating: 8.4,
     tags: ["进阶涩套", "容错", "官方图"],
     style: "均衡弧圈",
     price: "中高",
@@ -807,14 +722,12 @@ equipment.push(
     photoSource: "Butterfly Global 官方产品页",
     aliases: ["格雷泽", "Glayzer 09C"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "预算替代", text: "这类应该在预算不够 D 系列时出现。", likes: 9 }]
   },
   {
     id: "dhs-goldarc8",
     name: "红双喜 金弓8",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.5,
     tags: ["涩套", "国产", "公开零售图"],
     style: "反手快弧",
     price: "中",
@@ -823,14 +736,12 @@ equipment.push(
     photoSource: "Megaspin 公开零售图",
     aliases: ["GoldArc 8", "金弓八"],
     catalogStatus: "已接入公开零售图，待补 DHS 官方详情页与实时价格。",
-    comments: [{ user: "国产涩套", text: "反手别只给外套，也要有国产选择。", likes: 14 }]
   },
   {
     id: "dhs-hurricane-8",
     name: "红双喜 狂飙8",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.6,
     tags: ["粘性", "进阶国套", "官方图"],
     style: "正反手弧圈",
     price: "中",
@@ -839,14 +750,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["Hurricane 8", "H8", "狂飙8"],
     catalogStatus: "已接入公开产品图；狂飙8-80需另建条目继续核对。",
-    comments: [{ user: "更易打", text: "不能把所有粘套都按普狂逻辑推荐。", likes: 12 }]
   },
   {
     id: "dhs-hurricane-2-neo",
     name: "红双喜 狂飙2 NEO",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.7,
     tags: ["粘性", "低弧线", "公开图"],
     style: "正手快弧",
     price: "中",
@@ -855,14 +764,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["Hurricane 2 Neo", "H2 Neo", "狂2 NEO"],
     catalogStatus: "已接入公开产品图，后续需补硬度/海绵版本。",
-    comments: [{ user: "低弧线提醒", text: "狂2不能按狂3那套稳定弧圈逻辑直接推。", likes: 13 }]
   },
   {
     id: "dhs-hurricane-3-50",
     name: "红双喜 狂飙3-50",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.5,
     tags: ["粘性", "弹性海绵", "公开图"],
     style: "正反手弧圈",
     price: "中",
@@ -871,14 +778,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["Hurricane 3-50", "H3-50", "狂飙3-50"],
     catalogStatus: "已接入公开产品图，后续需补厚度/硬度版本。",
-    comments: [{ user: "更容易打透", text: "适合不想一上来就普狂硬闷的用户。", likes: 9 }]
   },
   {
     id: "dhs-hurricane-9",
     name: "红双喜 狂飙9",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.4,
     tags: ["粘性", "新分支", "公开图"],
     style: "旋转弧圈",
     price: "中高",
@@ -887,14 +792,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["Hurricane 9", "H9", "狂飙9"],
     catalogStatus: "已接入公开产品图，版本细分待补。",
-    comments: [{ user: "新分支待测", text: "先能搜到，后续要靠试打和用户反馈调权重。", likes: 7 }]
   },
   {
     id: "dhs-hurricane-8-80",
     name: "红双喜 狂飙8-80",
     brand: "红双喜 DHS",
     type: "胶皮",
-    rating: 8.4,
     tags: ["粘性", "8-80", "公开零售图"],
     style: "正反手弧圈",
     price: "中",
@@ -903,14 +806,12 @@ equipment.push(
     photoSource: "Megaspin 公开零售图",
     aliases: ["Hurricane 8-80", "H8-80", "狂飙8-80"],
     catalogStatus: "已接入公开零售图；仍需核对官方在售状态、海绵硬度和版本差异。",
-    comments: [{ user: "版本区分", text: "8 和 8-80 要分开，不要混成一个 SKU。", likes: 10 }]
   },
   {
     id: "xiom-vega-europe",
     name: "骄猛 Vega Europe",
     brand: "骄猛 XIOM",
     type: "胶皮",
-    rating: 8.4,
     tags: ["反手", "容错", "公开零售图"],
     style: "控制弧圈",
     price: "中",
@@ -919,14 +820,12 @@ equipment.push(
     photoSource: "Rodney's Table Tennis 公开零售图",
     aliases: ["Vega Europe", "唯佳欧洲"],
     catalogStatus: "已接入公开零售图，待补 XIOM 官方详情页与实时价格。",
-    comments: [{ user: "反手稳定", text: "适合反手先上台的用户。", likes: 10 }]
   },
   {
     id: "xiom-omega-vii-pro",
     name: "骄猛 Omega VII Pro",
     brand: "骄猛 XIOM",
     type: "胶皮",
-    rating: 8.8,
     tags: ["高弹涩套", "速度", "公开零售图"],
     style: "快弧压迫",
     price: "中高",
@@ -935,14 +834,12 @@ equipment.push(
     photoSource: "Operatt 公开零售图",
     aliases: ["Omega 7 Pro", "欧米茄7 Pro"],
     catalogStatus: "已接入公开零售图，待补 XIOM 官方详情页与实时价格。",
-    comments: [{ user: "快弧外套", text: "高弹涩套也要按控制门槛分级。", likes: 8 }]
   },
   {
     id: "tibhar-evolution-mxp",
     name: "挺拔 Evolution MX-P",
     brand: "挺拔 TIBHAR",
     type: "胶皮",
-    rating: 9.0,
     tags: ["高弹涩套", "力量", "官方图"],
     style: "两面弧圈",
     price: "中高",
@@ -951,14 +848,12 @@ equipment.push(
     photoSource: "TIBHAR 官方产品页",
     aliases: ["MX-P", "变革 MXP"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "外套党", text: "MX-P 必须能搜到。", likes: 19 }]
   },
   {
     id: "tibhar-hybrid-k3",
     name: "挺拔 Hybrid K3",
     brand: "挺拔 TIBHAR",
     type: "胶皮",
-    rating: 8.9,
     tags: ["粘弹", "混动", "官方图"],
     style: "正手弧圈",
     price: "中高",
@@ -967,14 +862,12 @@ equipment.push(
     photoSource: "TIBHAR 官方产品页",
     aliases: ["K3", "混动 K3"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "粘弹路线", text: "这类要和狂飙、D09C 放在一组比较。", likes: 12 }]
   },
   {
     id: "andro-rasanter-r48",
     name: "岸度 Rasanter R48",
     brand: "岸度 ANDRO",
     type: "胶皮",
-    rating: 8.7,
     tags: ["反手", "高弹", "公开零售图"],
     style: "快弧压迫",
     price: "中高",
@@ -983,14 +876,12 @@ equipment.push(
     photoSource: "EZ Table Tennis 公开零售图",
     aliases: ["R48", "Rasanter R48"],
     catalogStatus: "已接入公开零售图，待补 ANDRO 官方详情页与实时价格。",
-    comments: [{ user: "反手快撕", text: "和 G-1、Rozena 要分不同手感。", likes: 7 }]
   },
   {
     id: "victas-v15-extra",
     name: "VICTAS V>15 Extra",
     brand: "VICTAS",
     type: "胶皮",
-    rating: 8.8,
     tags: ["涩套", "速度", "公开零售图"],
     style: "快弧压迫",
     price: "中高",
@@ -999,14 +890,12 @@ equipment.push(
     photoSource: "Rodney's Table Tennis 公开零售图",
     aliases: ["V15 Extra", "V>15"],
     catalogStatus: "已接入公开零售图，待补 VICTAS 官方详情页与实时价格。",
-    comments: [{ user: "曾经热门", text: "有图再放到推荐主视觉里更稳。", likes: 9 }]
   },
   {
     id: "yasaka-rakza-z",
     name: "亚萨卡 Rakza Z",
     brand: "亚萨卡 Yasaka",
     type: "胶皮",
-    rating: 8.6,
     tags: ["粘弹", "旋转", "官方图"],
     style: "正手弧圈",
     price: "中高",
@@ -1015,14 +904,12 @@ equipment.push(
     photoSource: "Yasaka 官方产品页",
     aliases: ["Rakza Z", "雷煞 Z"],
     catalogStatus: "已接入官方实物图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "亚萨卡粘弹", text: "Rakza 7 和 Z 不能混着推。", likes: 8 }]
   },
   {
     id: "stiga-dna-platinum-h",
     name: "斯帝卡 DNA Platinum H",
     brand: "斯帝卡 STIGA",
     type: "胶皮",
-    rating: 8.8,
     tags: ["高硬度", "攻击", "公开零售图"],
     style: "快弧压迫",
     price: "中高",
@@ -1031,14 +918,12 @@ equipment.push(
     photoSource: "TableTennisStore 公开零售图",
     aliases: ["DNA 白金 H", "DNA Platinum"],
     catalogStatus: "已接入公开零售图，待补 STIGA 官方详情页与实时价格。",
-    comments: [{ user: "硬度分级", text: "要和狂飙度数一样做硬度输入。", likes: 11 }]
   },
   {
     id: "premade-dhs-6002",
     name: "红双喜 6002 成品拍",
     brand: "红双喜 DHS",
     type: "成品拍",
-    rating: 7.8,
     tags: ["入门", "成品拍", "公开图"],
     style: "新手练习",
     price: "低",
@@ -1047,14 +932,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["DHS 6002", "双面反胶成品拍"],
     catalogStatus: "已接入公开产品图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "入门提醒", text: "成品拍要讲清楚适用边界。", likes: 9 }]
   },
   {
     id: "premade-dhs-4002",
     name: "红双喜 4002 成品拍",
     brand: "红双喜 DHS",
     type: "成品拍",
-    rating: 7.5,
     tags: ["入门", "成品拍", "公开图"],
     style: "新手练习",
     price: "低",
@@ -1063,14 +946,12 @@ equipment.push(
     photoSource: "DHS Canada 公开产品页",
     aliases: ["DHS 4002", "红双喜四星"],
     catalogStatus: "已接入公开产品图，价格待接入授权渠道实时维护。",
-    comments: [{ user: "低预算", text: "新手能先打，但别和专业配置混算。", likes: 7 }]
   },
   {
     id: "premade-stiga-pro-carbon",
     name: "斯帝卡 Pro Carbon 成品拍",
     brand: "斯帝卡 STIGA",
     type: "成品拍",
-    rating: 7.9,
     tags: ["成品拍", "碳素", "待补官方图"],
     style: "休闲进阶",
     price: "中",
@@ -1079,14 +960,12 @@ equipment.push(
     photoSource: "",
     aliases: ["STIGA Pro Carbon"],
     catalogStatus: "成品拍模块首批索引，待接入官方图与渠道价格。",
-    comments: [{ user: "别混专业拍", text: "成品拍模块单独放是对的。", likes: 11 }]
   },
   {
     id: "premade-palio-expert-3",
     name: "拍里奥 Expert 3 成品拍",
     brand: "拍里奥 Palio",
     type: "成品拍",
-    rating: 7.7,
     tags: ["入门", "成品拍", "待补官方图"],
     style: "新手练习",
     price: "低",
@@ -1095,30 +974,26 @@ equipment.push(
     photoSource: "",
     aliases: ["Palio Expert 3", "拍里奥专家3"],
     catalogStatus: "成品拍模块首批索引，待接入官方图与渠道价格。",
-    comments: [{ user: "新手友好", text: "可以给非训练用户一个低门槛选项。", likes: 8 }]
   },
   {
     id: "premade-joola-infinity-edge",
     name: "优拉 Infinity Edge 成品拍",
     brand: "优拉 JOOLA",
     type: "成品拍",
-    rating: 7.6,
     tags: ["成品拍", "休闲", "公开零售图"],
     style: "休闲进阶",
     price: "中",
-    summary: "休闲进阶成品拍候选，适合商城模块单独维护库存与评价。",
+    summary: "休闲进阶成品拍候选，适合在资料模块单独维护型号与版本信息。",
     photo: "./assets/product-photos/optimized/joola_infinity_edge.jpg",
     photoSource: "Megaspin 公开零售图",
     aliases: ["JOOLA Infinity Edge"],
     catalogStatus: "已接入公开零售图，待接入官方图与渠道价格。",
-    comments: [{ user: "商城入口", text: "成品拍以后可以和电商 SKU 绑定。", likes: 6 }]
   },
   {
     id: "premade-killerspin-jet800",
     name: "Killerspin JET800 成品拍",
     brand: "Killerspin",
     type: "成品拍",
-    rating: 7.8,
     tags: ["成品拍", "海外", "待补官方图"],
     style: "休闲进阶",
     price: "中",
@@ -1127,7 +1002,6 @@ equipment.push(
     photoSource: "",
     aliases: ["JET800", "Killerspin Jet 800"],
     catalogStatus: "成品拍模块首批索引，待接入官方图与渠道价格。",
-    comments: [{ user: "海外补充", text: "搜索覆盖要能容纳跨境品牌。", likes: 5 }]
   }
 );
 
@@ -1767,6 +1641,33 @@ const homeStarHighlights = {
   "张本智和": "内置/ Super ALC、反手速度、近台节奏"
 };
 
+const homeNewsItems = [
+  {
+    title: "国内赛事动态",
+    label: "赛程 / 战报",
+    summary: "预留官方赛事公告、赛程赛果和名单变动聚合位，接入前不展示未经核验的实时新闻。",
+    action: "提交赛事线索"
+  },
+  {
+    title: "国乒与青训观察",
+    label: "队伍 / 人物",
+    summary: "面向国家队、地方队和青少年赛事建立专题索引，内容上线前先经过来源核验。",
+    action: "讨论线索"
+  },
+  {
+    title: "装备与训练专题",
+    label: "器材 / 技术",
+    summary: "把新闻、装备变化和训练观点拆成可检索专题，避免用未经验证的热度代替判断。",
+    action: "查看资料库"
+  },
+  {
+    title: "合规资讯接入",
+    label: "后端接口",
+    summary: "实时抓取需要后端定时任务和授权来源，前端已预留频道样式，避免正式页出现假新闻。",
+    action: "了解规则"
+  }
+];
+
 const evidenceRows = [
   ["A", "Butterfly 官方赞助页", "职业运动员 Equipment as of 日期与产品链接"],
   ["A", "品牌官方产品页", "底板结构、胶皮硬度、速度/旋转等参数"],
@@ -1785,9 +1686,9 @@ let activeBladeBrand = "";
 let activeBladeStructure = "";
 let activeBladeLayers = "";
 let posts = [
-  { title: "预算 1200，正手国套反手涩套怎么配？", body: "目前横板两面弧圈，反手想更稳一点。", status: "已通过", likes: 28 },
-  { title: "樊振东 ALC 对新手是不是太快", body: "试打半小时很爽，但小球有点飘。", status: "已通过", likes: 19 },
-  { title: "给削球打法单独建一个器材池吧", body: "长胶、防守板和反胶厚度其实很难用普通规则推荐。", status: "人工复核", likes: 13 }
+  { title: "预算 1200，正手国套反手涩套怎么配？", body: "目前横板两面弧圈，反手想更稳一点。" },
+  { title: "樊振东 ALC 对新手是不是太快", body: "试打半小时很爽，但小球有点飘。" },
+  { title: "给削球打法单独建一个器材池吧", body: "长胶、防守板和反胶厚度其实很难用普通规则推荐。" }
 ];
 
 const API_BASE = "/api";
@@ -2679,8 +2580,8 @@ function renderRecommendation() {
   const alternativeCombo = activeAlternativeKey ? comboRules.find((rule) => rule.key === activeAlternativeKey) : null;
   if (activeAlternativeKey && !alternativeCombo) activeAlternativeKey = "";
   const combo = alternativeCombo || pickCombo(context);
-  const score = Math.min(98, combo.score + (budget >= combo.min && budget <= combo.max ? 2 : -2) + (quizResult ? 1 : 0));
   const bladeSpec = bladeSpecForCombo(combo);
+  const fitLabel = budget >= combo.min && budget <= combo.max ? "预算吻合" : "预算需复核";
   currentRecommendationSnapshot = {
     name: combo.name,
     blade: combo.blade || combo.premade || "",
@@ -2690,7 +2591,6 @@ function renderRecommendation() {
       `预算：${budget} 元`,
       `水平：${levelNames[level] || level}`,
       `打法：${style}`,
-      `综合评分：${score}`,
       combo.totalPrice ? `参考价格：${combo.totalPrice}` : "",
       quizResult ? `测试画像：${quizResult}` : "",
       `推荐理由：${(combo.reasons || []).join("；")}`
@@ -2704,7 +2604,7 @@ function renderRecommendation() {
         <p class="eyebrow">推荐方案</p>
         <h2>${combo.name}</h2>
       </div>
-      <div class="score-chip">${score}</div>
+      <div class="fit-chip">${fitLabel}</div>
     </div>
     <div class="combo-table">
       ${renderComboRows(combo, budget, level)}
@@ -2714,7 +2614,7 @@ function renderRecommendation() {
       ${combo.reasons.map((reason) => `<li>${reason}</li>`).join("")}
       ${quizResult ? `<li>测试画像已加入修正：${quizResult}</li>` : ""}
       ${hurricaneVariant !== "auto" || backhandPreference !== "auto" ? `<li>胶皮偏好已加入修正：正手 ${hurricaneVariants.find((item) => item.id === hurricaneVariant)?.label || "自动"}；反手 ${backhandPreferences.find((item) => item.id === backhandPreference)?.label || "自动"}。</li>` : ""}
-      <li>价格为渠道采集价快照，正式上线由后端定时抓取淘宝、京东、授权店铺并清洗异常低价。</li>
+      <li>价格仅作为预算区间参考，购买前请以授权店铺和官方渠道实时价格为准。</li>
     </ul>
     ${renderAlternatives(combo, budget, style)}
     <div class="backend-save-panel">
@@ -2855,14 +2755,14 @@ function renderEquipmentList() {
           <div class="equipment-name">${item.name}</div>
           <div class="meta-text">${item.brand} · ${item.type} · ${item.style}</div>
         </div>
-        <div class="rating">${item.rating.toFixed(1)}</div>
+        <span class="catalog-badge">资料库</span>
       </div>
       ${renderBladeSpecForItem(item)}
       <p>${item.summary}</p>
       ${item.aliases?.length ? `<div class="alias-line">可搜：${item.aliases.slice(0, 4).join(" / ")}</div>` : ""}
       ${item.catalogStatus ? `<div class="catalog-status">${item.catalogStatus}</div>` : ""}
       <div class="tag-row">${item.tags.map((tag, index) => `<span class="tag ${index === 0 ? "green" : index === 2 ? "gold" : ""}">${tag}</span>`).join("")}</div>
-      <button class="small-action" data-equipment="${item.id}">查看评论</button>
+      <button class="small-action" data-equipment="${item.id}">查看资料</button>
     </article>
   `).join("") : `
     <div class="empty-state">
@@ -2883,37 +2783,15 @@ function renderReviewPanel() {
   qs("#reviewPanel").innerHTML = `
     ${renderEquipmentPhoto(item, "review-equipment-photo")}
     <h3>${item.name}</h3>
-    <div class="meta-text">${item.brand} · ${item.type} · 当前 ${item.rating.toFixed(1)} 分</div>
+    <div class="meta-text">${item.brand} · ${item.type} · ${item.style}</div>
     ${renderBladeSpecForItem(item, "detail")}
     ${item.aliases?.length ? `<div class="alias-line review-alias">别名/搜索词：${item.aliases.join(" / ")}</div>` : ""}
     ${item.catalogStatus ? `<div class="catalog-status">${item.catalogStatus}</div>` : ""}
-    <div class="comment-list">
-      ${item.comments.map((comment) => `
-        <div class="comment-item">
-          <strong>${comment.user}</strong>
-          <p>${comment.text}</p>
-          <button class="small-action like-comment" type="button">赞 ${comment.likes}</button>
-        </div>
-      `).join("")}
+    <div class="rating-placeholder">
+      <strong>真实打分暂未开放</strong>
+      <p>正式版已移除历史模拟互动数据。后续会基于登录用户真实样本生成星级和综合分。</p>
     </div>
-    <form class="review-form" id="reviewForm">
-      <label class="score-input"><span>评分</span><input id="reviewScore" type="number" min="1" max="10" step="0.1" value="8.8" /></label>
-      <textarea id="reviewText" maxlength="120" placeholder="使用感受"></textarea>
-      <button class="primary-action" type="submit">提交审核</button>
-    </form>
   `;
-  qs("#reviewForm").addEventListener("submit", (event) => {
-    event.preventDefault();
-    const text = qs("#reviewText").value.trim();
-    if (!text) return;
-    item.comments.unshift({ user: getProfile().nickname || "未登录球友", text: reviewStatus(text), likes: 0 });
-    qs("#reviewText").value = "";
-    renderReviewPanel();
-  });
-}
-
-function reviewStatus(text) {
-  return hasRiskText(text) ? `待人工复核：${text}` : text;
 }
 
 function hasRiskText(text) {
@@ -2966,6 +2844,27 @@ function renderHomeStars() {
       </article>
     `;
   }).join("");
+}
+
+function renderHomeNews() {
+  const list = qs("#homeNewsList");
+  if (!list) return;
+
+  list.innerHTML = homeNewsItems.map((item, index) => `
+    <article class="home-news-card">
+      <div class="news-card-top">
+        <span>${escapeHtml(item.label)}</span>
+        <strong>0${index + 1}</strong>
+      </div>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p>${escapeHtml(item.summary)}</p>
+      <button class="small-action" type="button" data-view-trigger="${index === 2 ? "equipment" : "community"}">${escapeHtml(item.action)}</button>
+    </article>
+  `).join("");
+
+  qsa("#homeNewsList [data-view-trigger]").forEach((button) => {
+    button.addEventListener("click", () => setView(button.dataset.viewTrigger));
+  });
 }
 
 function bindHomeCarousel() {
@@ -3064,16 +2963,13 @@ function renderPosts() {
         <p>${post.body}</p>
       </div>
       <div class="post-footer">
-        <span class="tag ${post.status === "已通过" ? "green" : "gold"}">${post.status}</span>
-        <button class="small-action" data-like-post="${index}">赞 ${post.likes}</button>
+        <span class="tag ${post.status === "人工复核" ? "gold" : "green"}">${post.status || "待讨论"}</span>
+        <button class="small-action" type="button" data-view-trigger="selector">生成配置</button>
       </div>
     </article>
   `).join("");
-  qsa("[data-like-post]").forEach((button) => {
-    button.addEventListener("click", () => {
-      posts[Number(button.dataset.likePost)].likes += 1;
-      renderPosts();
-    });
+  qsa("#postList [data-view-trigger]").forEach((button) => {
+    button.addEventListener("click", () => setView(button.dataset.viewTrigger));
   });
 }
 
@@ -3184,7 +3080,7 @@ async function deleteBackendConfig(id) {
 function renderBackendConfigs() {
   const items = savedBackendConfigs || [];
   const listHtml = items.length ? items.map((item) => `
-    <div class="comment-item backend-config-item">
+    <div class="record-item backend-config-item">
       <strong>${escapeHtml(item.name || "未命名方案")}</strong>
       <p>底板：${escapeHtml(item.blade || "未填写")}</p>
       <p>正手：${escapeHtml(item.forehand || "未填写")}</p>
@@ -3211,7 +3107,7 @@ function renderBackendConfigs() {
         </div>
         <button class="small-action" type="button" id="refreshBackendConfigs">刷新后台配置</button>
       </div>
-      <div class="comment-list">
+      <div class="record-list">
         ${listHtml}
       </div>
     </section>
@@ -3559,8 +3455,7 @@ function init() {
     posts.unshift({
       title,
       body,
-      status: hasRiskText(`${title} ${body}`) ? "人工复核" : "已通过",
-      likes: 0
+      status: hasRiskText(`${title} ${body}`) ? "人工复核" : "待讨论"
     });
     qs("#postTitle").value = "";
     qs("#postBody").value = "";
@@ -3574,6 +3469,7 @@ function init() {
   renderBladeFilters();
   renderEquipmentList();
   renderReviewPanel();
+  renderHomeNews();
   renderHomeStars();
   renderChampions();
   renderPosts();
