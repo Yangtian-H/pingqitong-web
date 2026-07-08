@@ -1,4 +1,5 @@
 const viewTitles = {
+  home: "首页",
   selector: "智能选型",
   test: "打法性格测试",
   equipment: "器材评分库",
@@ -1754,6 +1755,18 @@ const championPhotos = {
   }
 };
 
+const homeStarNames = ["马龙", "樊振东", "张继科", "孙颖莎", "王楚钦", "波尔 Timo Boll", "张本智和"];
+
+const homeStarHighlights = {
+  "马龙": "正手质量、相持控制、W968/狂飙体系",
+  "樊振东": "外置 ALC、Dignics 09C、高强度快弧",
+  "张继科": "Viscaria/张继科 ALC、爆发式拧拉",
+  "孙颖莎": "前三板速度、正手国套、连续压迫",
+  "王楚钦": "左手快弧、特制底板、前三板冲击",
+  "波尔 Timo Boll": "ALC 均衡、Dignics 系列、欧洲弧圈",
+  "张本智和": "内置/ Super ALC、反手速度、近台节奏"
+};
+
 const evidenceRows = [
   ["A", "Butterfly 官方赞助页", "职业运动员 Equipment as of 日期与产品链接"],
   ["A", "品牌官方产品页", "底板结构、胶皮硬度、速度/旋转等参数"],
@@ -2907,6 +2920,77 @@ function hasRiskText(text) {
   return /加微|VX|返利|代理|广告|包过|私聊/i.test(text);
 }
 
+function renderHomeStarPhoto(item, displayName) {
+  const photo = item?.photo || championPhotos[item?.player] || championPhotos[displayName];
+  if (!photo?.src) {
+    return `
+      <div class="home-star-photo is-fallback">
+        <strong>${escapeHtml(displayName)}</strong>
+        <span>资料补充中</span>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="home-star-photo" data-player="${escapeHtml(displayName)}">
+      <img class="home-star-img" src="${escapeHtml(photo.src)}" alt="${escapeHtml(displayName)} 赛场照片" loading="lazy" referrerpolicy="no-referrer" data-player="${escapeHtml(displayName)}" />
+    </div>
+  `;
+}
+
+function renderHomeStars() {
+  const track = qs("#homeStarTrack");
+  if (!track) return;
+
+  track.innerHTML = homeStarNames.map((name) => {
+    const item = championEquipment.find((entry) => entry.player === name) || {};
+    const displayName = name === "波尔 Timo Boll" ? "波尔" : name;
+    const country = item.country || "待补充";
+    const highlight = homeStarHighlights[name] || item.note || "代表装备资料持续补充中";
+    const gearLine = [item.blade, item.fh].filter(Boolean).join(" / ") || "装备资料待补证";
+
+    return `
+      <article class="home-star-card">
+        ${renderHomeStarPhoto(item, displayName)}
+        <div class="home-star-body">
+          <div class="equipment-top">
+            <div>
+              <strong class="equipment-name">${escapeHtml(displayName)}</strong>
+              <div class="meta-text">${escapeHtml(country)}</div>
+            </div>
+            <span class="tag ${item.evidence === "A" ? "green" : item.evidence === "C" ? "gold" : ""}">${escapeHtml(item.evidence || "补充中")}</span>
+          </div>
+          <p>${escapeHtml(highlight)}</p>
+          <div class="alias-line">${escapeHtml(gearLine)}</div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function bindHomeCarousel() {
+  qsa("[data-carousel-scroll]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const track = qs("#homeStarTrack");
+      if (!track) return;
+      const direction = Number(button.dataset.carouselScroll) || 1;
+      const distance = Math.min(track.clientWidth * 0.86, 420);
+      track.scrollBy({ left: direction * distance, behavior: "smooth" });
+    });
+  });
+}
+
+function replaceHomeStarImage(img) {
+  const frame = img.closest(".home-star-photo");
+  if (!frame) return;
+  const player = img.dataset.player || "球星";
+  frame.classList.add("is-fallback");
+  frame.innerHTML = `
+    <strong>${escapeHtml(player)}</strong>
+    <span>图片暂不可用</span>
+  `;
+}
+
 function renderChampionPhoto(item) {
   const photo = item.photo || championPhotos[item.player];
   if (!photo?.src) return "";
@@ -3397,6 +3481,7 @@ function init() {
   renderAuthModal();
   qsa("[data-view]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
   qsa("[data-view-trigger]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTrigger)));
+  bindHomeCarousel();
   populateHurricaneOptions();
   populateBackhandPreferenceOptions();
   populateSeedGearOptions();
@@ -3489,6 +3574,7 @@ function init() {
   renderBladeFilters();
   renderEquipmentList();
   renderReviewPanel();
+  renderHomeStars();
   renderChampions();
   renderPosts();
   applyProfile();
@@ -3499,6 +3585,9 @@ function init() {
 }
 
 document.addEventListener("error", (event) => {
+  if (event.target.matches?.(".home-star-img")) {
+    replaceHomeStarImage(event.target);
+  }
   if (event.target.matches?.(".champion-photo-img")) {
     event.target.closest(".champion-photo")?.remove();
   }
