@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-REPO_URL="https://github.com/Yangtian-H/pingqitong.git"
+REPO_URL="https://github.com/Yangtian-H/pingqitong-web.git"
 REPO_DIR="/var/www/pingqitong-repo"
 FRONTEND_DIR="/var/www/html"
 BACKEND_DIR="/var/www/pingqitong-backend"

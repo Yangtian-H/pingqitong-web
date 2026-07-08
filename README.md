@@ -75,7 +75,7 @@ curl http://127.0.0.1:3000/api/health
 仓库地址：
 
 ```text
-https://github.com/Yangtian-H/pingqitong.git
+https://github.com/Yangtian-H/pingqitong-web.git
 ```
 
 本机需要先安装 Git，并使用浏览器授权或 GitHub CLI 登录，不要把 GitHub 密码写进命令。
@@ -83,7 +83,7 @@ https://github.com/Yangtian-H/pingqitong.git
 ```bash
 git init
 git branch -M main
-git remote add origin https://github.com/Yangtian-H/pingqitong.git
+git remote add origin https://github.com/Yangtian-H/pingqitong-web.git
 git status
 git add .
 git status
@@ -95,7 +95,7 @@ git push -u origin main
 
 ```bash
 git remote -v
-git remote set-url origin https://github.com/Yangtian-H/pingqitong.git
+git remote set-url origin https://github.com/Yangtian-H/pingqitong-web.git
 ```
 
 如果 push 提示远程仓库已有内容或出现冲突，不要 force push。先执行：
@@ -131,7 +131,7 @@ git diff --cached --name-only
 
 ```bash
 sudo mkdir -p /var/www
-sudo git clone https://github.com/Yangtian-H/pingqitong.git /var/www/pingqitong-repo
+sudo git clone https://github.com/Yangtian-H/pingqitong-web.git /var/www/pingqitong-repo
 cd /var/www/pingqitong-repo
 sudo bash scripts/deploy-from-git.sh
 ```

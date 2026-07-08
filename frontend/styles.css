@@ -220,6 +220,269 @@ h3 {
   display: block;
 }
 
+.home-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.home-hero {
+  min-width: 0;
+  min-height: 348px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid #c9d9d3;
+  border-radius: 8px;
+  padding: 30px;
+  background: #eef6f2;
+  box-shadow: var(--shadow);
+}
+
+.home-hero-copy {
+  min-width: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.home-hero h2 {
+  font-size: 54px;
+  line-height: 1;
+}
+
+.home-subtitle {
+  margin: 0;
+  color: #1c3f3c;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+.home-summary {
+  max-width: 560px;
+  margin: 0;
+  color: #40504a;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.home-hero-panel {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.home-hero-panel div {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  border: 1px solid rgba(36, 93, 91, 0.17);
+  border-radius: 8px;
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.home-hero-panel span,
+.home-entry-card small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.home-hero-panel strong {
+  color: #173f3b;
+  line-height: 1.45;
+}
+
+.home-section {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.home-update-grid,
+.home-entry-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.home-update-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.home-entry-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.home-update-card,
+.home-entry-card,
+.home-star-card {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.home-update-card {
+  display: grid;
+  gap: 8px;
+  padding: 15px;
+}
+
+.home-update-card span {
+  color: var(--green);
+  font-weight: 900;
+}
+
+.home-update-card p {
+  margin: 0;
+  color: #40504a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.home-forum-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.home-forum-list button {
+  min-width: 0;
+  min-height: 54px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: #263b36;
+  text-align: left;
+  line-height: 1.45;
+}
+
+.home-forum-list button:hover,
+.home-entry-card:hover,
+.home-entry-card:focus-visible {
+  border-color: #9bbab3;
+  background: var(--green-soft);
+  outline: none;
+}
+
+.home-carousel-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.home-carousel-button {
+  width: 40px;
+  padding: 0;
+  font-size: 22px;
+}
+
+.home-star-track {
+  min-width: 0;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 2px 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #a8bbb5 transparent;
+}
+
+.home-star-card {
+  flex: 0 0 296px;
+  display: grid;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.home-star-photo {
+  height: 168px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(36, 93, 91, 0.13);
+  background: #edf3f1;
+}
+
+.home-star-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.home-star-photo.is-fallback {
+  gap: 6px;
+  padding: 16px;
+  color: var(--green);
+  text-align: center;
+}
+
+.home-star-photo.is-fallback span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.home-star-body {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.home-star-body p {
+  margin: 0;
+  color: #263b36;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.home-entry-card {
+  display: grid;
+  gap: 7px;
+  min-height: 128px;
+  padding: 16px;
+  color: var(--ink);
+  text-align: left;
+}
+
+.home-entry-card span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-weight: 900;
+}
+
+.home-entry-card:nth-child(2) span {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.home-entry-card:nth-child(3) span {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+.home-entry-card:nth-child(4) span {
+  background: var(--coral-soft);
+  color: var(--coral);
+}
+
+.home-entry-card strong {
+  font-size: 16px;
+}
+
 .two-column,
 .split-view {
   display: grid;
@@ -1292,6 +1555,16 @@ output {
     grid-template-columns: 210px minmax(0, 1fr);
   }
 
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-hero-panel,
+  .home-update-grid,
+  .home-entry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .two-column,
   .split-view,
   .equipment-layout {
@@ -1348,10 +1621,18 @@ output {
   .field-grid,
   .equipment-list,
   .champion-grid,
+  .home-update-grid,
+  .home-forum-list,
   .metric-grid {
     width: 100%;
     max-width: calc(100vw - 24px);
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-entry-grid {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .view,
@@ -1370,6 +1651,36 @@ output {
     max-width: calc(100vw - 32px);
     justify-self: center;
     box-shadow: none;
+  }
+
+  .home-hero {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    min-height: 0;
+    justify-self: center;
+    padding: 22px;
+    box-shadow: none;
+  }
+
+  .home-hero h2 {
+    font-size: 42px;
+  }
+
+  .home-subtitle {
+    font-size: 18px;
+  }
+
+  .home-hero-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-star-track {
+    max-width: calc(100vw - 24px);
+    margin-right: -2px;
+  }
+
+  .home-star-card {
+    flex-basis: min(286px, calc(100vw - 46px));
   }
 
   .section-head,
@@ -1495,7 +1806,7 @@ output {
     bottom: 0;
     z-index: 10;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0;
     min-height: 68px;
     padding: 6px 8px 8px;
@@ -1511,12 +1822,12 @@ output {
     border-radius: 8px;
     background: transparent;
     color: var(--muted);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
   }
 
   .mobile-tab span {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .mobile-tab.active {
