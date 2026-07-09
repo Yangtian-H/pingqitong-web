@@ -2538,41 +2538,44 @@ function pickCombo(context) {
 
 function renderGearVisual(combo) {
   qs("#gearVisual").classList.toggle("premade-gear-visual", combo.category === "premade");
-  const photoCard = (kind, name, src) => {
-    const missing = !src;
+  const summaryCard = (kind, name, note = "") => {
     return `
-      <div class="photo-card ${kind === "推荐底板" ? "blade-photo-card" : ""} ${missing ? "photo-missing" : ""}">
-        <div class="photo-frame">
-          ${missing ? `<div class="missing-photo">实物图待接入<br><span>后台商品库补图</span></div>` : `<img src="${src}" alt="${name} 实物图" loading="eager" />`}
-        </div>
-        <div class="photo-caption">
-          <span>${kind}</span>
-          <strong>${name}</strong>
-        </div>
+      <div class="gear-summary-card">
+        <span>${escapeHtml(kind)}</span>
+        <strong>${escapeHtml(name || "待推荐")}</strong>
+        ${note ? `<small>${escapeHtml(note)}</small>` : ""}
       </div>
     `;
   };
   if (combo.category === "premade") {
     qs("#gearVisual").innerHTML = `
-      <div class="gear-visual-inner premade-visual-inner">
-        ${photoCard("推荐成品拍", combo.visual.premade || combo.visual.blade, combo.visual.premadePhoto || combo.visual.bladePhoto)}
+      <div class="gear-summary-visual premade-summary-visual">
+        <div class="gear-summary-orbit" aria-hidden="true">
+          <span></span>
+          <i></i>
+        </div>
+        ${summaryCard("推荐成品拍", combo.visual.premade || combo.visual.blade, "低预算优先稳定上手")}
         <div class="premade-note">
           <strong>低预算优先整拍</strong>
           <span>先解决能打、好上手、少踩坑；后续再升级专业自选配置。</span>
         </div>
-        <div class="visual-source">${combo.visual.source}</div>
+        <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
       </div>
     `;
     return;
   }
   qs("#gearVisual").innerHTML = `
-    <div class="gear-visual-inner">
-      ${photoCard("推荐底板", combo.visual.blade, combo.visual.bladePhoto)}
-      <div class="rubber-photo-stack">
-        ${photoCard("正手胶皮包装", combo.visual.fh, combo.visual.fhPhoto)}
-        ${photoCard("反手胶皮包装", combo.visual.bh, combo.visual.bhPhoto)}
+    <div class="gear-summary-visual">
+      <div class="gear-summary-orbit" aria-hidden="true">
+        <span></span>
+        <i></i>
       </div>
-      <div class="visual-source">${combo.visual.source}</div>
+      <div class="gear-summary-stack">
+        ${summaryCard("底板", combo.visual.blade, "控制底劲与持球时间")}
+        ${summaryCard("正手", combo.visual.fh, "优先旋转与主动进攻")}
+        ${summaryCard("反手", combo.visual.bh, "强调稳定、借力和衔接")}
+      </div>
+      <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
     </div>
   `;
 }

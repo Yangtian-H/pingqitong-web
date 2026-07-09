@@ -1572,6 +1572,124 @@ output {
   line-height: 1.35;
 }
 
+.gear-summary-visual {
+  position: absolute;
+  inset: 14px;
+  display: grid;
+  grid-template-rows: minmax(160px, 1fr) auto auto;
+  gap: 12px;
+}
+
+.premade-summary-visual {
+  grid-template-rows: minmax(190px, 1fr) auto auto auto;
+}
+
+.gear-summary-orbit {
+  position: relative;
+  min-height: 170px;
+  overflow: hidden;
+  border: 1px solid rgba(36, 93, 91, 0.18);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 52% 30%, rgba(255, 246, 209, 0.28), transparent 18%),
+    linear-gradient(90deg, rgba(36, 93, 91, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(36, 93, 91, 0.08) 1px, transparent 1px),
+    linear-gradient(150deg, rgba(25, 69, 64, 0.96), rgba(14, 35, 36, 0.98));
+  background-size: auto, 42px 42px, 42px 42px, auto;
+}
+
+.gear-summary-orbit::before {
+  content: "";
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 26px;
+  height: 30px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0 14px, rgba(255, 255, 255, 0.04) 14px 32px);
+  opacity: 0.58;
+}
+
+.gear-summary-orbit::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: min(260px, 70%);
+  height: 86px;
+  border: 1px solid rgba(144, 255, 231, 0.42);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, transparent 49.5%, rgba(255, 255, 255, 0.42) 49.5% 50.5%, transparent 50.5%),
+    linear-gradient(0deg, transparent 48%, rgba(255, 255, 255, 0.42) 48% 52%, transparent 52%),
+    linear-gradient(135deg, rgba(37, 120, 106, 0.95), rgba(16, 54, 56, 0.98));
+  box-shadow: 0 0 34px rgba(85, 215, 200, 0.18), 0 24px 44px rgba(0, 0, 0, 0.24);
+  transform: translateX(-50%) perspective(520px) rotateX(58deg);
+  transform-origin: center bottom;
+}
+
+.gear-summary-orbit span {
+  position: absolute;
+  left: 37%;
+  top: 38%;
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #fff4c8;
+  box-shadow: 0 0 0 8px rgba(255, 244, 200, 0.14), 0 0 28px rgba(255, 244, 200, 0.66);
+  animation: ballFlight 5.6s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+}
+
+.gear-summary-orbit i {
+  position: absolute;
+  left: 30%;
+  top: 30%;
+  width: 44%;
+  height: 78px;
+  border-top: 2px solid rgba(255, 244, 200, 0.5);
+  border-right: 2px solid rgba(255, 244, 200, 0.2);
+  border-radius: 0 100% 0 0;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 0 10px rgba(255, 244, 200, 0.32));
+  animation: tracePulse 5.6s ease-in-out infinite;
+}
+
+.gear-summary-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.gear-summary-card {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  border: 1px solid rgba(36, 93, 91, 0.18);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 26px rgba(35, 47, 42, 0.09);
+}
+
+.gear-summary-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.gear-summary-card strong {
+  min-width: 0;
+  color: var(--green);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.gear-summary-card small {
+  color: #53615d;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 
 .recommendation {
   padding: 18px;
@@ -3124,6 +3242,86 @@ body.app-entered .arena-visual {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 64px rgba(0, 0, 0, 0.38), 0 0 42px rgba(85, 215, 200, 0.13);
 }
 
+body.app-entered .gear-visual {
+  border-bottom-color: rgba(255, 255, 255, 0.11);
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 244, 206, 0.12), transparent 25%),
+    radial-gradient(circle at 50% 90%, rgba(85, 215, 200, 0.14), transparent 34%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(160deg, #111a1b 0%, #081011 100%);
+  background-size: auto, auto, 72px 72px, 72px 72px, auto;
+}
+
+body.app-entered .gear-summary-orbit {
+  border-color: rgba(85, 215, 200, 0.22);
+  background:
+    radial-gradient(circle at 52% 30%, rgba(255, 246, 209, 0.22), transparent 18%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(150deg, rgba(12, 28, 29, 0.98), rgba(22, 77, 70, 0.9) 54%, rgba(127, 68, 51, 0.74));
+  background-size: auto, 42px 42px, 42px 42px, auto;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 24px 46px rgba(0, 0, 0, 0.28);
+}
+
+body.app-entered .gear-summary-card,
+body.app-entered .premade-note {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(135deg, rgba(85, 215, 200, 0.11), rgba(212, 122, 88, 0.07)),
+    rgba(4, 9, 10, 0.72);
+  color: #f7efe3;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+}
+
+body.app-entered .gear-summary-card span,
+body.app-entered .gear-summary-card small,
+body.app-entered .premade-note span {
+  color: rgba(244, 239, 230, 0.62);
+}
+
+body.app-entered .gear-summary-card strong,
+body.app-entered .premade-note strong {
+  color: #fff7e8;
+}
+
+body.app-entered .visual-source {
+  color: rgba(244, 239, 230, 0.52);
+}
+
+body.app-entered .preference-panel {
+  border-color: rgba(85, 215, 200, 0.22);
+  background:
+    linear-gradient(135deg, rgba(85, 215, 200, 0.08), rgba(226, 189, 114, 0.06)),
+    rgba(4, 9, 10, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+body.app-entered .preference-panel legend,
+body.app-entered .preference-panel label > span,
+body.app-entered .selector-form label > span,
+body.app-entered .selector-form legend {
+  color: rgba(244, 239, 230, 0.72);
+}
+
+body.app-entered .preference-panel select {
+  border-color: rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(5, 10, 11, 0.92);
+  color: #f7efe3;
+}
+
+body.app-entered .preference-panel select:disabled {
+  color: rgba(244, 239, 230, 0.52);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+body.app-entered select option {
+  color: #111918;
+  background: #f7efe3;
+}
+
 body.app-entered .primary-action,
 body.app-entered .portal-primary {
   border-color: rgba(212, 122, 88, 0.58);
@@ -3311,5 +3509,18 @@ body.app-entered .mobile-tab.active {
 
   body.app-entered .home-hero h2 {
     font-size: 48px;
+  }
+
+  body.app-entered .gear-visual,
+  body.app-entered .gear-visual.premade-gear-visual {
+    min-height: 540px;
+  }
+
+  body.app-entered .gear-summary-visual {
+    inset: 12px;
+  }
+
+  body.app-entered .gear-summary-orbit {
+    min-height: 150px;
   }
 }
