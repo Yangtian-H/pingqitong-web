@@ -6,7 +6,8 @@ const viewTitles = {
   champions: "冠军装备",
   community: "球友文字帖",
   profile: "个人资料",
-  data: "数据可信度"
+  data: "数据可信度",
+  settings: "网页设置"
 };
 
 const levelNames = {
@@ -1693,6 +1694,12 @@ let posts = [
 
 const API_BASE = "/api";
 const AUTH_TOKEN_KEY = "pingqitongToken";
+const SITE_SETTINGS_KEY = "pingqitongSiteSettings";
+const defaultSiteSettings = {
+  theme: "dark",
+  motion: "full",
+  defaultEntry: "portal"
+};
 let currentUser = null;
 let authLoading = false;
 let currentRecommendationSnapshot = null;
@@ -1706,6 +1713,63 @@ function qs(selector) {
 
 function qsa(selector) {
   return Array.from(document.querySelectorAll(selector));
+}
+
+function getSiteSettings() {
+  try {
+    return { ...defaultSiteSettings, ...(JSON.parse(localStorage.getItem(SITE_SETTINGS_KEY)) || {}) };
+  } catch {
+    return { ...defaultSiteSettings };
+  }
+}
+
+function saveSiteSettings(settings) {
+  localStorage.setItem(SITE_SETTINGS_KEY, JSON.stringify(settings));
+}
+
+function applySiteSettings(settings = getSiteSettings()) {
+  document.body.classList.toggle("theme-light", settings.theme === "light");
+  document.body.classList.toggle("theme-dark", settings.theme !== "light");
+  document.body.classList.toggle("motion-reduced", settings.motion === "reduced");
+}
+
+function syncSettingsControls() {
+  const settings = getSiteSettings();
+  qsa("[data-setting]").forEach((input) => {
+    input.checked = settings[input.name] === input.value;
+  });
+  qsa(".setting-choice").forEach((card) => {
+    const input = card.querySelector("[data-setting]");
+    card.classList.toggle("active", Boolean(input?.checked));
+  });
+
+  const themeLabel = qs("#settingsThemeValue");
+  const motionLabel = qs("#settingsMotionValue");
+  const entryLabel = qs("#settingsEntryValue");
+  if (themeLabel) themeLabel.textContent = settings.theme === "light" ? "浅色晨光" : "深色赛场";
+  if (motionLabel) motionLabel.textContent = settings.motion === "reduced" ? "静态舒适" : "全景动效";
+  if (entryLabel) entryLabel.textContent = settings.defaultEntry === "home" ? "直接首页" : "门户开场";
+}
+
+function bindSettings() {
+  qsa("[data-setting]").forEach((input) => {
+    input.addEventListener("change", () => {
+      const settings = getSiteSettings();
+      settings[input.name] = input.value;
+      saveSiteSettings(settings);
+      applySiteSettings(settings);
+      syncSettingsControls();
+    });
+  });
+
+  const resetButton = qs("#resetSettingsButton");
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      saveSiteSettings(defaultSiteSettings);
+      applySiteSettings(defaultSiteSettings);
+      syncSettingsControls();
+    });
+  }
 }
 
 function enterApp(view = "home") {
@@ -2307,7 +2371,8 @@ function setView(view) {
   qsa(".view").forEach((el) => el.classList.toggle("active", el.id === view));
   qsa(".nav-item, .mobile-tab").forEach((el) => el.classList.toggle("active", el.dataset.view === view));
   qs("#viewTitle").textContent = viewTitles[view] || "乒器通";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (view === "settings") syncSettingsControls();
+  window.scrollTo({ top: 0, behavior: getSiteSettings().motion === "reduced" ? "auto" : "smooth" });
 }
 
 function gearById(id) {
@@ -3392,10 +3457,13 @@ function applySelectorParams() {
 }
 
 function init() {
+  applySiteSettings();
   renderAuthModal();
   bindPortalGate();
   qsa("[data-view]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
   qsa("[data-view-trigger]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTrigger)));
+  bindSettings();
+  syncSettingsControls();
   bindHomeCarousel();
   populateHurricaneOptions();
   populateBackhandPreferenceOptions();
@@ -3496,7 +3564,9 @@ function init() {
   loadCurrentUser();
   renderEvidence();
   const initialView = new URLSearchParams(window.location.search).get("view") || window.location.hash.slice(1);
+  const settings = getSiteSettings();
   if (viewTitles[initialView]) enterApp(initialView);
+  else if (settings.defaultEntry === "home") enterApp("home");
 }
 
 document.addEventListener("error", (event) => {
