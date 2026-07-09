@@ -225,19 +225,19 @@ h3 {
 .home-hero {
   position: relative;
   min-width: 0;
-  min-height: 348px;
+  min-height: 520px;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.8fr);
-  gap: 24px;
-  align-items: center;
-  border: 1px solid #c9d9d3;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(440px, 1.08fr);
+  gap: 34px;
+  align-items: stretch;
+  border: 0;
   border-radius: 8px;
-  padding: 30px;
+  padding: 42px;
   overflow: hidden;
   background:
-    linear-gradient(115deg, rgba(255, 255, 255, 0.92), rgba(238, 246, 242, 0.88)),
-    linear-gradient(135deg, #eff8f4 0%, #fffaf0 56%, #edf5ff 100%);
-  box-shadow: var(--shadow);
+    linear-gradient(115deg, rgba(244, 250, 247, 0.96) 0%, rgba(238, 246, 242, 0.86) 38%, rgba(245, 238, 221, 0.8) 100%),
+    linear-gradient(135deg, #ecf5f1 0%, #f8fbf6 48%, #eef3ed 100%);
+  box-shadow: 0 26px 70px rgba(31, 78, 73, 0.16);
   animation: heroRise 620ms ease-out both;
 }
 
@@ -274,7 +274,7 @@ h3 {
 }
 
 .home-hero h2 {
-  font-size: 62px;
+  font-size: 70px;
   line-height: 1;
   letter-spacing: 0;
 }
@@ -302,15 +302,34 @@ h3 {
   margin-top: 4px;
 }
 
+.home-hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.home-hero-proof span {
+  border: 1px solid rgba(36, 93, 91, 0.15);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.62);
+  color: #245d5b;
+  font-size: 12px;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
 .home-hero-stage {
   min-width: 0;
   display: grid;
   gap: 14px;
+  align-content: center;
 }
 
 .court-visual {
   position: relative;
-  min-height: 238px;
+  min-height: 378px;
   border: 1px solid rgba(36, 93, 91, 0.18);
   border-radius: 8px;
   overflow: hidden;
@@ -320,6 +339,118 @@ h3 {
     linear-gradient(135deg, rgba(36, 93, 91, 0.92), rgba(58, 132, 118, 0.86) 58%, rgba(214, 153, 65, 0.82));
   background-size: 38px 38px, 38px 38px, auto;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 20px 50px rgba(31, 78, 73, 0.16);
+}
+
+.arena-visual {
+  isolation: isolate;
+  transform-style: preserve-3d;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(17, 55, 52, 0.96) 0%, rgba(44, 113, 101, 0.92) 50%, rgba(216, 147, 67, 0.86) 100%);
+  background-size: 42px 42px, 42px 42px, auto;
+}
+
+.arena-visual::before {
+  inset: 30px 42px;
+  transform: perspective(520px) rotateX(58deg) translateY(30px);
+  transform-origin: center bottom;
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.arena-visual::after {
+  inset: 68px 70px;
+  transform: perspective(520px) rotateX(58deg) translateY(36px);
+  transform-origin: center bottom;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.arena-light {
+  position: absolute;
+  top: 22px;
+  width: 32%;
+  height: 2px;
+  display: block;
+  background: linear-gradient(90deg, transparent, rgba(255, 246, 209, 0.92), transparent);
+  filter: drop-shadow(0 0 14px rgba(255, 246, 209, 0.58));
+  animation: lightScan 5.6s ease-in-out infinite;
+}
+
+.arena-light.light-left {
+  left: 7%;
+}
+
+.arena-light.light-right {
+  right: 7%;
+  animation-delay: 1.4s;
+}
+
+.arena-glow {
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  width: 34%;
+  display: block;
+  opacity: 0.35;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-16deg);
+}
+
+.arena-glow.glow-left {
+  left: -10%;
+}
+
+.arena-glow.glow-right {
+  right: -12%;
+  transform: skewX(16deg);
+}
+
+.arena-stand {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  height: 26px;
+  display: block;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0 18px, rgba(255, 255, 255, 0.05) 18px 34px);
+  opacity: 0.52;
+}
+
+.arena-stand.stand-top {
+  top: 56px;
+}
+
+.arena-stand.stand-bottom {
+  bottom: 38px;
+  opacity: 0.28;
+}
+
+.trajectory {
+  position: absolute;
+  display: block;
+  height: 120px;
+  border: 2px solid rgba(255, 246, 209, 0.56);
+  border-left: 0;
+  border-bottom: 0;
+  border-radius: 0 100% 0 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 9px rgba(255, 246, 209, 0.34));
+}
+
+.trajectory-one {
+  width: 56%;
+  left: 20%;
+  top: 26%;
+  transform: rotate(-10deg);
+  animation: tracePulse 4.8s ease-in-out infinite;
+}
+
+.trajectory-two {
+  width: 42%;
+  left: 31%;
+  top: 38%;
+  opacity: 0.28;
+  transform: rotate(154deg);
+  animation: tracePulse 4.8s ease-in-out 2.4s infinite;
 }
 
 .court-visual::before,
@@ -344,18 +475,21 @@ h3 {
 
 .court-line.center {
   width: 1px;
-  top: 22px;
-  bottom: 22px;
+  top: 48px;
+  bottom: 58px;
   left: 50%;
+  transform: perspective(520px) rotateX(58deg);
+  transform-origin: center bottom;
 }
 
 .court-line.net {
-  height: 4px;
-  left: 22px;
-  right: 22px;
+  height: 5px;
+  left: 54px;
+  right: 54px;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 12px 20px rgba(14, 40, 35, 0.12);
 }
 
 .court-ball {
@@ -368,6 +502,14 @@ h3 {
   background: #fff6d1;
   box-shadow: 0 0 0 7px rgba(255, 246, 209, 0.16), 0 8px 28px rgba(24, 50, 44, 0.26);
   animation: ballFlight 4.8s cubic-bezier(0.45, 0, 0.2, 1) infinite;
+  z-index: 4;
+}
+
+.court-ball.ball-ghost {
+  width: 10px;
+  height: 10px;
+  opacity: 0.38;
+  animation: ghostBallFlight 4.8s cubic-bezier(0.45, 0, 0.2, 1) 1.35s infinite;
 }
 
 .court-paddle {
@@ -392,17 +534,29 @@ h3 {
 
 .court-paddle.left {
   left: 34px;
-  bottom: 34px;
+  bottom: 52px;
   transform: rotate(-20deg);
   animation: paddlePulse 4.8s ease-in-out infinite;
 }
 
 .court-paddle.right {
   right: 38px;
-  top: 34px;
+  top: 72px;
   transform: rotate(22deg);
   background: #d0694f;
   animation: paddlePulse 4.8s ease-in-out 2.4s infinite;
+}
+
+.court-shadow {
+  position: absolute;
+  left: 20%;
+  right: 18%;
+  bottom: 46px;
+  height: 16px;
+  display: block;
+  background: linear-gradient(90deg, transparent, rgba(12, 43, 38, 0.32), transparent);
+  transform: perspective(420px) rotateX(62deg);
+  filter: blur(2px);
 }
 
 .home-signal-row {
@@ -1810,10 +1964,48 @@ output {
   100% {
     left: 18%;
     top: 62%;
+    transform: scale(0.92);
   }
   50% {
     left: 76%;
     top: 28%;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes ghostBallFlight {
+  0%,
+  100% {
+    left: 28%;
+    top: 68%;
+    transform: scale(0.8);
+  }
+  50% {
+    left: 68%;
+    top: 36%;
+    transform: scale(1);
+  }
+}
+
+@keyframes lightScan {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translateX(-6%);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateX(8%);
+  }
+}
+
+@keyframes tracePulse {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  48% {
+    opacity: 0.8;
   }
 }
 
@@ -1831,6 +2023,8 @@ output {
   .home-hero,
   .home-hero::after,
   .court-ball,
+  .trajectory,
+  .arena-light,
   .court-paddle {
     animation: none;
   }
@@ -1843,6 +2037,15 @@ output {
 
   .home-hero {
     grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .panorama-stage {
+    order: -1;
+  }
+
+  .arena-visual {
+    min-height: 320px;
   }
 
   .home-update-grid,
@@ -1949,7 +2152,7 @@ output {
     max-width: calc(100vw - 32px);
     min-height: 0;
     justify-self: center;
-    padding: 22px;
+    padding: 20px;
     box-shadow: none;
   }
 
@@ -1966,7 +2169,30 @@ output {
   }
 
   .court-visual {
-    min-height: 190px;
+    min-height: 220px;
+  }
+
+  .arena-visual {
+    min-height: 240px;
+  }
+
+  .arena-stand {
+    height: 18px;
+  }
+
+  .trajectory {
+    height: 82px;
+  }
+
+  .court-paddle {
+    width: 36px;
+    height: 50px;
+  }
+
+  .court-paddle::after {
+    left: 14px;
+    height: 24px;
+    bottom: -18px;
   }
 
   .home-star-track {

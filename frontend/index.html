@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>乒器通 | 器材资料与智能选型平台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260709-v3-launch" />
+    <link rel="stylesheet" href="./styles.css?v=20260710-v4-panorama" />
   </head>
   <body>
     <div class="app-shell">
@@ -48,24 +48,40 @@
 
         <section class="view active" id="home" aria-labelledby="homeTitle">
           <div class="home-layout">
-            <section class="home-hero">
+            <section class="home-hero panoramic-hero">
               <div class="home-hero-copy">
-                <p class="eyebrow">V3 正式上线版</p>
+                <p class="eyebrow">V4 全景首页实验版</p>
                 <h2 id="homeTitle">乒器通</h2>
-                <p class="home-subtitle">为业余球友建立清晰、可信的器材决策系统</p>
-                <p class="home-summary">从打法画像、预算区间、器材资料和冠军装备线索出发，帮助你更稳地找到适合自己的底板与胶皮组合。</p>
+                <p class="home-subtitle">把乒乓门户的信息密度，变成你的器材决策驾驶舱</p>
+                <p class="home-summary">从赛事、技术、装备和球友经验里提炼有用线索，再用打法画像和预算约束，帮业余球友找到真正适合自己的底板与胶皮组合。</p>
                 <div class="home-hero-actions">
                   <button class="primary-action" type="button" data-view-trigger="selector">开始智能选型</button>
                   <button class="ghost-action" type="button" data-view-trigger="equipment">进入器材资料库</button>
                 </div>
+                <div class="home-hero-proof" aria-label="乒器通核心能力">
+                  <span>打法画像</span>
+                  <span>器材资料</span>
+                  <span>冠军装备</span>
+                  <span>真实打分预留</span>
+                </div>
               </div>
-              <div class="home-hero-stage" aria-label="正式版首页视觉">
-                <div class="court-visual" aria-hidden="true">
+              <div class="home-hero-stage panorama-stage" aria-label="全景乒乓赛场视觉">
+                <div class="court-visual arena-visual" aria-hidden="true">
+                  <span class="arena-light light-left"></span>
+                  <span class="arena-light light-right"></span>
+                  <span class="arena-glow glow-left"></span>
+                  <span class="arena-glow glow-right"></span>
+                  <span class="arena-stand stand-top"></span>
+                  <span class="arena-stand stand-bottom"></span>
+                  <span class="trajectory trajectory-one"></span>
+                  <span class="trajectory trajectory-two"></span>
                   <span class="court-line center"></span>
                   <span class="court-line net"></span>
-                  <span class="court-ball"></span>
+                  <span class="court-ball ball-main"></span>
+                  <span class="court-ball ball-ghost"></span>
                   <span class="court-paddle left"></span>
                   <span class="court-paddle right"></span>
+                  <span class="court-shadow"></span>
                 </div>
                 <div class="home-signal-row">
                   <div>
@@ -93,8 +109,8 @@
               </div>
               <div class="home-update-grid">
                 <article class="home-update-card">
-                  <span>V3 正式上线版</span>
-                  <p>首页、器材库和社区入口已按正式展示口径整理。</p>
+                  <span>V4 全景首页</span>
+                  <p>首页升级为沉浸式赛场视觉，强化乒器通的工具平台气质。</p>
                 </article>
                 <article class="home-update-card">
                   <span>器材资料库清理</span>
@@ -111,7 +127,7 @@
               </div>
             </section>
 
-            <section class="home-section" aria-labelledby="homeNewsTitle">
+            <section class="home-section portal-section" aria-labelledby="homeNewsTitle">
               <div class="section-head wide">
                 <div>
                   <p class="eyebrow">乒坛热闻</p>
@@ -438,6 +454,6 @@
       </nav>
     </div>
 
-    <script src="./app.js?v=20260709-v3-launch"></script>
+    <script src="./app.js?v=20260710-v4-panorama"></script>
   </body>
 </html>
