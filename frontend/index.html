@@ -4,10 +4,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>乒器通 | 器材资料与智能选型平台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260710-v4-panorama" />
+    <link rel="stylesheet" href="./styles.css?v=20260710-v4-portal" />
   </head>
   <body>
-    <div class="app-shell">
+    <section class="portal-gate" id="portalGate" aria-labelledby="portalTitle">
+      <nav class="portal-nav" aria-label="门户导航">
+        <div class="portal-logo">乒</div>
+        <div class="portal-nav-links">
+          <button type="button" data-portal-enter="home">首页</button>
+          <button type="button" data-portal-enter="selector">智能选型</button>
+          <button type="button" data-portal-enter="equipment">器材资料</button>
+          <button type="button" data-portal-enter="champions">冠军装备</button>
+          <button type="button" data-portal-enter="community">球友圈</button>
+        </div>
+        <button class="portal-login" type="button" data-portal-enter="profile">登录 / 我的</button>
+      </nav>
+
+      <div class="portal-arena" aria-hidden="true">
+        <span class="portal-light portal-light-left"></span>
+        <span class="portal-light portal-light-right"></span>
+        <span class="portal-rank rank-top"></span>
+        <span class="portal-rank rank-mid"></span>
+        <span class="portal-rank rank-bottom"></span>
+        <span class="portal-table">
+          <span class="portal-table-line portal-table-center"></span>
+          <span class="portal-table-line portal-table-net"></span>
+        </span>
+        <span class="portal-ball"></span>
+        <span class="portal-trail"></span>
+        <span class="portal-paddle portal-paddle-left"></span>
+        <span class="portal-paddle portal-paddle-right"></span>
+      </div>
+
+      <div class="portal-copy">
+        <p class="portal-kicker">PINGQITONG ARENA</p>
+        <h1 id="portalTitle">SPINNOVA</h1>
+        <p class="portal-cn">乒器通</p>
+        <p class="portal-subtitle">面向业余球友的乒乓器材决策平台</p>
+      </div>
+
+      <div class="portal-actions">
+        <button class="portal-ghost" type="button" data-portal-enter="home">了解详情</button>
+        <button class="portal-primary" type="button" data-portal-enter="selector">开始选型</button>
+      </div>
+    </section>
+
+    <div class="app-shell" id="appShell" hidden>
       <aside class="sidebar" aria-label="主导航">
         <div class="brand-block">
           <div class="brand-mark">乒</div>
@@ -29,8 +71,8 @@
         </nav>
 
         <div class="sidebar-launch">
-          <span>正式版</span>
-          <strong>V3 上线</strong>
+          <span>门户版</span>
+          <strong>V4 全景</strong>
         </div>
       </aside>
 
@@ -454,6 +496,6 @@
       </nav>
     </div>
 
-    <script src="./app.js?v=20260710-v4-panorama"></script>
+    <script src="./app.js?v=20260710-v4-portal"></script>
   </body>
 </html>

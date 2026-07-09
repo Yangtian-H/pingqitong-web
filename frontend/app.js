@@ -1708,6 +1708,21 @@ function qsa(selector) {
   return Array.from(document.querySelectorAll(selector));
 }
 
+function enterApp(view = "home") {
+  const portal = qs("#portalGate");
+  const shell = qs("#appShell");
+  if (portal) portal.hidden = true;
+  if (shell) shell.hidden = false;
+  document.body.classList.add("app-entered");
+  if (viewTitles[view]) setView(view);
+}
+
+function bindPortalGate() {
+  qsa("[data-portal-enter]").forEach((button) => {
+    button.addEventListener("click", () => enterApp(button.dataset.portalEnter || "home"));
+  });
+}
+
 
 function getToken() {
   return localStorage.getItem(AUTH_TOKEN_KEY) || "";
@@ -3375,6 +3390,7 @@ function applySelectorParams() {
 
 function init() {
   renderAuthModal();
+  bindPortalGate();
   qsa("[data-view]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
   qsa("[data-view-trigger]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTrigger)));
   bindHomeCarousel();
@@ -3477,7 +3493,7 @@ function init() {
   loadCurrentUser();
   renderEvidence();
   const initialView = new URLSearchParams(window.location.search).get("view") || window.location.hash.slice(1);
-  if (viewTitles[initialView]) setView(initialView);
+  if (viewTitles[initialView]) enterApp(initialView);
 }
 
 document.addEventListener("error", (event) => {
