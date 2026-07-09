@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>乒器通 | 器材选型与评分社区</title>
-    <link rel="stylesheet" href="./styles.css?v=20260709-home-cover" />
+    <title>乒器通 | 器材资料与智能选型平台</title>
+    <link rel="stylesheet" href="./styles.css?v=20260709-v3-launch" />
   </head>
   <body>
     <div class="app-shell">
@@ -28,9 +28,9 @@
           <button class="nav-item" data-view="data"><span>≣</span>数据</button>
         </nav>
 
-        <div class="side-ad">
-          <span>品牌位</span>
-          <strong>280 × 88</strong>
+        <div class="sidebar-launch">
+          <span>正式版</span>
+          <strong>V3 上线</strong>
         </div>
       </aside>
 
@@ -50,27 +50,36 @@
           <div class="home-layout">
             <section class="home-hero">
               <div class="home-hero-copy">
-                <p class="eyebrow">乒器通首页</p>
+                <p class="eyebrow">V3 正式上线版</p>
                 <h2 id="homeTitle">乒器通</h2>
-                <p class="home-subtitle">更懂业余球友的乒乓球器材配置助手</p>
-                <p class="home-summary">根据打法、预算、水平和个人偏好，推荐底板与胶皮组合。</p>
+                <p class="home-subtitle">为业余球友建立清晰、可信的器材决策系统</p>
+                <p class="home-summary">从打法画像、预算区间、器材资料和冠军装备线索出发，帮助你更稳地找到适合自己的底板与胶皮组合。</p>
                 <div class="home-hero-actions">
                   <button class="primary-action" type="button" data-view-trigger="selector">开始智能选型</button>
-                  <button class="ghost-action" type="button" data-view-trigger="equipment">查看器材库</button>
+                  <button class="ghost-action" type="button" data-view-trigger="equipment">进入器材资料库</button>
                 </div>
               </div>
-              <div class="home-hero-panel" aria-label="首页概览">
-                <div>
-                  <span>器材库</span>
-                  <strong>底板 / 胶皮 / 成品拍</strong>
+              <div class="home-hero-stage" aria-label="正式版首页视觉">
+                <div class="court-visual" aria-hidden="true">
+                  <span class="court-line center"></span>
+                  <span class="court-line net"></span>
+                  <span class="court-ball"></span>
+                  <span class="court-paddle left"></span>
+                  <span class="court-paddle right"></span>
                 </div>
-                <div>
-                  <span>推荐逻辑</span>
-                  <strong>打法 + 预算 + 水平</strong>
-                </div>
-                <div>
-                  <span>社区方向</span>
-                  <strong>球友经验持续补充</strong>
+                <div class="home-signal-row">
+                  <div>
+                    <span>资料库</span>
+                    <strong>底板 / 胶皮 / 成品拍</strong>
+                  </div>
+                  <div>
+                    <span>推荐逻辑</span>
+                    <strong>打法 + 预算 + 水平</strong>
+                  </div>
+                  <div>
+                    <span>真实反馈</span>
+                    <strong>等待用户样本后开放</strong>
+                  </div>
                 </div>
               </div>
             </section>
@@ -84,22 +93,33 @@
               </div>
               <div class="home-update-grid">
                 <article class="home-update-card">
-                  <span>账号系统已上线</span>
-                  <p>支持注册、登录、管理员用户管理。</p>
+                  <span>V3 正式上线版</span>
+                  <p>首页、器材库和社区入口已按正式展示口径整理。</p>
                 </article>
                 <article class="home-update-card">
-                  <span>器材库持续补充</span>
-                  <p>新增底板、胶皮和冠军装备资料。</p>
+                  <span>器材资料库清理</span>
+                  <p>移除历史模拟互动数据，先展示可检索资料与规格线索。</p>
                 </article>
                 <article class="home-update-card">
-                  <span>备案进行中</span>
-                  <p>域名 pingqitong.fun 正在完成上线准备。</p>
+                  <span>真实打分系统预留</span>
+                  <p>后续基于登录用户真实打分生成星级与综合分。</p>
                 </article>
                 <article class="home-update-card">
-                  <span>智能选型优化</span>
-                  <p>后续会加入更多用户反馈权重。</p>
+                  <span>资讯频道准备接入</span>
+                  <p>乒坛热闻将通过后端接入合规来源并保留人工审核。</p>
                 </article>
               </div>
+            </section>
+
+            <section class="home-section" aria-labelledby="homeNewsTitle">
+              <div class="section-head wide">
+                <div>
+                  <p class="eyebrow">乒坛热闻</p>
+                  <h2 id="homeNewsTitle">资讯聚合入口</h2>
+                </div>
+                <button class="small-action" type="button" data-view-trigger="community">提交新闻线索</button>
+              </div>
+              <div class="home-news-grid" id="homeNewsList"></div>
             </section>
 
             <section class="home-section" aria-labelledby="forumPreviewTitle">
@@ -152,8 +172,8 @@
                 </button>
                 <button class="home-entry-card" type="button" data-view-trigger="equipment">
                   <span>◎</span>
-                  <strong>器材评分库</strong>
-                  <small>查看底板与胶皮评价</small>
+                  <strong>器材资料库</strong>
+                  <small>查看底板与胶皮资料</small>
                 </button>
                 <button class="home-entry-card" type="button" data-view-trigger="profile">
                   <span>◌</span>
@@ -297,8 +317,8 @@
         <section class="view" id="equipment" aria-labelledby="equipmentTitle">
           <div class="section-head wide">
             <div>
-              <p class="eyebrow">器材评分</p>
-              <h2 id="equipmentTitle">器材评分库</h2>
+              <p class="eyebrow">器材资料</p>
+              <h2 id="equipmentTitle">器材资料库</h2>
             </div>
             <label class="search-box">
               <span>搜索</span>
@@ -310,7 +330,7 @@
           <div class="blade-filter-bar" id="bladeFilters"></div>
           <div class="equipment-layout">
             <div id="equipmentList" class="equipment-list"></div>
-            <aside class="review-panel" id="reviewPanel"></aside>
+            <aside class="review-panel" id="reviewPanel" aria-label="器材资料详情"></aside>
           </div>
         </section>
 
@@ -347,11 +367,13 @@
               <div id="postList" class="post-list"></div>
             </div>
             <aside class="insight-panel">
-              <h3>审核队列</h3>
-              <div class="moderation-line"><span>机审通过</span><strong id="auditPassed">18</strong></div>
-              <div class="moderation-line"><span>人工复核</span><strong id="auditPending">3</strong></div>
-              <div class="moderation-line"><span>营销拦截</span><strong id="auditBlocked">2</strong></div>
-              <div class="reserved-ad">广告位 320 × 64</div>
+              <h3>社区发布规范</h3>
+              <p class="launch-note">正式版社区先保留文字帖和人工审核，不展示虚拟热度或商业导流入口。</p>
+              <div class="policy-list">
+                <span>围绕器材、打法、训练体验讨论</span>
+                <span>禁止引流、返利、代理和私聊交易</span>
+                <span>高风险内容进入人工复核</span>
+              </div>
             </aside>
           </div>
         </section>
@@ -400,7 +422,6 @@
                 <div><strong>54</strong><span>器材候选</span></div>
                 <div><strong>8</strong><span>常见搭配</span></div>
               </div>
-              <div class="reserved-market">商城与二手交易入口</div>
             </aside>
           </div>
         </section>
@@ -417,6 +438,6 @@
       </nav>
     </div>
 
-    <script src="./app.js?v=20260709-home-cover"></script>
+    <script src="./app.js?v=20260709-v3-launch"></script>
   </body>
 </html>
