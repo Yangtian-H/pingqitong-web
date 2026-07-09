@@ -2850,3 +2850,466 @@ output {
     color: var(--green);
   }
 }
+
+body.app-entered {
+  --bg: #070b0c;
+  --surface: rgba(17, 24, 25, 0.92);
+  --ink: #f4efe6;
+  --muted: #9eaba6;
+  --line: rgba(255, 255, 255, 0.13);
+  --green: #55d7c8;
+  --green-soft: rgba(85, 215, 200, 0.14);
+  --coral: #d47a58;
+  --coral-soft: rgba(212, 122, 88, 0.14);
+  --blue: #9fb9ff;
+  --blue-soft: rgba(159, 185, 255, 0.14);
+  --gold: #e2bd72;
+  --gold-soft: rgba(226, 189, 114, 0.15);
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 30% 8%, rgba(85, 215, 200, 0.18), transparent 26%),
+    radial-gradient(circle at 78% 12%, rgba(226, 189, 114, 0.16), transparent 24%),
+    linear-gradient(180deg, #0c1516 0%, #070b0c 58%, #040606 100%);
+}
+
+body.app-entered .app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(10, 17, 18, 0.98), rgba(8, 12, 13, 0.96));
+  background-size: 76px 76px, 76px 76px, auto;
+}
+
+body.app-entered .sidebar {
+  border-right-color: rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(20, 30, 31, 0.96), rgba(8, 13, 14, 0.98)),
+    radial-gradient(circle at 40% 0, rgba(85, 215, 200, 0.16), transparent 38%);
+  box-shadow: 18px 0 42px rgba(0, 0, 0, 0.26);
+}
+
+body.app-entered .brand-mark {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: linear-gradient(135deg, #55d7c8, #9d6048 70%, #d7aa60);
+  color: #061010;
+  box-shadow: 0 0 24px rgba(85, 215, 200, 0.28);
+}
+
+body.app-entered .brand-name,
+body.app-entered .topbar h1,
+body.app-entered h2,
+body.app-entered h3,
+body.app-entered .equipment-name {
+  color: #f7efe3;
+}
+
+body.app-entered .brand-note,
+body.app-entered .eyebrow {
+  color: rgba(244, 239, 230, 0.56);
+}
+
+body.app-entered .nav-item {
+  color: rgba(244, 239, 230, 0.72);
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+body.app-entered .nav-item span {
+  color: var(--green);
+}
+
+body.app-entered .nav-item:hover,
+body.app-entered .nav-item:focus-visible {
+  border-color: rgba(85, 215, 200, 0.24);
+  background: rgba(255, 255, 255, 0.055);
+  color: #ffffff;
+  transform: translateX(2px);
+  outline: none;
+}
+
+body.app-entered .nav-item.active {
+  border-color: rgba(85, 215, 200, 0.46);
+  background:
+    linear-gradient(135deg, rgba(85, 215, 200, 0.2), rgba(212, 122, 88, 0.12)),
+    rgba(255, 255, 255, 0.035);
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 14px 34px rgba(0, 0, 0, 0.22);
+}
+
+body.app-entered .sidebar-launch {
+  border-color: rgba(85, 215, 200, 0.28);
+  background:
+    radial-gradient(circle at 100% 0, rgba(226, 189, 114, 0.16), transparent 44%),
+    rgba(255, 255, 255, 0.045);
+  color: rgba(244, 239, 230, 0.64);
+}
+
+body.app-entered .sidebar-launch strong {
+  color: #88f4e6;
+}
+
+body.app-entered .workspace {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 48% 0, rgba(255, 241, 196, 0.09), transparent 24%),
+    radial-gradient(circle at 78% 14%, rgba(85, 215, 200, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(10, 18, 19, 0.1), transparent 34%);
+}
+
+body.app-entered .workspace::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 0 248px;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 0 35%, rgba(255, 244, 206, 0.09) 47%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(85, 215, 200, 0.11), transparent 42%);
+  opacity: 0.95;
+}
+
+body.app-entered .workspace > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.app-entered .topbar {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: rgba(10, 16, 17, 0.58);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+}
+
+body.app-entered .topbar h1,
+body.app-entered .home-hero h2,
+body.app-entered .portal-copy h1 {
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+body.app-entered .topbar h1,
+body.app-entered .home-hero h2 {
+  background: linear-gradient(92deg, #fff7e8 0%, #8cf2e3 44%, #d6a45f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+}
+
+body.app-entered .profile-pill,
+body.app-entered .module-tab,
+body.app-entered .home-update-card,
+body.app-entered .home-news-card,
+body.app-entered .home-entry-card,
+body.app-entered .home-star-card,
+body.app-entered .home-forum-list button,
+body.app-entered .tool-surface,
+body.app-entered .result-panel,
+body.app-entered .insight-panel,
+body.app-entered .review-panel,
+body.app-entered .combo-row,
+body.app-entered .evidence-item,
+body.app-entered .post-item,
+body.app-entered .equipment-card,
+body.app-entered .champion-card,
+body.app-entered .record-item,
+body.app-entered .metric-grid div,
+body.app-entered .policy-list span,
+body.app-entered .rating-placeholder,
+body.app-entered .blade-spec-panel,
+body.app-entered .alias-line,
+body.app-entered .catalog-status,
+body.app-entered .empty-state,
+body.app-entered .alternative-item,
+body.app-entered .quiz-options button {
+  border-color: rgba(255, 255, 255, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)),
+    rgba(11, 18, 19, 0.84);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+body.app-entered .tool-surface,
+body.app-entered .result-panel,
+body.app-entered .insight-panel,
+body.app-entered .review-panel {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+body.app-entered .home-hero {
+  min-height: 620px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at 70% 18%, rgba(255, 238, 188, 0.13), transparent 28%),
+    radial-gradient(circle at 35% 74%, rgba(85, 215, 200, 0.2), transparent 30%),
+    linear-gradient(180deg, rgba(18, 28, 29, 0.98) 0%, rgba(9, 14, 15, 0.98) 100%);
+  box-shadow: 0 34px 92px rgba(0, 0, 0, 0.44);
+}
+
+body.app-entered .home-hero::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 20%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.055) 0 1px, transparent 1px 78px),
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(85, 215, 200, 0.055) 32px);
+  opacity: 0.62;
+}
+
+body.app-entered .home-hero::after {
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 246, 211, 0.16), transparent 68%);
+  opacity: 0.86;
+}
+
+body.app-entered .home-hero h2 {
+  font-size: clamp(56px, 7vw, 112px);
+  line-height: 0.95;
+}
+
+body.app-entered .home-subtitle {
+  color: #f5eddf;
+  font-size: clamp(20px, 2.2vw, 30px);
+  text-shadow: 0 12px 34px rgba(0, 0, 0, 0.34);
+}
+
+body.app-entered .home-summary,
+body.app-entered .home-update-card p,
+body.app-entered .home-news-card p,
+body.app-entered .home-star-card p,
+body.app-entered .champion-card p,
+body.app-entered .champion-title-list,
+body.app-entered .rating-placeholder p,
+body.app-entered .launch-note,
+body.app-entered .empty-state p,
+body.app-entered .blade-spec-panel.pending p {
+  color: rgba(244, 239, 230, 0.72);
+}
+
+body.app-entered .home-hero-proof span,
+body.app-entered .home-signal-row div,
+body.app-entered .equipment-meta-bar span,
+body.app-entered .tag,
+body.app-entered .catalog-badge,
+body.app-entered .news-card-top span,
+body.app-entered .stage-badge,
+body.app-entered .profile-pill span:first-child {
+  border-color: rgba(85, 215, 200, 0.24);
+  background: rgba(85, 215, 200, 0.12);
+  color: #9bf4e7;
+}
+
+body.app-entered .home-signal-row strong,
+body.app-entered .home-update-card span,
+body.app-entered .rating-placeholder strong,
+body.app-entered .blade-spec-head strong,
+body.app-entered .persona-name,
+body.app-entered .moderation-line strong,
+body.app-entered .alternative-item small {
+  color: #8cf2e3;
+}
+
+body.app-entered .court-visual,
+body.app-entered .arena-visual {
+  border-color: rgba(85, 215, 200, 0.22);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(10, 23, 24, 0.96) 0%, rgba(22, 79, 73, 0.92) 52%, rgba(126, 71, 52, 0.9) 100%);
+  background-size: 42px 42px, 42px 42px, auto;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 64px rgba(0, 0, 0, 0.38), 0 0 42px rgba(85, 215, 200, 0.13);
+}
+
+body.app-entered .primary-action,
+body.app-entered .portal-primary {
+  border-color: rgba(212, 122, 88, 0.58);
+  background: linear-gradient(135deg, #b66b4d, #7f4433);
+  color: #fff7ed;
+  box-shadow: 0 16px 34px rgba(127, 68, 51, 0.28);
+}
+
+body.app-entered .ghost-action,
+body.app-entered .small-action,
+body.app-entered .portal-ghost {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.045);
+  color: #f6efe5;
+}
+
+body.app-entered .primary-action:hover,
+body.app-entered .ghost-action:hover,
+body.app-entered .small-action:hover,
+body.app-entered .home-forum-list button:hover,
+body.app-entered .home-entry-card:hover,
+body.app-entered .home-entry-card:focus-visible,
+body.app-entered .alternative-item:hover,
+body.app-entered .alternative-item:focus-visible,
+body.app-entered .quiz-options button:hover {
+  border-color: rgba(85, 215, 200, 0.5);
+  background:
+    linear-gradient(135deg, rgba(85, 215, 200, 0.18), rgba(212, 122, 88, 0.12)),
+    rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+body.app-entered input,
+body.app-entered select,
+body.app-entered textarea {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(3, 7, 8, 0.66);
+  color: #f7efe3;
+}
+
+body.app-entered input::placeholder,
+body.app-entered textarea::placeholder {
+  color: rgba(244, 239, 230, 0.42);
+}
+
+body.app-entered input:focus,
+body.app-entered select:focus,
+body.app-entered textarea:focus {
+  border-color: rgba(85, 215, 200, 0.58);
+  outline: 2px solid rgba(85, 215, 200, 0.14);
+}
+
+body.app-entered input[type="range"] {
+  accent-color: #55d7c8;
+}
+
+body.app-entered .segmented label,
+body.app-entered .chip-row label,
+body.app-entered output,
+body.app-entered .module-tab strong,
+body.app-entered .blade-spec-grid div,
+body.app-entered .equipment-photo,
+body.app-entered .champion-photo,
+body.app-entered .photo-card,
+body.app-entered .equipment-photo-frame,
+body.app-entered .photo-frame,
+body.app-entered .racket-visual {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(3, 7, 8, 0.46);
+  color: var(--ink);
+}
+
+body.app-entered .segmented label:has(input:checked),
+body.app-entered .chip-row label:has(input:checked),
+body.app-entered .module-tab.active {
+  border-color: rgba(85, 215, 200, 0.48);
+  background: rgba(85, 215, 200, 0.15);
+  color: #ffffff;
+}
+
+body.app-entered .equipment-photo-frame,
+body.app-entered .photo-frame {
+  background:
+    radial-gradient(circle at 50% 26%, rgba(255, 255, 255, 0.12), transparent 42%),
+    linear-gradient(145deg, rgba(12, 23, 24, 0.9), rgba(4, 8, 9, 0.9));
+}
+
+body.app-entered .champion-photo figcaption,
+body.app-entered .equipment-photo figcaption,
+body.app-entered .photo-caption,
+body.app-entered .post-footer,
+body.app-entered .combo-row span,
+body.app-entered .meta-text,
+body.app-entered .home-signal-row span,
+body.app-entered .home-entry-card small,
+body.app-entered .blade-spec-grid span,
+body.app-entered .blade-spec-source,
+body.app-entered .champion-photo a,
+body.app-entered .champion-photo small {
+  color: rgba(244, 239, 230, 0.58);
+}
+
+body.app-entered .tag.green {
+  background: rgba(85, 215, 200, 0.14);
+  color: #9bf4e7;
+}
+
+body.app-entered .tag.gold {
+  background: rgba(226, 189, 114, 0.14);
+  color: #f1ce82;
+}
+
+body.app-entered .home-star-image,
+body.app-entered .champion-photo,
+body.app-entered .equipment-photo,
+body.app-entered .photo-card {
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.24);
+}
+
+body.app-entered .trait-line > div {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.app-entered .trait-line i {
+  background: linear-gradient(90deg, #55d7c8, #e2bd72);
+}
+
+body.app-entered .moderation-line,
+body.app-entered .alternative-list,
+body.app-entered .champion-photo figcaption,
+body.app-entered .equipment-photo figcaption {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.app-entered .mobile-tabs {
+  border-top-color: rgba(255, 255, 255, 0.12);
+  background: rgba(7, 11, 12, 0.92);
+  box-shadow: 0 -18px 44px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+}
+
+body.app-entered .mobile-tab {
+  color: rgba(244, 239, 230, 0.62);
+}
+
+body.app-entered .mobile-tab.active {
+  background: rgba(85, 215, 200, 0.14);
+  color: #9bf4e7;
+}
+
+@media (max-width: 1120px) {
+  body.app-entered .workspace::before {
+    inset: 0 0 0 210px;
+  }
+}
+
+@media (max-width: 760px) {
+  body.app-entered {
+    background:
+      radial-gradient(circle at 50% 0, rgba(85, 215, 200, 0.14), transparent 32%),
+      linear-gradient(180deg, #0c1516, #050808);
+  }
+
+  body.app-entered .workspace {
+    background: transparent;
+  }
+
+  body.app-entered .workspace::before {
+    inset: 0;
+  }
+
+  body.app-entered .topbar {
+    margin: -14px -12px 12px;
+    border-width: 0 0 1px;
+    border-radius: 0;
+    background: rgba(7, 11, 12, 0.9);
+  }
+
+  body.app-entered .home-hero {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  body.app-entered .home-hero h2 {
+    font-size: 48px;
+  }
+}
