@@ -1706,7 +1706,28 @@ let currentRecommendationSnapshot = null;
 let savedBackendConfigs = [];
 let backendConfigsStatus = "请先登录后查看后台保存配置";
 let backendConfigsLoading = false;
-let racketRotation = { x: -14, y: 28 };
+const RACKET_RENDER_VIEWS = [
+  {
+    id: "front",
+    label: "正手面",
+    description: "红胶正手面与拍柄",
+    src: "./assets/racket-renders/mounted-racket-front-v1.png"
+  },
+  {
+    id: "edge",
+    label: "侧面结构",
+    description: "胶皮、海绵与板芯层次",
+    src: "./assets/racket-renders/mounted-racket-edge-v1.png"
+  },
+  {
+    id: "back",
+    label: "反手面",
+    description: "黑胶反手面与拍柄",
+    src: "./assets/racket-renders/mounted-racket-back-v1.png"
+  }
+];
+
+let racketViewIndex = 0;
 let racketDragState = null;
 
 function qs(selector) {
@@ -2691,29 +2712,32 @@ function renderRacketViewer(combo) {
   const bladeName = cleanGearName(combo.visual?.blade || combo.blade || combo.visual?.premade || combo.premade);
   const forehandName = cleanGearName(combo.visual?.fh || combo.fh);
   const backhandName = cleanGearName(combo.visual?.bh || combo.bh);
-  const title = combo.category === "premade" ? "整拍 3D 预览" : "自选拍 3D 预览";
+  const title = combo.category === "premade" ? "整拍装配外观" : "自选拍装配外观";
+  const initialView = RACKET_RENDER_VIEWS[racketViewIndex];
+  const hasPips = /Curl|颗粒|长胶|生胶|短颗粒/i.test(backhandName);
+  const note = hasPips
+    ? "外观模拟展示标准红黑两面贴胶与板芯层次；当前方案含颗粒胶皮，请以器材资料卡与实际装配为准。"
+    : "外观模拟展示红黑两面贴胶、海绵和板芯层次；上方器材卡保留本方案对应的真实产品资料。";
 
   return `
     <section class="racket-viewer" id="racketViewer" aria-label="${escapeHtml(title)}">
       <div class="racket-viewer-head">
         <div>
-          <span>3D PREVIEW</span>
+          <span>MOUNTED RACKET VIEW</span>
           <strong>${escapeHtml(title)}</strong>
         </div>
         <div class="racket-controls">
-          <button type="button" data-racket-rotate="-24" aria-label="向左旋转">‹</button>
-          <button type="button" data-racket-rotate="24" aria-label="向右旋转">›</button>
+          <button type="button" data-racket-view="-1" aria-label="查看上一视角" title="上一视角">‹</button>
+          <button type="button" data-racket-view="1" aria-label="查看下一视角" title="下一视角">›</button>
         </div>
       </div>
-      <div class="racket-stage">
-        <div class="racket-model" id="racketModel" role="img" aria-label="${escapeHtml(`${bladeName} 搭配 ${forehandName} 和 ${backhandName}`)}">
-          <span class="racket-face rubber-front"><i></i></span>
-          <span class="racket-face blade-core"><i></i></span>
-          <span class="racket-face rubber-back"><i></i></span>
-          <span class="racket-rim"></span>
-          <span class="racket-handle"><i></i></span>
+      <div class="racket-stage racket-render-stage" role="group" aria-label="${escapeHtml(`${bladeName} 搭配 ${forehandName} 和 ${backhandName} 的装配外观模拟`)}">
+        <div class="racket-render-frame" id="racketRenderFrame">
+          <img id="racketRenderImage" src="${initialView.src}" alt="${escapeHtml(`${initialView.description}，${bladeName} 搭配 ${forehandName} 与 ${backhandName} 的装配外观模拟`)}" draggable="false" onerror="this.closest('.racket-render-frame').classList.add('is-missing'); this.remove();" />
         </div>
+        <span class="racket-angle-label" id="racketAngleLabel">${initialView.label}</span>
       </div>
+      <p class="racket-viewer-note">${escapeHtml(note)}</p>
       <div class="racket-loadout">
         <div><span>底板</span><strong>${escapeHtml(bladeName)}</strong></div>
         <div><span>正手</span><strong>${escapeHtml(forehandName)}</strong></div>
@@ -2724,29 +2748,36 @@ function renderRacketViewer(combo) {
   `;
 }
 
-function updateRacketRotation() {
-  const model = qs("#racketModel");
-  if (!model) return;
-  model.style.setProperty("--rx", `${racketRotation.x}deg`);
-  model.style.setProperty("--ry", `${racketRotation.y}deg`);
+function updateRacketView() {
+  const view = RACKET_RENDER_VIEWS[racketViewIndex];
+  const image = qs("#racketRenderImage");
+  const label = qs("#racketAngleLabel");
+  const frame = qs("#racketRenderFrame");
+  if (!view || !image || !label || !frame) return;
+
+  image.src = view.src;
+  image.alt = `${view.description}，器材装配外观模拟`;
+  label.textContent = view.label;
+  frame.dataset.view = view.id;
 }
 
-function rotateRacket(delta) {
-  racketRotation.y = (racketRotation.y + Number(delta) + 360) % 360;
-  updateRacketRotation();
+function changeRacketView(delta) {
+  const total = RACKET_RENDER_VIEWS.length;
+  racketViewIndex = (racketViewIndex + Number(delta) + total) % total;
+  updateRacketView();
 }
 
 function bindRacketViewer() {
   const viewer = qs("#racketViewer");
   if (!viewer) return;
 
-  viewer.querySelectorAll("[data-racket-rotate]").forEach((button) => {
-    button.addEventListener("click", () => rotateRacket(button.dataset.racketRotate));
+  viewer.querySelectorAll("[data-racket-view]").forEach((button) => {
+    button.addEventListener("click", () => changeRacketView(button.dataset.racketView));
   });
 
   viewer.addEventListener("pointerdown", (event) => {
     if (event.target.closest("button")) return;
-    racketDragState = { x: event.clientX, y: event.clientY };
+    racketDragState = { x: event.clientX, y: event.clientY, originX: event.clientX };
     viewer.setPointerCapture?.(event.pointerId);
   });
 
@@ -2754,22 +2785,33 @@ function bindRacketViewer() {
     if (!racketDragState) return;
     const dx = event.clientX - racketDragState.x;
     const dy = event.clientY - racketDragState.y;
-    racketRotation.y = (racketRotation.y + dx * 0.55 + 360) % 360;
-    racketRotation.x = Math.max(-34, Math.min(18, racketRotation.x - dy * 0.25));
-    racketDragState = { x: event.clientX, y: event.clientY };
-    updateRacketRotation();
+    const frame = qs("#racketRenderFrame");
+    if (frame) {
+      frame.style.setProperty("--tilt-x", `${Math.max(-5, Math.min(5, -dy * 0.08))}deg`);
+      frame.style.setProperty("--tilt-y", `${Math.max(-7, Math.min(7, dx * 0.08))}deg`);
+    }
+    if (Math.abs(event.clientX - racketDragState.originX) >= 54) {
+      changeRacketView(event.clientX > racketDragState.originX ? 1 : -1);
+      racketDragState.originX = event.clientX;
+    }
+    racketDragState.x = event.clientX;
+    racketDragState.y = event.clientY;
   });
 
   const stopDrag = () => {
+    qs("#racketRenderFrame")?.style.setProperty("--tilt-x", "0deg");
+    qs("#racketRenderFrame")?.style.setProperty("--tilt-y", "0deg");
     racketDragState = null;
   };
   viewer.addEventListener("pointerup", stopDrag);
   viewer.addEventListener("pointercancel", stopDrag);
-  updateRacketRotation();
+  viewer.addEventListener("pointerleave", stopDrag);
+  updateRacketView();
 }
 
 function renderGearVisual(combo) {
   const visual = qs("#gearVisual");
+  racketViewIndex = 0;
   visual.classList.toggle("premade-gear-visual", combo.category === "premade");
   if (combo.category === "premade") {
     visual.innerHTML = `
