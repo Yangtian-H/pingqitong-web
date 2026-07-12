@@ -3949,3 +3949,692 @@ body.app-entered.theme-light .mobile-tab.active {
     font-size: 12px;
   }
 }
+
+/* V4.1 commercial palette and product viewer */
+:root {
+  --bg: #f4f1eb;
+  --surface: #fffdf9;
+  --ink: #201b17;
+  --muted: #716a61;
+  --line: #ded6ca;
+  --green: #a97749;
+  --green-soft: #f3e8d8;
+  --coral: #b86849;
+  --coral-soft: #f5e2d8;
+  --blue: #4d6378;
+  --blue-soft: #e6ecf2;
+  --gold: #b88a58;
+  --gold-soft: #f5ead6;
+  --shadow: 0 20px 54px rgba(44, 36, 28, 0.11);
+}
+
+body.app-entered {
+  --bg: #121416;
+  --surface: rgba(28, 29, 30, 0.9);
+  --ink: #f7f0e5;
+  --muted: #b1a89b;
+  --line: rgba(244, 234, 220, 0.14);
+  --green: #d2ad76;
+  --green-soft: rgba(210, 173, 118, 0.16);
+  --coral: #c27858;
+  --coral-soft: rgba(194, 120, 88, 0.16);
+  --blue: #8fa1b3;
+  --blue-soft: rgba(143, 161, 179, 0.16);
+  --gold: #e2c184;
+  --gold-soft: rgba(226, 193, 132, 0.16);
+  background:
+    radial-gradient(circle at 25% 0, rgba(210, 173, 118, 0.18), transparent 30%),
+    radial-gradient(circle at 78% 10%, rgba(143, 161, 179, 0.14), transparent 26%),
+    linear-gradient(180deg, #17191b 0%, #0d0f10 100%);
+}
+
+body.app-entered.theme-light {
+  --bg: #f5f1ea;
+  --surface: #fffdf8;
+  --ink: #241d18;
+  --muted: #6d645b;
+  --line: #dfd5c7;
+  --green: #9a6d44;
+  --green-soft: #f1e5d4;
+  --coral: #b86547;
+  --coral-soft: #f3dfd4;
+  --blue: #53687a;
+  --blue-soft: #e5ebf1;
+  --gold: #a97749;
+  --gold-soft: #f2e5cf;
+  background:
+    radial-gradient(circle at 20% 0, rgba(169, 119, 73, 0.14), transparent 28%),
+    radial-gradient(circle at 78% 8%, rgba(83, 104, 122, 0.12), transparent 24%),
+    linear-gradient(180deg, #f5f1ea 0%, #eee7dd 100%);
+}
+
+body.app-entered .app-shell {
+  background:
+    linear-gradient(90deg, rgba(244, 234, 220, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(244, 234, 220, 0.03) 1px, transparent 1px),
+    linear-gradient(145deg, #151719 0%, #0b0d0e 100%);
+  background-size: 86px 86px, 86px 86px, auto;
+}
+
+body.app-entered.theme-light .app-shell {
+  background:
+    linear-gradient(90deg, rgba(110, 84, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(110, 84, 58, 0.035) 1px, transparent 1px),
+    linear-gradient(145deg, #f5f1ea, #ece4d8);
+  background-size: 86px 86px, 86px 86px, auto;
+}
+
+body.app-entered .sidebar {
+  background:
+    linear-gradient(180deg, rgba(27, 29, 31, 0.98), rgba(10, 12, 13, 0.98)),
+    radial-gradient(circle at 18% 0, rgba(210, 173, 118, 0.14), transparent 36%);
+}
+
+body.app-entered.theme-light .sidebar {
+  background: linear-gradient(180deg, #fffaf2, #eee5d8);
+}
+
+body.app-entered .brand-mark,
+body.app-entered .portal-logo {
+  border-color: rgba(226, 193, 132, 0.72);
+  background: linear-gradient(135deg, #efe2bf, #b97958 54%, #2f3439);
+  color: #211a15;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
+}
+
+body.app-entered .nav-item {
+  color: rgba(247, 240, 229, 0.76);
+}
+
+body.app-entered .nav-item span,
+body.app-entered .mobile-tab,
+body.app-entered .sidebar-launch strong {
+  color: #e2c184;
+}
+
+body.app-entered .nav-item:hover,
+body.app-entered .nav-item.active,
+body.app-entered .mobile-tab.active,
+body.app-entered.theme-light .nav-item:hover,
+body.app-entered.theme-light .nav-item.active,
+body.app-entered.theme-light .mobile-tab.active {
+  border-color: rgba(226, 193, 132, 0.46);
+  background:
+    linear-gradient(135deg, rgba(226, 193, 132, 0.16), rgba(194, 120, 88, 0.12)),
+    rgba(255, 255, 255, 0.045);
+  color: var(--ink);
+}
+
+body.app-entered .home-hero {
+  border-color: rgba(226, 193, 132, 0.18);
+  background:
+    radial-gradient(circle at 72% 24%, rgba(226, 193, 132, 0.19), transparent 26%),
+    radial-gradient(circle at 36% 78%, rgba(143, 161, 179, 0.16), transparent 32%),
+    linear-gradient(135deg, rgba(37, 39, 42, 0.94), rgba(13, 15, 16, 0.98));
+  box-shadow: 0 34px 92px rgba(0, 0, 0, 0.44);
+}
+
+body.app-entered.theme-light .home-hero {
+  border-color: rgba(169, 119, 73, 0.18);
+  background:
+    radial-gradient(circle at 72% 22%, rgba(226, 193, 132, 0.28), transparent 28%),
+    radial-gradient(circle at 34% 78%, rgba(83, 104, 122, 0.14), transparent 30%),
+    linear-gradient(180deg, #fffaf2 0%, #ece4d8 100%);
+  box-shadow: 0 28px 74px rgba(83, 67, 48, 0.14);
+}
+
+body.app-entered .home-hero-proof span,
+body.app-entered .home-signal-row div,
+body.app-entered .equipment-meta-bar span,
+body.app-entered .tag,
+body.app-entered .catalog-badge,
+body.app-entered .news-card-top span,
+body.app-entered .stage-badge,
+body.app-entered .profile-pill span:first-child,
+body.app-entered .setting-choice.active {
+  border-color: rgba(226, 193, 132, 0.28);
+  background: rgba(226, 193, 132, 0.13);
+  color: #efd39f;
+}
+
+body.app-entered .home-signal-row strong,
+body.app-entered .home-update-card span,
+body.app-entered .rating-placeholder strong,
+body.app-entered .blade-spec-head strong,
+body.app-entered .persona-name,
+body.app-entered .moderation-line strong,
+body.app-entered .alternative-item small,
+body.app-entered .tag.green,
+body.app-entered .tag.gold {
+  color: #e6c78f;
+}
+
+body.app-entered .tag.green,
+body.app-entered .tag.gold {
+  background: rgba(226, 193, 132, 0.14);
+}
+
+body.app-entered .court-visual,
+body.app-entered .arena-visual,
+body.app-entered .gear-summary-orbit,
+body.app-entered .settings-preview-stage {
+  border-color: rgba(226, 193, 132, 0.2);
+  background:
+    radial-gradient(circle at 52% 30%, rgba(255, 232, 183, 0.16), transparent 20%),
+    linear-gradient(90deg, rgba(244, 234, 220, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(244, 234, 220, 0.05) 1px, transparent 1px),
+    linear-gradient(160deg, rgba(28, 30, 33, 0.96) 0%, rgba(35, 37, 39, 0.92) 52%, rgba(116, 72, 53, 0.82) 100%);
+  background-size: auto, 42px 42px, 42px 42px, auto;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 28px 64px rgba(0, 0, 0, 0.36);
+}
+
+body.app-entered .preference-panel,
+body.app-entered .settings-panel,
+body.app-entered .setting-choice {
+  border-color: rgba(226, 193, 132, 0.18);
+  background:
+    linear-gradient(135deg, rgba(226, 193, 132, 0.08), rgba(143, 161, 179, 0.05)),
+    rgba(18, 20, 22, 0.78);
+}
+
+body.app-entered .primary-action,
+body.app-entered .portal-primary {
+  border-color: rgba(226, 193, 132, 0.5);
+  background: linear-gradient(135deg, #d2ad76, #a65f46);
+  color: #17120e;
+  box-shadow: 0 16px 34px rgba(166, 95, 70, 0.28);
+}
+
+body.app-entered .primary-action:hover,
+body.app-entered .ghost-action:hover,
+body.app-entered .small-action:hover,
+body.app-entered .home-forum-list button:hover,
+body.app-entered .home-entry-card:hover,
+body.app-entered .home-entry-card:focus-visible,
+body.app-entered .alternative-item:hover,
+body.app-entered .alternative-item:focus-visible,
+body.app-entered .quiz-options button:hover {
+  border-color: rgba(226, 193, 132, 0.58);
+  background:
+    linear-gradient(135deg, rgba(226, 193, 132, 0.2), rgba(194, 120, 88, 0.14)),
+    rgba(255, 255, 255, 0.07);
+  color: #fff9ed;
+}
+
+body.app-entered input:focus,
+body.app-entered select:focus,
+body.app-entered textarea:focus {
+  border-color: rgba(226, 193, 132, 0.62);
+  outline: 2px solid rgba(226, 193, 132, 0.14);
+}
+
+body.app-entered input[type="range"] {
+  accent-color: #d2ad76;
+}
+
+body.app-entered .trait-line i {
+  background: linear-gradient(90deg, #d2ad76, #8fa1b3);
+}
+
+.gear-visual {
+  min-height: 760px;
+}
+
+.gear-visual.premade-gear-visual {
+  min-height: 720px;
+}
+
+body.app-entered .gear-visual,
+body.app-entered.theme-light .gear-visual {
+  border-bottom-color: var(--line);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(226, 193, 132, 0.13), transparent 24%),
+    radial-gradient(circle at 56% 94%, rgba(143, 161, 179, 0.13), transparent 34%),
+    linear-gradient(90deg, rgba(244, 234, 220, 0.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(244, 234, 220, 0.035) 1px, transparent 1px),
+    linear-gradient(160deg, #1c1f21 0%, #0d1011 100%);
+  background-size: auto, auto, 72px 72px, 72px 72px, auto;
+}
+
+body.app-entered.theme-light .gear-visual {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(226, 193, 132, 0.26), transparent 24%),
+    radial-gradient(circle at 56% 94%, rgba(83, 104, 122, 0.13), transparent 34%),
+    linear-gradient(90deg, rgba(110, 84, 58, 0.06) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(110, 84, 58, 0.05) 1px, transparent 1px),
+    linear-gradient(160deg, #fffaf2 0%, #ece3d7 100%);
+}
+
+.gear-visual-inner.product-viewer-layout,
+.gear-visual-inner.premade-visual-inner {
+  inset: 16px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-content: start;
+  gap: 14px;
+}
+
+.product-photo-grid {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.premade-visual-inner .product-photo-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.product-photo-card {
+  min-height: 196px;
+  grid-template-rows: 124px minmax(70px, auto);
+  border-color: rgba(226, 193, 132, 0.22);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(16, 18, 20, 0.74);
+}
+
+.product-photo-frame {
+  height: 124px;
+  min-height: 124px;
+  padding: 10px;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.16), transparent 44%),
+    linear-gradient(145deg, rgba(35, 38, 40, 0.94), rgba(12, 14, 15, 0.92));
+}
+
+.product-photo-frame img {
+  max-height: 104px;
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.22));
+}
+
+.photo-frame.is-missing {
+  display: grid;
+  place-items: center;
+}
+
+.photo-frame.is-missing::after {
+  content: attr(data-fallback);
+  width: 100%;
+  min-height: 76px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(226, 193, 132, 0.32);
+  border-radius: 8px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.home-star-photo.is-fallback::after,
+.champion-photo.is-missing::before {
+  content: attr(data-fallback);
+  min-height: 160px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  color: var(--gold);
+  font-weight: 900;
+  text-align: center;
+}
+
+.product-photo-card .photo-caption {
+  border-top-color: rgba(226, 193, 132, 0.16);
+  background: rgba(15, 17, 18, 0.78);
+}
+
+.product-photo-card .photo-caption strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.product-photo-card .photo-caption small {
+  display: block;
+  margin-top: 5px;
+  color: rgba(247, 240, 229, 0.58);
+  font-size: 12px;
+}
+
+.racket-viewer {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(190px, 0.82fr) minmax(0, 1.18fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  border: 1px solid rgba(226, 193, 132, 0.2);
+  border-radius: 8px;
+  padding: 14px;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(226, 193, 132, 0.14), transparent 26%),
+    radial-gradient(circle at 72% 84%, rgba(143, 161, 179, 0.12), transparent 30%),
+    rgba(12, 14, 15, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 18px 40px rgba(0, 0, 0, 0.24);
+  touch-action: none;
+}
+
+.racket-viewer-head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.racket-viewer-head span,
+.racket-loadout span,
+.racket-param-card span,
+.racket-param-card small {
+  color: rgba(247, 240, 229, 0.56);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.racket-viewer-head strong {
+  display: block;
+  margin-top: 3px;
+  color: #fff6e6;
+  font-size: 20px;
+}
+
+.racket-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.racket-controls button {
+  width: 38px;
+  height: 34px;
+  border: 1px solid rgba(226, 193, 132, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f4d89d;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.racket-stage {
+  min-height: 270px;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(0, 0, 0, 0.42), transparent 40%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent);
+  overflow: hidden;
+}
+
+.racket-model {
+  --rx: -14deg;
+  --ry: 28deg;
+  position: relative;
+  width: 164px;
+  height: 258px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateY(var(--ry)) rotateZ(-8deg);
+  transition: transform 140ms ease-out;
+  animation: racketFloat 5.2s ease-in-out infinite;
+}
+
+.racket-face,
+.racket-rim,
+.racket-handle {
+  position: absolute;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.racket-face {
+  top: 8px;
+  width: 128px;
+  height: 142px;
+  margin-left: -64px;
+  border-radius: 52% 52% 48% 48%;
+  overflow: hidden;
+}
+
+.rubber-front {
+  transform: translateZ(18px);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.32), transparent 24%),
+    linear-gradient(135deg, #d9342c, #8f1f1b 62%, #34100f);
+  box-shadow: inset 0 0 0 6px rgba(42, 12, 10, 0.35), 0 18px 30px rgba(0, 0, 0, 0.28);
+}
+
+.rubber-back {
+  transform: translateZ(-18px) rotateY(180deg);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.18), transparent 26%),
+    linear-gradient(135deg, #1e2228, #08090a 70%);
+}
+
+.blade-core {
+  transform: translateZ(0);
+  background:
+    linear-gradient(90deg, rgba(126, 78, 43, 0.2), transparent 14% 86%, rgba(126, 78, 43, 0.2)),
+    repeating-linear-gradient(90deg, #d8b377 0 10px, #c89a5e 10px 18px, #e1c28d 18px 30px);
+  box-shadow: 0 0 0 7px rgba(226, 193, 132, 0.18);
+}
+
+.racket-face i {
+  position: absolute;
+  inset: 14px;
+  border-radius: inherit;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 18% 82%, rgba(255, 255, 255, 0.08)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 9px);
+  opacity: 0.72;
+}
+
+.racket-rim {
+  top: 4px;
+  width: 140px;
+  height: 150px;
+  margin-left: -70px;
+  border: 10px solid rgba(226, 193, 132, 0.24);
+  border-radius: 52% 52% 48% 48%;
+  transform: translateZ(1px);
+}
+
+.racket-handle {
+  top: 135px;
+  width: 48px;
+  height: 116px;
+  margin-left: -24px;
+  border-radius: 20px 20px 24px 24px;
+  transform: translateZ(3px);
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28), transparent 24% 76%, rgba(0, 0, 0, 0.28)),
+    repeating-linear-gradient(90deg, #b77448 0 8px, #e0b06e 8px 16px, #7d4630 16px 24px);
+  box-shadow: inset 0 0 0 3px rgba(255, 242, 205, 0.13), 0 18px 28px rgba(0, 0, 0, 0.24);
+}
+
+.racket-handle i {
+  position: absolute;
+  inset: 10px 17px;
+  border-radius: 999px;
+  background: rgba(255, 245, 219, 0.22);
+}
+
+.racket-loadout {
+  display: grid;
+  gap: 8px;
+  align-content: center;
+}
+
+.racket-loadout div {
+  min-width: 0;
+  border: 1px solid rgba(226, 193, 132, 0.16);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.racket-loadout strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff6e6;
+  line-height: 1.35;
+}
+
+.racket-param-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.racket-param-card {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(226, 193, 132, 0.16);
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.racket-param-card div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.racket-param-card strong {
+  color: #f4d89d;
+}
+
+.stat-meter {
+  position: relative;
+  display: block;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.stat-meter::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--value);
+  border-radius: inherit;
+  background: linear-gradient(90deg, #c27858, #e2c184);
+}
+
+body.app-entered.theme-light .product-photo-card,
+body.app-entered.theme-light .racket-viewer,
+body.app-entered.theme-light .racket-loadout div,
+body.app-entered.theme-light .racket-param-card {
+  border-color: rgba(169, 119, 73, 0.18);
+  background: rgba(255, 253, 248, 0.9);
+  color: var(--ink);
+}
+
+body.app-entered.theme-light .product-photo-frame {
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.72), transparent 44%),
+    linear-gradient(145deg, #fff8ed, #e7dccc);
+}
+
+body.app-entered.theme-light .product-photo-card .photo-caption {
+  background: rgba(255, 253, 248, 0.94);
+}
+
+body.app-entered.theme-light .product-photo-card .photo-caption small,
+body.app-entered.theme-light .racket-viewer-head span,
+body.app-entered.theme-light .racket-loadout span,
+body.app-entered.theme-light .racket-param-card span,
+body.app-entered.theme-light .racket-param-card small {
+  color: var(--muted);
+}
+
+body.app-entered.theme-light .racket-viewer-head strong,
+body.app-entered.theme-light .racket-loadout strong,
+body.app-entered.theme-light .product-photo-card .photo-caption strong {
+  color: var(--ink);
+}
+
+body.app-entered.theme-light .racket-stage {
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(83, 67, 48, 0.14), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.74), rgba(239, 230, 216, 0.72));
+}
+
+body.app-entered.theme-light .racket-controls button {
+  border-color: rgba(169, 119, 73, 0.28);
+  background: rgba(255, 255, 255, 0.78);
+  color: #9a6d44;
+}
+
+@keyframes racketFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+body.motion-reduced .racket-model {
+  animation: none;
+}
+
+@media (max-width: 1120px) {
+  .gear-visual {
+    min-height: 730px;
+  }
+}
+
+@media (max-width: 760px) {
+  .gear-visual,
+  body.app-entered .gear-visual,
+  body.app-entered .gear-visual.premade-gear-visual {
+    min-height: 1040px;
+  }
+
+  .gear-visual-inner.product-viewer-layout,
+  .gear-visual-inner.premade-visual-inner {
+    inset: 12px;
+    gap: 12px;
+  }
+
+  .product-photo-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-photo-card {
+    min-height: 164px;
+    grid-template-rows: 96px minmax(62px, auto);
+  }
+
+  .product-photo-frame {
+    height: 96px;
+    min-height: 96px;
+  }
+
+  .product-photo-frame img {
+    max-height: 82px;
+  }
+
+  .racket-viewer {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .racket-stage {
+    min-height: 230px;
+  }
+
+  .racket-model {
+    width: 144px;
+    height: 238px;
+  }
+
+  .racket-param-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

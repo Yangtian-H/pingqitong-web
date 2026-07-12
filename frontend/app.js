@@ -1521,21 +1521,21 @@ const championEquipment = [
 
 const championPhotos = {
   "马龙": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Ma_Long_ATTC2017_29.jpeg?width=720",
+    src: "./assets/champion-photos/ma-long.jpg",
     caption: "2017 亚洲锦标赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Ma_Long_ATTC2017_29.jpeg"
   },
   "樊振东": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/ITTF_World_Tour_2017_German_Open_Fan_Zhendong_03.jpg?width=720",
+    src: "./assets/champion-photos/fan-zhendong.jpg",
     caption: "2017 德国公开赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:ITTF_World_Tour_2017_German_Open_Fan_Zhendong_03.jpg"
   },
   "张继科": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Mondial_Ping_-_Men%27s_Singles_-_Final_-_Zhang_Jike_vs_Wang_Hao_-_40.jpg?width=720",
+    src: "./assets/champion-photos/zhang-jike.jpg",
     caption: "2013 世乒赛男单决赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-_Men%27s_Singles_-_Final_-_Zhang_Jike_vs_Wang_Hao_-_40.jpg"
   },
   "王皓": {
@@ -1575,9 +1575,9 @@ const championPhotos = {
     sourceUrl: ""
   },
   "丁宁": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Mondial_Ping_-Women%27s_Singles_-_Quarterfinal_-_Ding_Ning-Ri_Myong_Sun_-_17.jpg?width=720",
+    src: "./assets/champion-photos/ding-ning.jpg",
     caption: "2013 世乒赛女单四分之一决赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-Women%27s_Singles_-_Quarterfinal_-_Ding_Ning-Ri_Myong_Sun_-_17.jpg"
   },
   "李晓霞": {
@@ -1587,9 +1587,9 @@ const championPhotos = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-_Women%27s_Singles_-_Final_-_Li_Xiaoxia.jpg"
   },
   "陈梦": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Chen_Meng.png?width=720",
+    src: "./assets/champion-photos/chen-meng.jpg",
     caption: "2024 国家队采访公开照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Chen_Meng.png"
   },
   "孙颖莎": {
@@ -1706,6 +1706,8 @@ let currentRecommendationSnapshot = null;
 let savedBackendConfigs = [];
 let backendConfigsStatus = "请先登录后查看后台保存配置";
 let backendConfigsLoading = false;
+let racketRotation = { x: -14, y: 28 };
+let racketDragState = null;
 
 function qs(selector) {
   return document.querySelector(selector);
@@ -2601,25 +2603,179 @@ function pickCombo(context) {
   return comboRules.find((rule) => rule.key === "arc");
 }
 
-function renderGearVisual(combo) {
-  qs("#gearVisual").classList.toggle("premade-gear-visual", combo.category === "premade");
-  const summaryCard = (kind, name, note = "") => {
-    return `
-      <div class="gear-summary-card">
-        <span>${escapeHtml(kind)}</span>
-        <strong>${escapeHtml(name || "待推荐")}</strong>
-        ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+function cleanGearName(value) {
+  return String(value || "待推荐").replace(/^(正手|反手)：/, "").trim();
+}
+
+function renderProductPhotoCard(kind, name, src, note = "") {
+  const safeName = cleanGearName(name);
+  const hasPhoto = Boolean(src);
+
+  return `
+    <figure class="photo-card product-photo-card">
+      <div class="photo-frame product-photo-frame ${hasPhoto ? "" : "is-missing"}" data-fallback="${escapeHtml(kind)}图片整理中">
+        ${hasPhoto ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(`${kind} ${safeName} 实物图`)}" loading="lazy" onerror="this.parentElement.classList.add('is-missing'); this.remove();" />` : ""}
       </div>
-    `;
+      <figcaption class="photo-caption">
+        <span>${escapeHtml(kind)}</span>
+        <strong>${escapeHtml(safeName)}</strong>
+        ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+      </figcaption>
+    </figure>
+  `;
+}
+
+function getComboPerformance(combo) {
+  const key = combo?.key || "";
+  const text = `${combo?.name || ""} ${combo?.blade || ""} ${combo?.fh || ""} ${combo?.bh || ""}`;
+  const profile = {
+    speed: combo?.category === "premade" ? 58 : 76,
+    spin: combo?.category === "premade" ? 56 : 80,
+    control: combo?.category === "premade" ? 82 : 74,
+    dwell: combo?.category === "premade" ? 70 : 72,
+    stability: combo?.category === "premade" ? 78 : 76
   };
-  if (combo.category === "premade") {
-    qs("#gearVisual").innerHTML = `
-      <div class="gear-summary-visual premade-summary-visual">
-        <div class="gear-summary-orbit" aria-hidden="true">
-          <span></span>
-          <i></i>
+
+  if (/viscaria|premium|zjk|fast/i.test(key) || /ALC|Dignics|外置/.test(text)) {
+    profile.speed += 11;
+    profile.spin += 4;
+    profile.control -= 4;
+  }
+  if (/control|inner|harimoto/i.test(key) || /内置|控制/.test(text)) {
+    profile.control += 10;
+    profile.dwell += 7;
+    profile.speed -= 2;
+  }
+  if (/long5|arc/i.test(key) || /狂飙|弧圈/.test(text)) {
+    profile.spin += 9;
+    profile.dwell += 5;
+  }
+  if (/defense/i.test(key) || /削|颗粒|Curl/.test(text)) {
+    profile.control += 8;
+    profile.stability += 7;
+    profile.speed -= 10;
+  }
+
+  return Object.fromEntries(
+    Object.entries(profile).map(([label, value]) => [label, Math.max(42, Math.min(96, value))])
+  );
+}
+
+function renderPerformanceMeters(combo) {
+  const stats = getComboPerformance(combo);
+  const rows = [
+    ["速度", stats.speed, "出球压迫"],
+    ["旋转", stats.spin, "摩擦质量"],
+    ["控制", stats.control, "台内与落点"],
+    ["持球", stats.dwell, "弧线余量"],
+    ["稳定", stats.stability, "连续衔接"]
+  ];
+
+  return `
+    <div class="racket-param-grid" aria-label="器材参数画像">
+      ${rows.map(([label, value, note]) => `
+        <div class="racket-param-card">
+          <div>
+            <span>${escapeHtml(label)}</span>
+            <strong>${value}</strong>
+          </div>
+          <i class="stat-meter" style="--value: ${value}%"></i>
+          <small>${escapeHtml(note)}</small>
         </div>
-        ${summaryCard("推荐成品拍", combo.visual.premade || combo.visual.blade, "低预算优先稳定上手")}
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderRacketViewer(combo) {
+  const bladeName = cleanGearName(combo.visual?.blade || combo.blade || combo.visual?.premade || combo.premade);
+  const forehandName = cleanGearName(combo.visual?.fh || combo.fh);
+  const backhandName = cleanGearName(combo.visual?.bh || combo.bh);
+  const title = combo.category === "premade" ? "整拍 3D 预览" : "自选拍 3D 预览";
+
+  return `
+    <section class="racket-viewer" id="racketViewer" aria-label="${escapeHtml(title)}">
+      <div class="racket-viewer-head">
+        <div>
+          <span>3D PREVIEW</span>
+          <strong>${escapeHtml(title)}</strong>
+        </div>
+        <div class="racket-controls">
+          <button type="button" data-racket-rotate="-24" aria-label="向左旋转">‹</button>
+          <button type="button" data-racket-rotate="24" aria-label="向右旋转">›</button>
+        </div>
+      </div>
+      <div class="racket-stage">
+        <div class="racket-model" id="racketModel" role="img" aria-label="${escapeHtml(`${bladeName} 搭配 ${forehandName} 和 ${backhandName}`)}">
+          <span class="racket-face rubber-front"><i></i></span>
+          <span class="racket-face blade-core"><i></i></span>
+          <span class="racket-face rubber-back"><i></i></span>
+          <span class="racket-rim"></span>
+          <span class="racket-handle"><i></i></span>
+        </div>
+      </div>
+      <div class="racket-loadout">
+        <div><span>底板</span><strong>${escapeHtml(bladeName)}</strong></div>
+        <div><span>正手</span><strong>${escapeHtml(forehandName)}</strong></div>
+        <div><span>反手</span><strong>${escapeHtml(backhandName)}</strong></div>
+      </div>
+      ${renderPerformanceMeters(combo)}
+    </section>
+  `;
+}
+
+function updateRacketRotation() {
+  const model = qs("#racketModel");
+  if (!model) return;
+  model.style.setProperty("--rx", `${racketRotation.x}deg`);
+  model.style.setProperty("--ry", `${racketRotation.y}deg`);
+}
+
+function rotateRacket(delta) {
+  racketRotation.y = (racketRotation.y + Number(delta) + 360) % 360;
+  updateRacketRotation();
+}
+
+function bindRacketViewer() {
+  const viewer = qs("#racketViewer");
+  if (!viewer) return;
+
+  viewer.querySelectorAll("[data-racket-rotate]").forEach((button) => {
+    button.addEventListener("click", () => rotateRacket(button.dataset.racketRotate));
+  });
+
+  viewer.addEventListener("pointerdown", (event) => {
+    if (event.target.closest("button")) return;
+    racketDragState = { x: event.clientX, y: event.clientY };
+    viewer.setPointerCapture?.(event.pointerId);
+  });
+
+  viewer.addEventListener("pointermove", (event) => {
+    if (!racketDragState) return;
+    const dx = event.clientX - racketDragState.x;
+    const dy = event.clientY - racketDragState.y;
+    racketRotation.y = (racketRotation.y + dx * 0.55 + 360) % 360;
+    racketRotation.x = Math.max(-34, Math.min(18, racketRotation.x - dy * 0.25));
+    racketDragState = { x: event.clientX, y: event.clientY };
+    updateRacketRotation();
+  });
+
+  const stopDrag = () => {
+    racketDragState = null;
+  };
+  viewer.addEventListener("pointerup", stopDrag);
+  viewer.addEventListener("pointercancel", stopDrag);
+  updateRacketRotation();
+}
+
+function renderGearVisual(combo) {
+  const visual = qs("#gearVisual");
+  visual.classList.toggle("premade-gear-visual", combo.category === "premade");
+  if (combo.category === "premade") {
+    visual.innerHTML = `
+      <div class="gear-visual-inner premade-visual-inner">
+        ${renderProductPhotoCard("推荐成品拍", combo.visual.premade || combo.visual.blade, combo.visual.premadePhoto || combo.visual.bladePhoto, "低预算优先稳定上手")}
+        ${renderRacketViewer(combo)}
         <div class="premade-note">
           <strong>低预算优先整拍</strong>
           <span>先解决能打、好上手、少踩坑；后续再升级专业自选配置。</span>
@@ -2627,22 +2783,21 @@ function renderGearVisual(combo) {
         <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
       </div>
     `;
+    bindRacketViewer();
     return;
   }
-  qs("#gearVisual").innerHTML = `
-    <div class="gear-summary-visual">
-      <div class="gear-summary-orbit" aria-hidden="true">
-        <span></span>
-        <i></i>
+  visual.innerHTML = `
+    <div class="gear-visual-inner product-viewer-layout">
+      <div class="product-photo-grid">
+        ${renderProductPhotoCard("推荐底板", combo.visual.blade, combo.visual.bladePhoto, "结构与底劲核心")}
+        ${renderProductPhotoCard("正手胶皮", combo.visual.fh, combo.visual.fhPhoto, "旋转与主动进攻")}
+        ${renderProductPhotoCard("反手胶皮", combo.visual.bh, combo.visual.bhPhoto, "借力、衔接与稳定")}
       </div>
-      <div class="gear-summary-stack">
-        ${summaryCard("底板", combo.visual.blade, "控制底劲与持球时间")}
-        ${summaryCard("正手", combo.visual.fh, "优先旋转与主动进攻")}
-        ${summaryCard("反手", combo.visual.bh, "强调稳定、借力和衔接")}
-      </div>
+      ${renderRacketViewer(combo)}
       <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
     </div>
   `;
+  bindRacketViewer();
 }
 
 function renderRecommendation() {
@@ -2893,8 +3048,8 @@ function renderHomeStarPhoto(item, displayName) {
   }
 
   return `
-    <div class="home-star-photo" data-player="${escapeHtml(displayName)}">
-      <img class="home-star-img" src="${escapeHtml(photo.src)}" alt="${escapeHtml(displayName)} 赛场照片" loading="lazy" referrerpolicy="no-referrer" data-player="${escapeHtml(displayName)}" />
+    <div class="home-star-photo" data-player="${escapeHtml(displayName)}" data-fallback="${escapeHtml(`${displayName} 图片整理中`)}">
+      <img class="home-star-img" src="${escapeHtml(photo.src)}" alt="${escapeHtml(displayName)} 赛场照片" loading="lazy" referrerpolicy="no-referrer" data-player="${escapeHtml(displayName)}" onerror="this.parentElement.classList.add('is-fallback'); this.remove();" />
     </div>
   `;
 }
@@ -2977,8 +3132,8 @@ function renderChampionPhoto(item) {
   const photo = item.photo || championPhotos[item.player];
   if (!photo?.src) return "";
   return `
-    <figure class="champion-photo">
-      <img class="champion-photo-img" src="${photo.src}" alt="${item.player}${photo.caption ? ` ${photo.caption}` : "赛场照片"}" loading="lazy" referrerpolicy="no-referrer" />
+    <figure class="champion-photo" data-fallback="${escapeHtml(`${item.player} 图片整理中`)}">
+      <img class="champion-photo-img" src="${photo.src}" alt="${item.player}${photo.caption ? ` ${photo.caption}` : "赛场照片"}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.champion-photo').classList.add('is-missing'); this.remove();" />
       <figcaption>
         <span>${photo.caption || "代表赛场照"}</span>
         ${photo.sourceUrl ? `<a href="${photo.sourceUrl}" target="_blank" rel="noreferrer">图源：${photo.source}</a>` : `<small>图源：${photo.source}</small>`}
