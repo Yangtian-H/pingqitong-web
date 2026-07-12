@@ -1706,28 +1706,35 @@ let currentRecommendationSnapshot = null;
 let savedBackendConfigs = [];
 let backendConfigsStatus = "请先登录后查看后台保存配置";
 let backendConfigsLoading = false;
-const RACKET_RENDER_VIEWS = [
-  {
-    id: "front",
-    label: "正手面",
-    description: "红胶正手面与拍柄",
-    src: "./assets/racket-renders/mounted-racket-front-v1.png"
+const RACKET_RENDER_PROFILES = {
+  standard: {
+    label: "纯木均衡结构",
+    views: [
+      { id: "front", label: "正手面", description: "红胶正手面与木质拍柄", src: "./assets/racket-renders/mounted-racket-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "胶皮、海绵与纯木板芯层次", src: "./assets/racket-renders/mounted-racket-edge-v1.png" },
+      { id: "back", label: "反手面", description: "黑胶反手面与木质拍柄", src: "./assets/racket-renders/mounted-racket-back-v1.png" }
+    ]
   },
-  {
-    id: "edge",
-    label: "侧面结构",
-    description: "胶皮、海绵与板芯层次",
-    src: "./assets/racket-renders/mounted-racket-edge-v1.png"
+  carbon: {
+    label: "纤维进攻结构",
+    views: [
+      { id: "front", label: "正手面", description: "红胶正手面与纤维拍柄", src: "./assets/racket-renders/mounted-racket-carbon-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "胶皮、海绵、纤维层与板芯", src: "./assets/racket-renders/mounted-racket-carbon-edge-v1.png" },
+      { id: "back", label: "反手面", description: "黑胶反手面与纤维拍柄", src: "./assets/racket-renders/mounted-racket-carbon-back-v1.png" }
+    ]
   },
-  {
-    id: "back",
-    label: "反手面",
-    description: "黑胶反手面与拍柄",
-    src: "./assets/racket-renders/mounted-racket-back-v1.png"
+  defense: {
+    label: "防守颗粒结构",
+    views: [
+      { id: "front", label: "正手面", description: "大拍面红胶正手与长拍柄", src: "./assets/racket-renders/mounted-racket-defense-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "红胶、板芯与颗粒反手层次", src: "./assets/racket-renders/mounted-racket-defense-edge-v1.png" },
+      { id: "back", label: "反手颗粒面", description: "黑色颗粒反手面与长拍柄", src: "./assets/racket-renders/mounted-racket-defense-back-v1.png" }
+    ]
   }
-];
+};
 
 let racketViewIndex = 0;
+let racketRenderProfile = "standard";
 let racketDragState = null;
 
 function qs(selector) {
@@ -2708,16 +2715,37 @@ function renderPerformanceMeters(combo) {
   `;
 }
 
+function getRacketRenderProfile(combo) {
+  const text = [
+    combo.visual?.blade,
+    combo.visual?.premade,
+    combo.visual?.fh,
+    combo.visual?.bh,
+    combo.blade,
+    combo.fh,
+    combo.bh
+  ].filter(Boolean).join(" ");
+
+  if (/Curl|颗粒|长胶|生胶|短颗粒|防守|削球|松下|defensive/i.test(text)) return "defense";
+  if (/ALC|ZLC|301X|W968|龙5|Viscaria|张继科|樊振东|Innerforce|Super|Carbon|碳/i.test(text)) return "carbon";
+  return "standard";
+}
+
+function getActiveRacketViews() {
+  return RACKET_RENDER_PROFILES[racketRenderProfile]?.views || RACKET_RENDER_PROFILES.standard.views;
+}
+
 function renderRacketViewer(combo) {
   const bladeName = cleanGearName(combo.visual?.blade || combo.blade || combo.visual?.premade || combo.premade);
   const forehandName = cleanGearName(combo.visual?.fh || combo.fh);
   const backhandName = cleanGearName(combo.visual?.bh || combo.bh);
   const title = combo.category === "premade" ? "整拍装配外观" : "自选拍装配外观";
-  const initialView = RACKET_RENDER_VIEWS[racketViewIndex];
+  const profile = RACKET_RENDER_PROFILES[racketRenderProfile] || RACKET_RENDER_PROFILES.standard;
+  const initialView = profile.views[racketViewIndex] || profile.views[0];
   const hasPips = /Curl|颗粒|长胶|生胶|短颗粒/i.test(backhandName);
   const note = hasPips
-    ? "外观模拟展示标准红黑两面贴胶与板芯层次；当前方案含颗粒胶皮，请以器材资料卡与实际装配为准。"
-    : "外观模拟展示红黑两面贴胶、海绵和板芯层次；上方器材卡保留本方案对应的真实产品资料。";
+    ? `已按当前方案切换为${profile.label}外观，实物规格以器材卡为准。`
+    : `已按当前方案切换为${profile.label}外观，器材实物以产品卡为准。`;
 
   return `
     <section class="racket-viewer" id="racketViewer" aria-label="${escapeHtml(title)}">
@@ -2735,7 +2763,7 @@ function renderRacketViewer(combo) {
         <div class="racket-render-frame" id="racketRenderFrame">
           <img id="racketRenderImage" src="${initialView.src}" alt="${escapeHtml(`${initialView.description}，${bladeName} 搭配 ${forehandName} 与 ${backhandName} 的装配外观模拟`)}" draggable="false" onerror="this.closest('.racket-render-frame').classList.add('is-missing'); this.remove();" />
         </div>
-        <span class="racket-angle-label" id="racketAngleLabel">${initialView.label}</span>
+        <span class="racket-angle-label" id="racketAngleLabel">${profile.label} · ${initialView.label}</span>
       </div>
       <p class="racket-viewer-note">${escapeHtml(note)}</p>
       <div class="racket-loadout">
@@ -2749,20 +2777,22 @@ function renderRacketViewer(combo) {
 }
 
 function updateRacketView() {
-  const view = RACKET_RENDER_VIEWS[racketViewIndex];
+  const profile = RACKET_RENDER_PROFILES[racketRenderProfile] || RACKET_RENDER_PROFILES.standard;
+  const view = getActiveRacketViews()[racketViewIndex];
   const image = qs("#racketRenderImage");
   const label = qs("#racketAngleLabel");
   const frame = qs("#racketRenderFrame");
   if (!view || !image || !label || !frame) return;
 
   image.src = view.src;
-  image.alt = `${view.description}，器材装配外观模拟`;
-  label.textContent = view.label;
+  image.alt = `${profile.label}，${view.description}，器材装配外观模拟`;
+  label.textContent = `${profile.label} · ${view.label}`;
   frame.dataset.view = view.id;
+  frame.dataset.profile = racketRenderProfile;
 }
 
 function changeRacketView(delta) {
-  const total = RACKET_RENDER_VIEWS.length;
+  const total = getActiveRacketViews().length;
   racketViewIndex = (racketViewIndex + Number(delta) + total) % total;
   updateRacketView();
 }
@@ -2812,6 +2842,7 @@ function bindRacketViewer() {
 function renderGearVisual(combo) {
   const visual = qs("#gearVisual");
   racketViewIndex = 0;
+  racketRenderProfile = getRacketRenderProfile(combo);
   visual.classList.toggle("premade-gear-visual", combo.category === "premade");
   if (combo.category === "premade") {
     visual.innerHTML = `
@@ -2822,7 +2853,6 @@ function renderGearVisual(combo) {
           <strong>低预算优先整拍</strong>
           <span>先解决能打、好上手、少踩坑；后续再升级专业自选配置。</span>
         </div>
-        <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
       </div>
     `;
     bindRacketViewer();
@@ -2836,7 +2866,6 @@ function renderGearVisual(combo) {
         ${renderProductPhotoCard("反手胶皮", combo.visual.bh, combo.visual.bhPhoto, "借力、衔接与稳定")}
       </div>
       ${renderRacketViewer(combo)}
-      <div class="visual-source">${escapeHtml(combo.visual.source)}</div>
     </div>
   `;
   bindRacketViewer();

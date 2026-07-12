@@ -4177,7 +4177,7 @@ body.app-entered .trait-line i {
 }
 
 .gear-visual {
-  min-height: 760px;
+  min-height: 790px;
 }
 
 .gear-visual.premade-gear-visual {
@@ -4226,8 +4226,8 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-card {
-  min-height: 196px;
-  grid-template-rows: 124px minmax(70px, auto);
+  min-height: 168px;
+  grid-template-rows: 102px minmax(62px, auto);
   border-color: rgba(226, 193, 132, 0.22);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
@@ -4235,8 +4235,8 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-frame {
-  height: 124px;
-  min-height: 124px;
+  height: 102px;
+  min-height: 102px;
   padding: 10px;
   background:
     radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.16), transparent 44%),
@@ -4244,7 +4244,7 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-frame img {
-  max-height: 104px;
+  max-height: 82px;
   filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.22));
 }
 
@@ -4299,9 +4299,15 @@ body.app-entered.theme-light .gear-visual {
 .racket-viewer {
   min-width: 0;
   display: grid;
-  grid-template-columns: minmax(190px, 0.82fr) minmax(0, 1.18fr);
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  gap: 14px;
+  grid-template-columns: minmax(170px, 0.86fr) minmax(0, 1.14fr);
+  grid-template-areas:
+    "head head"
+    "stage loadout"
+    "note loadout"
+    "params params";
+  grid-template-rows: auto minmax(238px, 1fr) auto auto;
+  align-items: start;
+  gap: 10px 12px;
   border: 1px solid rgba(226, 193, 132, 0.2);
   border-radius: 8px;
   padding: 14px;
@@ -4314,7 +4320,7 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .racket-viewer-head {
-  grid-column: 1 / -1;
+  grid-area: head;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4367,7 +4373,8 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .racket-render-stage {
-  min-height: 330px;
+  grid-area: stage;
+  min-height: 238px;
   position: relative;
   cursor: grab;
   touch-action: none;
@@ -4384,7 +4391,7 @@ body.app-entered.theme-light .gear-visual {
   width: 68%;
   height: 24px;
   border-radius: 50%;
-  translate: 0 118px;
+  translate: 0 92px;
   background: rgba(0, 0, 0, 0.5);
   filter: blur(12px);
 }
@@ -4394,7 +4401,7 @@ body.app-entered.theme-light .gear-visual {
   --tilt-y: 0deg;
   position: relative;
   z-index: 1;
-  width: min(84%, 244px);
+  width: min(82%, 186px);
   aspect-ratio: 3 / 4;
   transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
   transform-origin: 50% 56%;
@@ -4449,24 +4456,31 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .racket-viewer-note {
-  grid-column: 1 / -1;
-  margin: -2px 0 0;
+  grid-area: note;
+  margin: 0;
+  min-height: 40px;
+  border: 1px solid rgba(226, 193, 132, 0.14);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.035);
   color: rgba(247, 240, 229, 0.6);
   font-size: 12px;
   line-height: 1.55;
 }
 
 .racket-loadout {
+  grid-area: loadout;
   display: grid;
   gap: 8px;
-  align-content: center;
+  align-self: stretch;
+  align-content: space-between;
 }
 
 .racket-loadout div {
   min-width: 0;
   border: 1px solid rgba(226, 193, 132, 0.16);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 9px 10px;
   background: rgba(255, 255, 255, 0.045);
 }
 
@@ -4478,7 +4492,8 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .racket-param-grid {
-  grid-column: 1 / -1;
+  grid-area: params;
+  grid-column: auto;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
@@ -4570,6 +4585,8 @@ body.app-entered.theme-light .racket-angle-label {
 
 body.app-entered.theme-light .racket-viewer-note {
   color: var(--muted);
+  border-color: rgba(169, 119, 73, 0.18);
+  background: rgba(255, 253, 248, 0.78);
 }
 
 body.app-entered.theme-light .racket-render-frame.is-missing::before {
@@ -4606,7 +4623,7 @@ body.motion-reduced .racket-render-frame {
   .gear-visual,
   body.app-entered .gear-visual,
   body.app-entered .gear-visual.premade-gear-visual {
-    min-height: 1040px;
+    min-height: 1280px;
   }
 
   .gear-visual-inner.product-viewer-layout,
@@ -4635,10 +4652,17 @@ body.motion-reduced .racket-render-frame {
 
   .racket-viewer {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "stage"
+      "note"
+      "loadout"
+      "params";
+    grid-template-rows: auto auto auto auto auto;
   }
 
   .racket-stage {
-    min-height: 290px;
+    min-height: 260px;
   }
 
   .racket-render-frame {
