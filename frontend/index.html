@@ -4,10 +4,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>乒器通 | 器材资料与智能选型平台</title>
-    <link rel="stylesheet" href="./styles.css?v=20260709-v3-launch" />
+    <link rel="stylesheet" href="./styles.css?v=20260713-v4-viewer-layout-balance" />
   </head>
   <body>
-    <div class="app-shell">
+    <section class="portal-gate" id="portalGate" aria-labelledby="portalTitle">
+      <nav class="portal-nav" aria-label="门户导航">
+        <div class="portal-logo">乒</div>
+        <div class="portal-nav-links">
+          <button type="button" data-portal-enter="home">首页</button>
+          <button type="button" data-portal-enter="selector">智能选型</button>
+          <button type="button" data-portal-enter="equipment">器材资料</button>
+          <button type="button" data-portal-enter="champions">冠军装备</button>
+          <button type="button" data-portal-enter="community">球友圈</button>
+        </div>
+        <button class="portal-login" type="button" data-portal-enter="profile">登录 / 我的</button>
+      </nav>
+
+      <div class="portal-arena" aria-hidden="true">
+        <span class="portal-light portal-light-left"></span>
+        <span class="portal-light portal-light-right"></span>
+        <span class="portal-rank rank-top"></span>
+        <span class="portal-rank rank-mid"></span>
+        <span class="portal-rank rank-bottom"></span>
+        <span class="portal-table">
+          <span class="portal-table-line portal-table-center"></span>
+          <span class="portal-table-line portal-table-net"></span>
+        </span>
+        <span class="portal-ball"></span>
+        <span class="portal-trail"></span>
+        <span class="portal-paddle portal-paddle-left"></span>
+        <span class="portal-paddle portal-paddle-right"></span>
+      </div>
+
+      <div class="portal-copy">
+        <p class="portal-kicker">PINGQITONG ARENA</p>
+        <h1 id="portalTitle">SPINNOVA</h1>
+        <p class="portal-cn">乒器通</p>
+        <p class="portal-subtitle">面向业余球友的乒乓器材决策平台</p>
+      </div>
+
+      <div class="portal-actions">
+        <button class="portal-ghost" type="button" data-portal-enter="home">了解详情</button>
+        <button class="portal-primary" type="button" data-portal-enter="selector">开始选型</button>
+      </div>
+    </section>
+
+    <div class="app-shell" id="appShell" hidden>
       <aside class="sidebar" aria-label="主导航">
         <div class="brand-block">
           <div class="brand-mark">乒</div>
@@ -26,11 +68,12 @@
           <button class="nav-item" data-view="community"><span>✎</span>球友圈</button>
           <button class="nav-item" data-view="profile"><span>◌</span>我的</button>
           <button class="nav-item" data-view="data"><span>≣</span>数据</button>
+          <button class="nav-item" data-view="settings"><span>⚙</span>设置</button>
         </nav>
 
         <div class="sidebar-launch">
-          <span>正式版</span>
-          <strong>V3 上线</strong>
+          <span>门户版</span>
+          <strong>V4 全景</strong>
         </div>
       </aside>
 
@@ -48,24 +91,40 @@
 
         <section class="view active" id="home" aria-labelledby="homeTitle">
           <div class="home-layout">
-            <section class="home-hero">
+            <section class="home-hero panoramic-hero">
               <div class="home-hero-copy">
-                <p class="eyebrow">V3 正式上线版</p>
+                <p class="eyebrow">V4 全景首页实验版</p>
                 <h2 id="homeTitle">乒器通</h2>
-                <p class="home-subtitle">为业余球友建立清晰、可信的器材决策系统</p>
-                <p class="home-summary">从打法画像、预算区间、器材资料和冠军装备线索出发，帮助你更稳地找到适合自己的底板与胶皮组合。</p>
+                <p class="home-subtitle">以全景赛场为入口，把复杂器材信息压缩成清晰决策</p>
+                <p class="home-summary">从赛事、技术、装备和球友经验里提炼有效线索，再用打法画像、预算约束和资料证据，帮业余球友找到真正适合自己的底板与胶皮组合。</p>
                 <div class="home-hero-actions">
                   <button class="primary-action" type="button" data-view-trigger="selector">开始智能选型</button>
                   <button class="ghost-action" type="button" data-view-trigger="equipment">进入器材资料库</button>
                 </div>
+                <div class="home-hero-proof" aria-label="乒器通核心能力">
+                  <span>全景门户</span>
+                  <span>智能选型</span>
+                  <span>资料证据</span>
+                  <span>真实评分体系</span>
+                </div>
               </div>
-              <div class="home-hero-stage" aria-label="正式版首页视觉">
-                <div class="court-visual" aria-hidden="true">
+              <div class="home-hero-stage panorama-stage" aria-label="全景乒乓赛场视觉">
+                <div class="court-visual arena-visual" aria-hidden="true">
+                  <span class="arena-light light-left"></span>
+                  <span class="arena-light light-right"></span>
+                  <span class="arena-glow glow-left"></span>
+                  <span class="arena-glow glow-right"></span>
+                  <span class="arena-stand stand-top"></span>
+                  <span class="arena-stand stand-bottom"></span>
+                  <span class="trajectory trajectory-one"></span>
+                  <span class="trajectory trajectory-two"></span>
                   <span class="court-line center"></span>
                   <span class="court-line net"></span>
-                  <span class="court-ball"></span>
+                  <span class="court-ball ball-main"></span>
+                  <span class="court-ball ball-ghost"></span>
                   <span class="court-paddle left"></span>
                   <span class="court-paddle right"></span>
+                  <span class="court-shadow"></span>
                 </div>
                 <div class="home-signal-row">
                   <div>
@@ -93,8 +152,8 @@
               </div>
               <div class="home-update-grid">
                 <article class="home-update-card">
-                  <span>V3 正式上线版</span>
-                  <p>首页、器材库和社区入口已按正式展示口径整理。</p>
+                  <span>V4 全景首页</span>
+                  <p>首页升级为沉浸式赛场视觉，强化乒器通的工具平台气质。</p>
                 </article>
                 <article class="home-update-card">
                   <span>器材资料库清理</span>
@@ -108,10 +167,14 @@
                   <span>资讯频道准备接入</span>
                   <p>乒坛热闻将通过后端接入合规来源并保留人工审核。</p>
                 </article>
+                <article class="home-update-card">
+                  <span>网页习惯设置</span>
+                  <p>新增深色与浅色主题、动效强度和默认进入方式。</p>
+                </article>
               </div>
             </section>
 
-            <section class="home-section" aria-labelledby="homeNewsTitle">
+            <section class="home-section portal-section" aria-labelledby="homeNewsTitle">
               <div class="section-head wide">
                 <div>
                   <p class="eyebrow">乒坛热闻</p>
@@ -425,6 +488,82 @@
             </aside>
           </div>
         </section>
+
+        <section class="view" id="settings" aria-labelledby="settingsTitle">
+          <div class="two-column settings-layout">
+            <form class="tool-surface settings-form" id="settingsForm">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">偏好控制</p>
+                  <h2 id="settingsTitle">网页设置</h2>
+                </div>
+                <button class="ghost-action" type="button" id="resetSettingsButton">恢复默认</button>
+              </div>
+
+              <fieldset class="settings-panel">
+                <legend>主题</legend>
+                <div class="setting-grid">
+                  <label class="setting-choice">
+                    <input type="radio" name="theme" value="dark" data-setting />
+                    <span>深色赛场</span>
+                    <small>SPINNOVA 门户风</small>
+                  </label>
+                  <label class="setting-choice">
+                    <input type="radio" name="theme" value="light" data-setting />
+                    <span>浅色晨光</span>
+                    <small>清爽阅读风</small>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="settings-panel">
+                <legend>动效</legend>
+                <div class="setting-grid">
+                  <label class="setting-choice">
+                    <input type="radio" name="motion" value="full" data-setting />
+                    <span>全景动效</span>
+                    <small>赛场灯光与球路</small>
+                  </label>
+                  <label class="setting-choice">
+                    <input type="radio" name="motion" value="reduced" data-setting />
+                    <span>静态舒适</span>
+                    <small>减少动画干扰</small>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="settings-panel">
+                <legend>进入方式</legend>
+                <div class="setting-grid">
+                  <label class="setting-choice">
+                    <input type="radio" name="defaultEntry" value="portal" data-setting />
+                    <span>门户开场</span>
+                    <small>先看全景首页</small>
+                  </label>
+                  <label class="setting-choice">
+                    <input type="radio" name="defaultEntry" value="home" data-setting />
+                    <span>直接首页</span>
+                    <small>进入工作区首页</small>
+                  </label>
+                </div>
+              </fieldset>
+            </form>
+
+            <aside class="insight-panel settings-preview">
+              <p class="eyebrow">PINGQITONG CONTROL</p>
+              <h3>SPINNOVA</h3>
+              <div class="settings-preview-stage" aria-hidden="true">
+                <span></span>
+                <i></i>
+              </div>
+              <div class="combo-table">
+                <div class="combo-row"><span>主题</span><strong id="settingsThemeValue">深色赛场</strong></div>
+                <div class="combo-row"><span>动效</span><strong id="settingsMotionValue">全景动效</strong></div>
+                <div class="combo-row"><span>入口</span><strong id="settingsEntryValue">门户开场</strong></div>
+              </div>
+            </aside>
+          </div>
+        </section>
       </main>
 
       <nav class="mobile-tabs" aria-label="手机底部导航">
@@ -435,9 +574,10 @@
         <button class="mobile-tab" data-view="champions">★<span>冠军</span></button>
         <button class="mobile-tab" data-view="community">✎<span>球友</span></button>
         <button class="mobile-tab" data-view="profile">◌<span>我的</span></button>
+        <button class="mobile-tab" data-view="settings">⚙<span>设置</span></button>
       </nav>
     </div>
 
-    <script src="./app.js?v=20260709-v3-launch"></script>
+    <script src="./app.js?v=20260713-v4-viewer-layout-balance"></script>
   </body>
 </html>

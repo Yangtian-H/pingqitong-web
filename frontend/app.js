@@ -6,7 +6,8 @@ const viewTitles = {
   champions: "冠军装备",
   community: "球友文字帖",
   profile: "个人资料",
-  data: "数据可信度"
+  data: "数据可信度",
+  settings: "网页设置"
 };
 
 const levelNames = {
@@ -1520,21 +1521,21 @@ const championEquipment = [
 
 const championPhotos = {
   "马龙": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Ma_Long_ATTC2017_29.jpeg?width=720",
+    src: "./assets/champion-photos/ma-long.jpg",
     caption: "2017 亚洲锦标赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Ma_Long_ATTC2017_29.jpeg"
   },
   "樊振东": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/ITTF_World_Tour_2017_German_Open_Fan_Zhendong_03.jpg?width=720",
+    src: "./assets/champion-photos/fan-zhendong.jpg",
     caption: "2017 德国公开赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:ITTF_World_Tour_2017_German_Open_Fan_Zhendong_03.jpg"
   },
   "张继科": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Mondial_Ping_-_Men%27s_Singles_-_Final_-_Zhang_Jike_vs_Wang_Hao_-_40.jpg?width=720",
+    src: "./assets/champion-photos/zhang-jike.jpg",
     caption: "2013 世乒赛男单决赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-_Men%27s_Singles_-_Final_-_Zhang_Jike_vs_Wang_Hao_-_40.jpg"
   },
   "王皓": {
@@ -1574,9 +1575,9 @@ const championPhotos = {
     sourceUrl: ""
   },
   "丁宁": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Mondial_Ping_-Women%27s_Singles_-_Quarterfinal_-_Ding_Ning-Ri_Myong_Sun_-_17.jpg?width=720",
+    src: "./assets/champion-photos/ding-ning.jpg",
     caption: "2013 世乒赛女单四分之一决赛赛场照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-Women%27s_Singles_-_Quarterfinal_-_Ding_Ning-Ri_Myong_Sun_-_17.jpg"
   },
   "李晓霞": {
@@ -1586,9 +1587,9 @@ const championPhotos = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-_Women%27s_Singles_-_Final_-_Li_Xiaoxia.jpg"
   },
   "陈梦": {
-    src: "https://commons.wikimedia.org/wiki/Special:FilePath/Chen_Meng.png?width=720",
+    src: "./assets/champion-photos/chen-meng.jpg",
     caption: "2024 国家队采访公开照",
-    source: "Wikimedia Commons",
+    source: "本地图库 / Wikimedia Commons",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Chen_Meng.png"
   },
   "孙颖莎": {
@@ -1643,28 +1644,28 @@ const homeStarHighlights = {
 
 const homeNewsItems = [
   {
-    title: "国内赛事动态",
-    label: "赛程 / 战报",
-    summary: "预留官方赛事公告、赛程赛果和名单变动聚合位，接入前不展示未经核验的实时新闻。",
-    action: "提交赛事线索"
+    title: "赛事与国乒观察",
+    label: "新闻 / 赛程",
+    summary: "借鉴门户的栏目组织方式，预留赛事、国乒、国际赛场入口；接入前不展示未经核验的实时新闻。",
+    action: "提交线索"
   },
   {
-    title: "国乒与青训观察",
-    label: "队伍 / 人物",
-    summary: "面向国家队、地方队和青少年赛事建立专题索引，内容上线前先经过来源核验。",
-    action: "讨论线索"
+    title: "技术与训练专题",
+    label: "教学 / 训练",
+    summary: "把拧拉、发抢、相持、防守和颗粒打法拆成专题，后续和打法测试、推荐模型打通。",
+    action: "进入讨论"
   },
   {
-    title: "装备与训练专题",
-    label: "器材 / 技术",
-    summary: "把新闻、装备变化和训练观点拆成可检索专题，避免用未经验证的热度代替判断。",
+    title: "装备风向与资料库",
+    label: "器材 / 品牌",
+    summary: "保留乒器通特色：不做普通商城，重点整理底板、胶皮、冠军装备和真实用户样本。",
     action: "查看资料库"
   },
   {
-    title: "合规资讯接入",
-    label: "后端接口",
-    summary: "实时抓取需要后端定时任务和授权来源，前端已预留频道样式，避免正式页出现假新闻。",
-    action: "了解规则"
+    title: "球友经验入口",
+    label: "社区 / 经验",
+    summary: "承接论坛式交流的优点，但过滤广告、交易和虚假热度，让经验沉淀为可用配置线索。",
+    action: "进入球友圈"
   }
 ];
 
@@ -1693,12 +1694,48 @@ let posts = [
 
 const API_BASE = "/api";
 const AUTH_TOKEN_KEY = "pingqitongToken";
+const SITE_SETTINGS_KEY = "pingqitongSiteSettings";
+const defaultSiteSettings = {
+  theme: "dark",
+  motion: "full",
+  defaultEntry: "portal"
+};
 let currentUser = null;
 let authLoading = false;
 let currentRecommendationSnapshot = null;
 let savedBackendConfigs = [];
 let backendConfigsStatus = "请先登录后查看后台保存配置";
 let backendConfigsLoading = false;
+const RACKET_RENDER_PROFILES = {
+  standard: {
+    label: "纯木均衡结构",
+    views: [
+      { id: "front", label: "正手面", description: "红胶正手面与木质拍柄", src: "./assets/racket-renders/mounted-racket-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "胶皮、海绵与纯木板芯层次", src: "./assets/racket-renders/mounted-racket-edge-v1.png" },
+      { id: "back", label: "反手面", description: "黑胶反手面与木质拍柄", src: "./assets/racket-renders/mounted-racket-back-v1.png" }
+    ]
+  },
+  carbon: {
+    label: "纤维进攻结构",
+    views: [
+      { id: "front", label: "正手面", description: "红胶正手面与纤维拍柄", src: "./assets/racket-renders/mounted-racket-carbon-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "胶皮、海绵、纤维层与板芯", src: "./assets/racket-renders/mounted-racket-carbon-edge-v1.png" },
+      { id: "back", label: "反手面", description: "黑胶反手面与纤维拍柄", src: "./assets/racket-renders/mounted-racket-carbon-back-v1.png" }
+    ]
+  },
+  defense: {
+    label: "防守颗粒结构",
+    views: [
+      { id: "front", label: "正手面", description: "大拍面红胶正手与长拍柄", src: "./assets/racket-renders/mounted-racket-defense-front-v1.png" },
+      { id: "edge", label: "侧面结构", description: "红胶、板芯与颗粒反手层次", src: "./assets/racket-renders/mounted-racket-defense-edge-v1.png" },
+      { id: "back", label: "反手颗粒面", description: "黑色颗粒反手面与长拍柄", src: "./assets/racket-renders/mounted-racket-defense-back-v1.png" }
+    ]
+  }
+};
+
+let racketViewIndex = 0;
+let racketRenderProfile = "standard";
+let racketDragState = null;
 
 function qs(selector) {
   return document.querySelector(selector);
@@ -1706,6 +1743,78 @@ function qs(selector) {
 
 function qsa(selector) {
   return Array.from(document.querySelectorAll(selector));
+}
+
+function getSiteSettings() {
+  try {
+    return { ...defaultSiteSettings, ...(JSON.parse(localStorage.getItem(SITE_SETTINGS_KEY)) || {}) };
+  } catch {
+    return { ...defaultSiteSettings };
+  }
+}
+
+function saveSiteSettings(settings) {
+  localStorage.setItem(SITE_SETTINGS_KEY, JSON.stringify(settings));
+}
+
+function applySiteSettings(settings = getSiteSettings()) {
+  document.body.classList.toggle("theme-light", settings.theme === "light");
+  document.body.classList.toggle("theme-dark", settings.theme !== "light");
+  document.body.classList.toggle("motion-reduced", settings.motion === "reduced");
+}
+
+function syncSettingsControls() {
+  const settings = getSiteSettings();
+  qsa("[data-setting]").forEach((input) => {
+    input.checked = settings[input.name] === input.value;
+  });
+  qsa(".setting-choice").forEach((card) => {
+    const input = card.querySelector("[data-setting]");
+    card.classList.toggle("active", Boolean(input?.checked));
+  });
+
+  const themeLabel = qs("#settingsThemeValue");
+  const motionLabel = qs("#settingsMotionValue");
+  const entryLabel = qs("#settingsEntryValue");
+  if (themeLabel) themeLabel.textContent = settings.theme === "light" ? "浅色晨光" : "深色赛场";
+  if (motionLabel) motionLabel.textContent = settings.motion === "reduced" ? "静态舒适" : "全景动效";
+  if (entryLabel) entryLabel.textContent = settings.defaultEntry === "home" ? "直接首页" : "门户开场";
+}
+
+function bindSettings() {
+  qsa("[data-setting]").forEach((input) => {
+    input.addEventListener("change", () => {
+      const settings = getSiteSettings();
+      settings[input.name] = input.value;
+      saveSiteSettings(settings);
+      applySiteSettings(settings);
+      syncSettingsControls();
+    });
+  });
+
+  const resetButton = qs("#resetSettingsButton");
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      saveSiteSettings(defaultSiteSettings);
+      applySiteSettings(defaultSiteSettings);
+      syncSettingsControls();
+    });
+  }
+}
+
+function enterApp(view = "home") {
+  const portal = qs("#portalGate");
+  const shell = qs("#appShell");
+  if (portal) portal.hidden = true;
+  if (shell) shell.hidden = false;
+  document.body.classList.add("app-entered");
+  if (viewTitles[view]) setView(view);
+}
+
+function bindPortalGate() {
+  qsa("[data-portal-enter]").forEach((button) => {
+    button.addEventListener("click", () => enterApp(button.dataset.portalEnter || "home"));
+  });
 }
 
 
@@ -2292,7 +2401,8 @@ function setView(view) {
   qsa(".view").forEach((el) => el.classList.toggle("active", el.id === view));
   qsa(".nav-item, .mobile-tab").forEach((el) => el.classList.toggle("active", el.dataset.view === view));
   qs("#viewTitle").textContent = viewTitles[view] || "乒器通";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (view === "settings") syncSettingsControls();
+  window.scrollTo({ top: 0, behavior: getSiteSettings().motion === "reduced" ? "auto" : "smooth" });
 }
 
 function gearById(id) {
@@ -2521,45 +2631,244 @@ function pickCombo(context) {
   return comboRules.find((rule) => rule.key === "arc");
 }
 
-function renderGearVisual(combo) {
-  qs("#gearVisual").classList.toggle("premade-gear-visual", combo.category === "premade");
-  const photoCard = (kind, name, src) => {
-    const missing = !src;
-    return `
-      <div class="photo-card ${kind === "推荐底板" ? "blade-photo-card" : ""} ${missing ? "photo-missing" : ""}">
-        <div class="photo-frame">
-          ${missing ? `<div class="missing-photo">实物图待接入<br><span>后台商品库补图</span></div>` : `<img src="${src}" alt="${name} 实物图" loading="eager" />`}
+function cleanGearName(value) {
+  return String(value || "待推荐").replace(/^(正手|反手)：/, "").trim();
+}
+
+function renderProductPhotoCard(kind, name, src, note = "") {
+  const safeName = cleanGearName(name);
+  const hasPhoto = Boolean(src);
+
+  return `
+    <figure class="photo-card product-photo-card">
+      <div class="photo-frame product-photo-frame ${hasPhoto ? "" : "is-missing"}" data-fallback="${escapeHtml(kind)}图片整理中">
+        ${hasPhoto ? `<img src="${escapeHtml(src)}" alt="${escapeHtml(`${kind} ${safeName} 实物图`)}" loading="lazy" onerror="this.parentElement.classList.add('is-missing'); this.remove();" />` : ""}
+      </div>
+      <figcaption class="photo-caption">
+        <span>${escapeHtml(kind)}</span>
+        <strong>${escapeHtml(safeName)}</strong>
+        ${note ? `<small>${escapeHtml(note)}</small>` : ""}
+      </figcaption>
+    </figure>
+  `;
+}
+
+function getComboPerformance(combo) {
+  const key = combo?.key || "";
+  const text = `${combo?.name || ""} ${combo?.blade || ""} ${combo?.fh || ""} ${combo?.bh || ""}`;
+  const profile = {
+    speed: combo?.category === "premade" ? 58 : 76,
+    spin: combo?.category === "premade" ? 56 : 80,
+    control: combo?.category === "premade" ? 82 : 74,
+    dwell: combo?.category === "premade" ? 70 : 72,
+    stability: combo?.category === "premade" ? 78 : 76
+  };
+
+  if (/viscaria|premium|zjk|fast/i.test(key) || /ALC|Dignics|外置/.test(text)) {
+    profile.speed += 11;
+    profile.spin += 4;
+    profile.control -= 4;
+  }
+  if (/control|inner|harimoto/i.test(key) || /内置|控制/.test(text)) {
+    profile.control += 10;
+    profile.dwell += 7;
+    profile.speed -= 2;
+  }
+  if (/long5|arc/i.test(key) || /狂飙|弧圈/.test(text)) {
+    profile.spin += 9;
+    profile.dwell += 5;
+  }
+  if (/defense/i.test(key) || /削|颗粒|Curl/.test(text)) {
+    profile.control += 8;
+    profile.stability += 7;
+    profile.speed -= 10;
+  }
+
+  return Object.fromEntries(
+    Object.entries(profile).map(([label, value]) => [label, Math.max(42, Math.min(96, value))])
+  );
+}
+
+function renderPerformanceMeters(combo) {
+  const stats = getComboPerformance(combo);
+  const rows = [
+    ["速度", stats.speed, "出球压迫"],
+    ["旋转", stats.spin, "摩擦质量"],
+    ["控制", stats.control, "台内与落点"],
+    ["持球", stats.dwell, "弧线余量"],
+    ["稳定", stats.stability, "连续衔接"]
+  ];
+
+  return `
+    <div class="racket-param-grid" aria-label="器材参数画像">
+      ${rows.map(([label, value, note]) => `
+        <div class="racket-param-card">
+          <div>
+            <span>${escapeHtml(label)}</span>
+            <strong>${value}</strong>
+          </div>
+          <i class="stat-meter" style="--value: ${value}%"></i>
+          <small>${escapeHtml(note)}</small>
         </div>
-        <div class="photo-caption">
-          <span>${kind}</span>
-          <strong>${name}</strong>
+      `).join("")}
+    </div>
+  `;
+}
+
+function getRacketRenderProfile(combo) {
+  const text = [
+    combo.visual?.blade,
+    combo.visual?.premade,
+    combo.visual?.fh,
+    combo.visual?.bh,
+    combo.blade,
+    combo.fh,
+    combo.bh
+  ].filter(Boolean).join(" ");
+
+  if (/Curl|颗粒|长胶|生胶|短颗粒|防守|削球|松下|defensive/i.test(text)) return "defense";
+  if (/ALC|ZLC|301X|W968|龙5|Viscaria|张继科|樊振东|Innerforce|Super|Carbon|碳/i.test(text)) return "carbon";
+  return "standard";
+}
+
+function getActiveRacketViews() {
+  return RACKET_RENDER_PROFILES[racketRenderProfile]?.views || RACKET_RENDER_PROFILES.standard.views;
+}
+
+function renderRacketViewer(combo) {
+  const bladeName = cleanGearName(combo.visual?.blade || combo.blade || combo.visual?.premade || combo.premade);
+  const forehandName = cleanGearName(combo.visual?.fh || combo.fh);
+  const backhandName = cleanGearName(combo.visual?.bh || combo.bh);
+  const title = combo.category === "premade" ? "整拍装配外观" : "自选拍装配外观";
+  const profile = RACKET_RENDER_PROFILES[racketRenderProfile] || RACKET_RENDER_PROFILES.standard;
+  const initialView = profile.views[racketViewIndex] || profile.views[0];
+  const hasPips = /Curl|颗粒|长胶|生胶|短颗粒/i.test(backhandName);
+  const note = hasPips
+    ? `已按当前方案切换为${profile.label}外观，实物规格以器材卡为准。`
+    : `已按当前方案切换为${profile.label}外观，器材实物以产品卡为准。`;
+
+  return `
+    <section class="racket-viewer" id="racketViewer" aria-label="${escapeHtml(title)}">
+      <div class="racket-viewer-head">
+        <div>
+          <span>MOUNTED RACKET VIEW</span>
+          <strong>${escapeHtml(title)}</strong>
+        </div>
+        <div class="racket-controls">
+          <button type="button" data-racket-view="-1" aria-label="查看上一视角" title="上一视角">‹</button>
+          <button type="button" data-racket-view="1" aria-label="查看下一视角" title="下一视角">›</button>
         </div>
       </div>
-    `;
+      <div class="racket-stage racket-render-stage" role="group" aria-label="${escapeHtml(`${bladeName} 搭配 ${forehandName} 和 ${backhandName} 的装配外观模拟`)}">
+        <div class="racket-render-frame" id="racketRenderFrame">
+          <img id="racketRenderImage" src="${initialView.src}" alt="${escapeHtml(`${initialView.description}，${bladeName} 搭配 ${forehandName} 与 ${backhandName} 的装配外观模拟`)}" draggable="false" onerror="this.closest('.racket-render-frame').classList.add('is-missing'); this.remove();" />
+        </div>
+        <span class="racket-angle-label" id="racketAngleLabel">${profile.label} · ${initialView.label}</span>
+      </div>
+      <p class="racket-viewer-note">${escapeHtml(note)}</p>
+      <div class="racket-loadout">
+        <div><span>底板</span><strong>${escapeHtml(bladeName)}</strong></div>
+        <div><span>正手</span><strong>${escapeHtml(forehandName)}</strong></div>
+        <div><span>反手</span><strong>${escapeHtml(backhandName)}</strong></div>
+      </div>
+      ${renderPerformanceMeters(combo)}
+    </section>
+  `;
+}
+
+function updateRacketView() {
+  const profile = RACKET_RENDER_PROFILES[racketRenderProfile] || RACKET_RENDER_PROFILES.standard;
+  const view = getActiveRacketViews()[racketViewIndex];
+  const image = qs("#racketRenderImage");
+  const label = qs("#racketAngleLabel");
+  const frame = qs("#racketRenderFrame");
+  if (!view || !image || !label || !frame) return;
+
+  image.src = view.src;
+  image.alt = `${profile.label}，${view.description}，器材装配外观模拟`;
+  label.textContent = `${profile.label} · ${view.label}`;
+  frame.dataset.view = view.id;
+  frame.dataset.profile = racketRenderProfile;
+}
+
+function changeRacketView(delta) {
+  const total = getActiveRacketViews().length;
+  racketViewIndex = (racketViewIndex + Number(delta) + total) % total;
+  updateRacketView();
+}
+
+function bindRacketViewer() {
+  const viewer = qs("#racketViewer");
+  if (!viewer) return;
+
+  viewer.querySelectorAll("[data-racket-view]").forEach((button) => {
+    button.addEventListener("click", () => changeRacketView(button.dataset.racketView));
+  });
+
+  viewer.addEventListener("pointerdown", (event) => {
+    if (event.target.closest("button")) return;
+    racketDragState = { x: event.clientX, y: event.clientY, originX: event.clientX };
+    viewer.setPointerCapture?.(event.pointerId);
+  });
+
+  viewer.addEventListener("pointermove", (event) => {
+    if (!racketDragState) return;
+    const dx = event.clientX - racketDragState.x;
+    const dy = event.clientY - racketDragState.y;
+    const frame = qs("#racketRenderFrame");
+    if (frame) {
+      frame.style.setProperty("--tilt-x", `${Math.max(-5, Math.min(5, -dy * 0.08))}deg`);
+      frame.style.setProperty("--tilt-y", `${Math.max(-7, Math.min(7, dx * 0.08))}deg`);
+    }
+    if (Math.abs(event.clientX - racketDragState.originX) >= 54) {
+      changeRacketView(event.clientX > racketDragState.originX ? 1 : -1);
+      racketDragState.originX = event.clientX;
+    }
+    racketDragState.x = event.clientX;
+    racketDragState.y = event.clientY;
+  });
+
+  const stopDrag = () => {
+    qs("#racketRenderFrame")?.style.setProperty("--tilt-x", "0deg");
+    qs("#racketRenderFrame")?.style.setProperty("--tilt-y", "0deg");
+    racketDragState = null;
   };
+  viewer.addEventListener("pointerup", stopDrag);
+  viewer.addEventListener("pointercancel", stopDrag);
+  viewer.addEventListener("pointerleave", stopDrag);
+  updateRacketView();
+}
+
+function renderGearVisual(combo) {
+  const visual = qs("#gearVisual");
+  racketViewIndex = 0;
+  racketRenderProfile = getRacketRenderProfile(combo);
+  visual.classList.toggle("premade-gear-visual", combo.category === "premade");
   if (combo.category === "premade") {
-    qs("#gearVisual").innerHTML = `
+    visual.innerHTML = `
       <div class="gear-visual-inner premade-visual-inner">
-        ${photoCard("推荐成品拍", combo.visual.premade || combo.visual.blade, combo.visual.premadePhoto || combo.visual.bladePhoto)}
+        ${renderProductPhotoCard("推荐成品拍", combo.visual.premade || combo.visual.blade, combo.visual.premadePhoto || combo.visual.bladePhoto, "低预算优先稳定上手")}
+        ${renderRacketViewer(combo)}
         <div class="premade-note">
           <strong>低预算优先整拍</strong>
           <span>先解决能打、好上手、少踩坑；后续再升级专业自选配置。</span>
         </div>
-        <div class="visual-source">${combo.visual.source}</div>
       </div>
     `;
+    bindRacketViewer();
     return;
   }
-  qs("#gearVisual").innerHTML = `
-    <div class="gear-visual-inner">
-      ${photoCard("推荐底板", combo.visual.blade, combo.visual.bladePhoto)}
-      <div class="rubber-photo-stack">
-        ${photoCard("正手胶皮包装", combo.visual.fh, combo.visual.fhPhoto)}
-        ${photoCard("反手胶皮包装", combo.visual.bh, combo.visual.bhPhoto)}
+  visual.innerHTML = `
+    <div class="gear-visual-inner product-viewer-layout">
+      <div class="product-photo-grid">
+        ${renderProductPhotoCard("推荐底板", combo.visual.blade, combo.visual.bladePhoto, "结构与底劲核心")}
+        ${renderProductPhotoCard("正手胶皮", combo.visual.fh, combo.visual.fhPhoto, "旋转与主动进攻")}
+        ${renderProductPhotoCard("反手胶皮", combo.visual.bh, combo.visual.bhPhoto, "借力、衔接与稳定")}
       </div>
-      <div class="visual-source">${combo.visual.source}</div>
+      ${renderRacketViewer(combo)}
     </div>
   `;
+  bindRacketViewer();
 }
 
 function renderRecommendation() {
@@ -2810,8 +3119,8 @@ function renderHomeStarPhoto(item, displayName) {
   }
 
   return `
-    <div class="home-star-photo" data-player="${escapeHtml(displayName)}">
-      <img class="home-star-img" src="${escapeHtml(photo.src)}" alt="${escapeHtml(displayName)} 赛场照片" loading="lazy" referrerpolicy="no-referrer" data-player="${escapeHtml(displayName)}" />
+    <div class="home-star-photo" data-player="${escapeHtml(displayName)}" data-fallback="${escapeHtml(`${displayName} 图片整理中`)}">
+      <img class="home-star-img" src="${escapeHtml(photo.src)}" alt="${escapeHtml(displayName)} 赛场照片" loading="lazy" referrerpolicy="no-referrer" data-player="${escapeHtml(displayName)}" onerror="this.parentElement.classList.add('is-fallback'); this.remove();" />
     </div>
   `;
 }
@@ -2894,8 +3203,8 @@ function renderChampionPhoto(item) {
   const photo = item.photo || championPhotos[item.player];
   if (!photo?.src) return "";
   return `
-    <figure class="champion-photo">
-      <img class="champion-photo-img" src="${photo.src}" alt="${item.player}${photo.caption ? ` ${photo.caption}` : "赛场照片"}" loading="lazy" referrerpolicy="no-referrer" />
+    <figure class="champion-photo" data-fallback="${escapeHtml(`${item.player} 图片整理中`)}">
+      <img class="champion-photo-img" src="${photo.src}" alt="${item.player}${photo.caption ? ` ${photo.caption}` : "赛场照片"}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.champion-photo').classList.add('is-missing'); this.remove();" />
       <figcaption>
         <span>${photo.caption || "代表赛场照"}</span>
         ${photo.sourceUrl ? `<a href="${photo.sourceUrl}" target="_blank" rel="noreferrer">图源：${photo.source}</a>` : `<small>图源：${photo.source}</small>`}
@@ -3374,9 +3683,13 @@ function applySelectorParams() {
 }
 
 function init() {
+  applySiteSettings();
   renderAuthModal();
+  bindPortalGate();
   qsa("[data-view]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.view)));
   qsa("[data-view-trigger]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTrigger)));
+  bindSettings();
+  syncSettingsControls();
   bindHomeCarousel();
   populateHurricaneOptions();
   populateBackhandPreferenceOptions();
@@ -3477,7 +3790,9 @@ function init() {
   loadCurrentUser();
   renderEvidence();
   const initialView = new URLSearchParams(window.location.search).get("view") || window.location.hash.slice(1);
-  if (viewTitles[initialView]) setView(initialView);
+  const settings = getSiteSettings();
+  if (viewTitles[initialView]) enterApp(initialView);
+  else if (settings.defaultEntry === "home") enterApp("home");
 }
 
 document.addEventListener("error", (event) => {
