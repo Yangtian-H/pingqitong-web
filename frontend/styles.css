@@ -1164,6 +1164,10 @@ h3 {
   align-items: start;
 }
 
+#selector .two-column {
+  grid-template-columns: minmax(0, 0.9fr) minmax(432px, 1.1fr);
+}
+
 .tool-surface,
 .result-panel,
 .insight-panel,
@@ -4217,7 +4221,7 @@ body.app-entered.theme-light .gear-visual {
 .product-photo-grid {
   min-width: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(136px, 1fr));
   gap: 12px;
 }
 
@@ -4226,8 +4230,10 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-card {
-  min-height: 168px;
-  grid-template-rows: 102px minmax(62px, auto);
+  width: 100%;
+  margin: 0;
+  min-height: 184px;
+  grid-template-rows: 112px minmax(68px, auto);
   border-color: rgba(226, 193, 132, 0.22);
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
@@ -4235,8 +4241,8 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-frame {
-  height: 102px;
-  min-height: 102px;
+  height: 112px;
+  min-height: 112px;
   padding: 10px;
   background:
     radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.16), transparent 44%),
@@ -4244,7 +4250,7 @@ body.app-entered.theme-light .gear-visual {
 }
 
 .product-photo-frame img {
-  max-height: 82px;
+  max-height: 92px;
   filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.22));
 }
 
@@ -4495,7 +4501,7 @@ body.app-entered.theme-light .gear-visual {
   grid-area: params;
   grid-column: auto;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(76px, 1fr));
   gap: 8px;
 }
 
